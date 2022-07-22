@@ -50,12 +50,12 @@ if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
 // dotenv.config({ path: `${__dirname}/../env/.env.${process.env.NODE_ENV.trim()}` });
 
 
-app.get('/', (req, res) => {
-    res.sendFile('index.html', { root: `${__dirname}/public/dist/sirius` });
-});
+// app.get('/', (req, res) => {
+//     res.sendFile('index.html', { root: `${__dirname}/public/dist/sirius` });
+// });
 
 // if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
-// // dotenv.config({ path: `${__dirname}/../env/.env.${process.env.NODE_ENV.trim()}` });   
+// // dotenv.config({ path: `${__dirname}/../env/.env.${process.env.NODE_ENV.trim()}` });
 
 // // this.middlewares();
 // app.get('/', (req, res) => {
@@ -71,8 +71,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(`${__dirname}/public/dist/omega`));
 
 app.get('*', (req, res) => {
-    // res.sendFile(path.resolve(path.dirname('./src/public/dist/sirius')));
-    res.sendFile('index.html', { root: `${__dirname}/public/dist/sirius` });
+    res.sendFile(path.resolve(path.dirname('./src/public/dist/sirius')));
 })
 
 // const express = require('express'); nor needed
@@ -738,45 +737,45 @@ db.mongoose
     })
     .then(() => {
 
-        console.log(`Successfully connect to MongoDB .`);
-        if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
+            console.log(`Successfully connect to MongoDB .`);
+            if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
 
-        // not need
-        // dotenv.config({ path: `${__dirname}/../env/.env.${process.env.NODE_ENV.trim()}` });
-        // this.app = express();
-        // this.middlewares();
+            // not need
+            // dotenv.config({ path: `${__dirname}/../env/.env.${process.env.NODE_ENV.trim()}` });
+            // this.app = express();
+            // this.middlewares();
 
-        // not need
+            // not need
 
-        app.get('/', (req, res) => {
-            res.sendFile('index.html', { root: path.resolve(path.dirname('./src/public/dist/sirius')) });
-        });
+            app.get('/', (req, res) => {
+                res.sendFile('index.html', { root: path.resolve(path.dirname('./src/public/dist/sirius')) });
+            });
 
-        app.get('*', (req, res) => {
-            res.sendFile(path.resolve(path.dirname('./src/public/dist/sirius')));
+            app.get('*', (req, res) => {
+                res.sendFile(path.resolve(path.dirname('./src/public/dist/sirius')));
+            })
+
+            initial();
+            app.listen(PORT, () => {
+                console.log(`Server is running on port ${PORT}.`);
+            });
         })
-
-        initial();
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}.`);
+        .catch((err) => {
+            console.error("Connection error", err);
+            process.exit();
         });
-    })
-    .catch((err) => {
-        console.error("Connection error", err);
-        process.exit();
-    });
 
 
-//     console.log(`Successfully connect to MongoDB .`);
-//     initial();
-//     app.listen(PORT, () => {
-//         console.log(`Server is running on port ${PORT}.`);
-//     });
-// })
-// .catch((err) => {
-//     console.error("Connection error", err);
-//     process.exit();
-// });
+    //     console.log(`Successfully connect to MongoDB .`);
+    //     initial();
+    //     app.listen(PORT, () => {
+    //         console.log(`Server is running on port ${PORT}.`);
+    //     });
+    // })
+    // .catch((err) => {
+    //     console.error("Connection error", err);
+    //     process.exit();
+    // });
 
 
 
