@@ -12,7 +12,7 @@
     "build": "tsc",
     "dev": "set NODE_ENV=dev&&nodemon",
     "prod": "set NODE_ENV=prod&&nodemon",
-    "start": "nodemon ./src/index.js",
+    "start": "nodemon ./src/index.js && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate-models": "sequelize-auto -o './src/models' -d DB_A5575C_LBSTS -h sql6010.site4now.net -u DB_A5575C_LBSTS_admin -p 1433 -x Lbsts0000@! -e mssql -l ts --sg false --cp o",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd src/public && npm install && npm run build"
