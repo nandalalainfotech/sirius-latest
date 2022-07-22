@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
-  baseUrl: 'https://siriusmatrimony.herokuapp.com/',
-  apiUrl: 'http://localhost:8081/api'
+  baseUrl: 'https://sirius-latest.herokuapp.com/',
+  // apiUrl: 'http://localhost:8081/api'
+  apiUrl: 'https://sirius-latest.herokuapp.com:8081/api'
 };
