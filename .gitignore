@@ -1,0 +1,6 @@
+/node_modules
+/package-lock.json
+/src/public/node_modules
+/src/public/package-lock.json
+/src/public/dist
+/dist
