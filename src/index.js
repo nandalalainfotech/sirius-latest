@@ -800,7 +800,7 @@ const options = {
         },
         servers: [
             {
-                url: "https://sirius-latest.herokuapp.com/",
+                url: "https://sirius-latest.herokuapp.com",
             },
         ],
         tags: [{
