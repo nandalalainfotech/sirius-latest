@@ -815,10 +815,10 @@ const options = {
             },
         },
     },
-    apis: ['./src/index.js'],
+    apis: ['index.js'],
 };
 const specs = swaggerjsdoc(options);
-app.use('./src/index', swaggerUi.serve, swaggerUi.setup(specs));
+app.use('/index', swaggerUi.serve, swaggerUi.setup(specs));
 
 // **********************role001mb schema method****************//
 /** 
