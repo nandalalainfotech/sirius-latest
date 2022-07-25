@@ -815,7 +815,7 @@ const options = {
             },
         },
     },
-    apis: ['index.js'],
+    apis: ['./src/index.js'],
 };
 const specs = swaggerjsdoc(options);
 app.use('/index', swaggerUi.serve, swaggerUi.setup(specs));
