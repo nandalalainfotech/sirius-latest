@@ -800,7 +800,7 @@ const options = {
         },
         servers: [
             {
-                url: "https://sirius-latest.herokuapp.com",
+                url: "https://siriusmatrimony.herokuapp.com",
             },
         ],
         tags: [{
