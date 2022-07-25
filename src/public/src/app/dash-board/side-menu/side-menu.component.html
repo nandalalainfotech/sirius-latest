@@ -78,7 +78,7 @@
                             <li id="dropdown" title="Category">
                                 <a data-toggle="collapse" href="#Category"
                                     [ngClass]="parentMenuString == 'Category' ? 'is-active' : ''">
-                                    <i class="fa fa-industry"
+                                    <i class="fa fa-list-alt"
                                         [ngClass]="parentMenuString == 'Category' ? 'is-active' : 'is-inactive'"></i>
                                     <span [ngClass]="parentMenuString == 'Category' ? 'is-active' : ''">Category</span>
 
@@ -91,7 +91,7 @@
                                             <li title="category" routerLink="./app-categorydetails/app-category"
                                                 class="web" [ngClass]="childMenuString == 'category' ? 'is-active' : ''"
                                                 (click)="onMenuChildClick('Category', 'category')">
-                                                <span><i class="fa fa-credit-card-alt"
+                                                <span><i class="fa fa-codepen"
                                                         [ngClass]="childMenuString == 'category' ? 'is-active' : ''"></i></span>
                                                 <a><span
                                                         [ngClass]="childMenuString == 'category' ? 'is-active' : ''">Category</span>
@@ -114,7 +114,7 @@
                                                 <a data-toggle="collapse"><span
                                                         [ngClass]="childMenuString == 'SubCategory' ? 'is-active' : ''">SubCategory</span></a>
                                             </li>
-                                            <li title="SubCategory"  class="mobile">
+                                            <li title="SubCategory" class="mobile">
                                                 <span><i class="fa fa-cogs"></i></span>
                                             </li>
                                             <!-- <mat-menu #SubCategory="matMenu" #menu="matMenu"
@@ -132,8 +132,7 @@
                                                         [ngClass]="childMenuString == 'SubCatClasssification' ? 'is-active' : ''">SubCatClasssification</span>
                                                 </a>
                                             </li>
-                                            <li title="SubCatClasssification"
-                                                 class="mobile">
+                                            <li title="SubCatClasssification" class="mobile">
                                                 <span><i class="fa fa-credit-card-alt"></i></span>
                                             </li>
                                             <!-- <mat-menu #SubCatClasssification="matMenu" #menu="matMenu"
@@ -151,7 +150,7 @@
                             <li id="dropdown" title="ContentMaster">
                                 <a data-toggle="collapse" href="#ContentMaster"
                                     [ngClass]="parentMenuString == 'ContentMaster' ? 'is-active' : ''">
-                                    <i class="fa fa-industry"
+                                    <i class="fa fa-database"
                                         [ngClass]="parentMenuString == 'ContentMaster' ? 'is-active' : 'is-inactive'"></i>
                                     <span
                                         [ngClass]="parentMenuString == 'ContentMaster' ? 'is-active' : ''">ContentMaster</span>
@@ -164,13 +163,13 @@
                                             <li title="photo" routerLink="./app-contentmaster/app-photo" class="web"
                                                 [ngClass]="childMenuString == 'photo' ? 'is-active' : ''"
                                                 (click)="onMenuChildClick('ContentMaster', 'photo')">
-                                                <span><i class="fa fa-credit-card-alt"
+                                                <span><i class="fa fa-picture-o"
                                                         [ngClass]="childMenuString == 'photo' ? 'is-active' : ''"></i></span>
                                                 <a><span
                                                         [ngClass]="childMenuString == 'photo' ? 'is-active' : ''">Photo</span>
                                                 </a>
                                             </li>
-                                            <li title="photo"  class="mobile">
+                                            <li title="photo" class="mobile">
                                                 <span><i class="fa fa-credit-card-alt"></i></span>
                                             </li>
                                             <!-- <mat-menu #photo="matMenu" #menu="matMenu" backdropClass="photo">
@@ -181,12 +180,13 @@
                                             <li routerLink="./app-contentmaster/app-video" title="Video" class="web"
                                                 [ngClass]="childMenuString == 'Video' ? 'is-active' : ''"
                                                 (click)="onMenuChildClick('ContentMaster', 'Video')">
-                                                <span><i class="fa fa-cogs"
+
+                                                <span><i class="fas fa-video"
                                                         [ngClass]="childMenuString == 'Video' ? 'is-active' : ''"></i></span>
                                                 <a data-toggle="collapse"><span
                                                         [ngClass]="childMenuString == 'Video' ? 'is-active' : ''">Video</span></a>
                                             </li>
-                                            <li title="Video"  class="mobile">
+                                            <li title="Video" class="mobile">
                                                 <span><i class="fa fa-cogs"></i></span>
                                             </li>
                                             <!-- <mat-menu #Video="matMenu" #menu="matMenu" backdropClass="Video">
@@ -196,13 +196,13 @@
                                             <li title="Audio" routerLink="./app-contentmaster/app-audio" class="web"
                                                 [ngClass]="childMenuString == 'SubCatClasssification' ? 'is-active' : ''"
                                                 (click)="onMenuChildClick('ContentMaster', 'Audio')">
-                                                <span><i class="fa fa-credit-card-alt"
+                                                <span><i class="fas fa-volume-up"
                                                         [ngClass]="childMenuString == 'Audio' ? 'is-active' : ''"></i></span>
                                                 <a><span
                                                         [ngClass]="childMenuString == 'Audio' ? 'is-active' : ''">Audio</span>
                                                 </a>
                                             </li>
-                                            <li title="Audio"  class="mobile">
+                                            <li title="Audio" class="mobile">
                                                 <span><i class="fa fa-credit-card-alt"></i></span>
                                             </li>
                                             <!-- <mat-menu #Audio="matMenu" #menu="matMenu" backdropClass="Audio">
@@ -214,41 +214,41 @@
                                     </div>
                                 </div>
                             </li>
-                    
 
-                            <li title="SubcriberMaster" routerLink="./app-subscriptionmaster" class="web"
-                                [ngClass]="parentMenuString == 'SubcriberMaster' ? 'is-active' : ''" (click)="onMenuParentClick('SubcriberMaster', 'SubcriberMaster')"
-                                >
-                               <i class="fa fa-industry"
-                                    [ngClass]="parentMenuString == 'SubcriberMaster' ? 'is-active' : 'is-inactive'"></i>
-                                <span
-                                    [ngClass]="parentMenuString == 'SubcriberMaster' ? 'is-active' : ''">SubcriberMaster</span>
-                               
+                            <li title="SubcriberMaster">
+                                <a routerLink="./app-subscriptionmaster" class="web"
+                                    [ngClass]="parentMenuString == 'SubcriberMaster' ? 'is-active' : ''"
+                                    (click)="onMenuParentClick('SubcriberMaster', 'SubcriberMaster')">
+                                    <i class="fas fa-user-cog"
+                                        [ngClass]="parentMenuString == 'SubcriberMaster' ? 'is-active' : 'is-inactive'"></i>
+                                    <span
+                                        [ngClass]="parentMenuString == 'SubcriberMaster' ? 'is-active' : ''">SubscriberMaster</span>
+                                </a>
                             </li>
-                            <li title="SubcriberMaster"  class="mobile">
-                                <span><i class="fa fa-credit-card-alt"></i></span>
-                            </li>
-                            <!-- <mat-menu #SubcriberMaster="matMenu" #menu="matMenu" backdropClass="SubcriberMaster">
-                                <li mat-menu-item routerLink="./app-subscriptionmaster">
-                                    SubcriberMaster</li>
-                            </mat-menu> [matMenuTriggerFor]="SubcriberMaster" apply in  class="mobile" part-->
 
-                            <li title="SubcriberDetail" routerLink="./app-subcriberdetails" class="web"
-                            [ngClass]="parentMenuString == 'SubcriberDetail' ? 'is-active' : ''" (click)="onMenuParentClick('SubcriberDetail', 'SubcriberDetail')"
-                            >
-                           <i class="fa fa-industry"
-                                [ngClass]="parentMenuString == 'SubcriberDetail' ? 'is-active' : 'is-inactive'"></i>
-                            <span
-                                [ngClass]="parentMenuString == 'SubcriberDetail' ? 'is-active' : ''">SubcriberDetail</span>
-                           
-                        </li>
-                        <li title="SubcriberDetail" class="mobile">
-                            <span><i class="fa fa-credit-card-alt"></i></span>
-                        </li>
-                        <!-- <mat-menu #SubcriberMaster="matMenu" #menu="matMenu" backdropClass="SubcriberMaster">
-                            <li mat-menu-item routerLink="./app-subscriptionmaster">
-                                SubcriberMaster</li>
-                        </mat-menu> -->
+                            <li title="SubcriberDetail">
+                                <a routerLink="./app-subcriberdetails" class="web"
+                                    [ngClass]="parentMenuString == 'SubcriberDetail' ? 'is-active' : ''"
+                                    (click)="onMenuParentClick('SubcriberDetail', 'SubcriberDetail')">
+                                    <i class="fa-solid fa-users"
+                                        [ngClass]="parentMenuString == 'SubcriberDetail' ? 'is-active' : 'is-inactive'"></i>
+                                    <span
+                                        [ngClass]="parentMenuString == 'SubcriberDetail' ? 'is-active' : ''">SubscriberDetail</span>
+                                </a>
+                            </li>
+                            <!-- <li d="dropdown" title="SubcriberMaster">
+                                <a routerLink="./app-subscriptionmaster" class="web"
+                                    [ngClass]="parentMenuString == 'SubcriberMaster' ? 'is-active' : ''">
+                                    <i class="fa fa-industry"
+                                        [ngClass]="parentMenuString == 'SubcriberMaster' ? 'is-active' : 'is-inactive'"></i>
+                                    <span
+                                        [ngClass]="parentMenuString == 'SubcriberMaster' ? 'is-active' : ''">SubscriberMaster</span>
+
+                                </a>
+                            </li> -->
+
+
+
                         </ul>
                     </div>
                 </nav>
