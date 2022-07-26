@@ -739,7 +739,7 @@ app.use("/api/personcontroller", personcontroller);
 app.use("/api/paymentcontroller", paymentcontroller);
 app.use("/api/verifyToken", verifyToken);
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8081;
 
 db.mongoose
     .connect(process.env.DATABASE_URI, {
@@ -825,7 +825,7 @@ app.use('/index', swaggerUi.serve, swaggerUi.setup(specs));
  * @swagger
  * components:
  *    schemas:
- *      role001mb:
+ *      rolemaster:
  *            type: object
  *            properties:
  *             rolename:
@@ -835,7 +835,7 @@ app.use('/index', swaggerUi.serve, swaggerUi.setup(specs));
  * @swagger
  * /api/role001mb:
  *   get:
- *     tags: [role001mb]
+ *     tags: [rolemaster]
  *     summary: Get Method
  *     description: Retrieve the list of data
  *     security:
@@ -865,7 +865,7 @@ app.get('/api/role001mb', (req, res) => {
  * @swagger
  * /api/role001mb/{id}:
  *   get:
- *     tags: [role001mb]
+ *     tags: [rolemaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -918,7 +918,7 @@ app.get('/api/role001mb/:id', (req, res) => {
  * @swagger
  * /api/role001mb/role:
  *   post:
- *    tags: [role001mb]  
+ *    tags: [rolemaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -958,7 +958,7 @@ app.post('/api/role001mb/role', (req, res) => {
  * @swagger
  * /api/role001mb/{id}:
  *   put:
- *    tags: [role001mb]
+ *    tags: [rolemaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -1023,7 +1023,7 @@ app.put('/api/role001mb/:id', (req, res) => {
  * @swagger
  * /api/role001mb/{id}:
  *   delete:
- *    tags: [role001mb]
+ *    tags: [rolemaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -1062,7 +1062,7 @@ app.delete('/api/role001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      country001mb:
+ *      countrymaster:
  *            type: object
  *            properties:
  *             countryname:
@@ -1087,7 +1087,7 @@ app.delete('/api/role001mb/:id', (req, res) => {
  * @swagger
  * /api/country001mb:
  *   get:
- *     tags: [country001mb]
+ *     tags: [countrymaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -1120,7 +1120,7 @@ app.get('/api/country001mb', (req, res) => {
  * @swagger
  * /api/country001mb/{id}:
  *   get:
- *     tags: [country001mb]
+ *     tags: [countrymaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -1168,7 +1168,7 @@ app.get('/api/country001mb/:id', (req, res) => {
  * @swagger
  * /api/country001mb/country:
  *   post:
- *    tags: [country001mb]  
+ *    tags: [countrymaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -1209,7 +1209,7 @@ app.post('/api/country001mb/country', (req, res) => {
  * @swagger
  * /api/country001mb/{id}:
  *   put:
- *    tags: [country001mb]
+ *    tags: [countrymaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -1281,7 +1281,7 @@ app.put('/api/country001mb/:id', (req, res) => {
  * @swagger
  * /api/country001mb/{id}:
  *   delete:
- *    tags: [country001mb]
+ *    tags: [countrymaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -1320,7 +1320,7 @@ app.delete('/api/country001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      state001mb:
+ *      statemaster:
  *            type: object
  *            properties:
  *             statename:
@@ -1350,7 +1350,7 @@ app.delete('/api/country001mb/:id', (req, res) => {
  * @swagger
  * /api/state001mb:
  *   get:
- *     tags: [state001mb]
+ *     tags: [statemaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -1383,7 +1383,7 @@ app.get('/api/state001mb', (req, res) => {
  * @swagger
  * /api/state001mb/{id}:
  *   get:
- *     tags: [state001mb]
+ *     tags: [statemaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -1431,7 +1431,7 @@ app.get('/api/state001mb/:id', (req, res) => {
  * @swagger
  * /api/state001mb/state:
  *   post:
- *    tags: [state001mb]  
+ *    tags: [statemaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -1478,7 +1478,7 @@ app.post('/api/state001mb/state', (req, res) => {
  * @swagger
  * /api/state001mb/{id}:
  *   put:
- *    tags: [state001mb]
+ *    tags: [statemaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -1551,7 +1551,7 @@ app.put('/api/state001mb/:id', (req, res) => {
  * @swagger
  * /api/state001mb/{id}:
  *   delete:
- *    tags: [state001mb]
+ *    tags: [statemaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -1589,7 +1589,7 @@ app.delete('/api/state001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      city001mb:
+ *      citymaster:
  *            type: object
  *            properties:
  *             cityname:
@@ -1619,7 +1619,7 @@ app.delete('/api/state001mb/:id', (req, res) => {
  * @swagger
  * /api/city001mb:
  *   get:
- *     tags: [city001mb]
+ *     tags: [citymaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -1652,7 +1652,7 @@ app.get('/api/city001mb', (req, res) => {
  * @swagger
  * /api/city001mb/{id}:
  *   get:
- *     tags: [city001mb]
+ *     tags: [citymaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -1700,7 +1700,7 @@ app.get('/api/city001mb/:id', (req, res) => {
  * @swagger
  * /api/city001mb/city:
  *   post:
- *    tags: [city001mb]  
+ *    tags: [citymaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -1748,7 +1748,7 @@ app.post('/api/city001mb/city', (req, res) => {
  * @swagger
  * /api/city001mb/{id}:
  *   put:
- *    tags: [city001mb]
+ *    tags: [citymaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -1820,7 +1820,7 @@ app.put('/api/city001mb/:id', (req, res) => {
  * @swagger
  * /api/city001mb/{id}:
  *   delete:
- *    tags: [city001mb]
+ *    tags: [citymaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -1859,7 +1859,7 @@ app.delete('/api/city001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      photo001wb:
+ *      photoworkbase:
  *            type: object
  *            properties:
  *             fieldname:
@@ -1893,7 +1893,7 @@ app.delete('/api/city001mb/:id', (req, res) => {
  * @swagger
  * /api/photo001wb:
  *   get:
- *     tags: [photo001wb]
+ *     tags: [photoworkbase]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -1923,7 +1923,7 @@ app.get('/api/photo001wb', (req, res) => {
  * @swagger
  * /api/photo001wb/{id}:
  *   get:
- *     tags: [photo001wb]
+ *     tags: [photoworkbase]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -1970,7 +1970,7 @@ app.get('/api/photo001wb/:id', (req, res) => {
  * @swagger
  * /api/photo001wb/photo:
  *   post:
- *    tags: [photo001wb]  
+ *    tags: [photoworkbase]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -2023,7 +2023,7 @@ app.post('/api/photo001wb/photo', [upload.single("content")], (req, res) => {
  * @swagger
  * /api/photo001wb/{id}:
  *   put:
- *    tags: [photo001wb]
+ *    tags: [photoworkbase]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -2094,7 +2094,7 @@ app.put('/api/photo001wb/:id', [upload.single("content")], (req, res) => {
  * @swagger
  * /api/photo001wb/{id}:
  *   delete:
- *    tags: [photo001wb]
+ *    tags: [photoworkbase]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -2133,7 +2133,7 @@ app.delete('/api/photo001wb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      video001wb:
+ *      videoworkbase:
  *            type: object
  *            properties:
  *             fieldname:
@@ -2167,7 +2167,7 @@ app.delete('/api/photo001wb/:id', (req, res) => {
  * @swagger
  * /api/video001wb:
  *   get:
- *     tags: [video001wb]
+ *     tags: [videoworkbase]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -2200,7 +2200,7 @@ app.get('/api/video001wb', (req, res) => {
  * @swagger
  * /api/video001wb/{id}:
  *   get:
- *     tags: [video001wb]
+ *     tags: [videoworkbase]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -2247,7 +2247,7 @@ app.get('/api/video001wb/:id', (req, res) => {
  * @swagger
  * /api/video001wb/video:
  *   post:
- *    tags: [video001wb]  
+ *    tags: [videoworkbase]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -2302,7 +2302,7 @@ app.post('/api/video001wb/video', [videoUpload.single("content")], (req, res) =>
  * @swagger
  * /api/video001wb/{id}:
  *   put:
- *    tags: [video001wb]
+ *    tags: [videoworkbase]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -2377,7 +2377,7 @@ app.put('/api/video001wb/:id', [videoUpload.single("content")], (req, res) => {
  * @swagger
  * /api/video001wb/{id}:
  *   delete:
- *    tags: [video001wb]
+ *    tags: [videoworkbase]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -2415,7 +2415,7 @@ app.delete('/api/video001wb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      audio001wb:
+ *      audioworkbase:
  *            type: object
  *            properties:
  *             fieldname:
@@ -2449,7 +2449,7 @@ app.delete('/api/video001wb/:id', (req, res) => {
  * @swagger
  * /api/audio001wb:
  *   get:
- *     tags: [audio001wb]
+ *     tags: [audioworkbase]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -2482,7 +2482,7 @@ app.get('/api/audio001wb', (req, res) => {
  * @swagger
  * /api/audio001wb/{id}:
  *   get:
- *     tags: [audio001wb]
+ *     tags: [audioworkbase]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -2529,7 +2529,7 @@ app.get('/api/audio001wb/:id', (req, res) => {
  * @swagger
  * /api/audio001wb/audio:
  *   post:
- *    tags: [audio001wb]  
+ *    tags: [audioworkbase]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -2584,7 +2584,7 @@ app.post('/api/audio001wb/audio', [audio.single("content")], (req, res) => {
  * @swagger
  * /api/audio001wb/{id}:
  *   put:
- *    tags: [audio001wb]
+ *    tags: [audioworkbase]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -2658,7 +2658,7 @@ app.put('/api/audio001wb/:id', [audio.single("content")], (req, res) => {
  * @swagger
  * /api/audio001wb/{id}:
  *   delete:
- *    tags: [audio001wb]
+ *    tags: [audioworkbase]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -2697,7 +2697,7 @@ app.delete('/api/audio001wb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      contentmaster001mb:
+ *      contentmaster:
  *            type: object
  *            properties:
  *             name:
@@ -2741,7 +2741,7 @@ app.delete('/api/audio001wb/:id', (req, res) => {
  * @swagger
  * /api/contentmaster001mb:
  *   get:
- *     tags: [contentmaster001mb]
+ *     tags: [contentmaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -2774,7 +2774,7 @@ app.get('/api/contentmaster001mb', (req, res) => {
  * @swagger
  * /api/contentmaster001mb/{id}:
  *   get:
- *     tags: [contentmaster001mb]
+ *     tags: [contentmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -2822,7 +2822,7 @@ app.get('/api/contentmaster001mb/:id', (req, res) => {
  * @swagger
  * /api/contentmaster001mb/master:
  *   post:
- *    tags: [contentmaster001mb]  
+ *    tags: [contentmaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -2870,7 +2870,7 @@ app.post('/api/contentmaster001mb/master', (req, res) => {
  * @swagger
  * /api/contentmaster001mb/{id}:
  *   put:
- *    tags: [contentmaster001mb]
+ *    tags: [contentmaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -2945,7 +2945,7 @@ app.put('/api/contentmaster001mb/:id', (req, res) => {
  * @swagger
  * /api/contentmaster001mb/{id}:
  *   delete:
- *    tags: [contentmaster001mb]
+ *    tags: [contentmaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -2985,7 +2985,7 @@ app.delete('/api/contentmaster001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      categorydetails001mb:
+ *      categorydetailsmaster:
  *            type: object
  *            properties:
  *             catname:
@@ -3006,7 +3006,7 @@ app.delete('/api/contentmaster001mb/:id', (req, res) => {
  * @swagger
  * /api/categorydetails001mb:
  *   get:
- *     tags: [categorydetails001mb]
+ *     tags: [categorydetailsmaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -3039,7 +3039,7 @@ app.get('/api/categorydetails001mb', (req, res) => {
  * @swagger
  * /api/categorydetails001mb/{id}:
  *   get:
- *     tags: [categorydetails001mb]
+ *     tags: [categorydetailsmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -3087,7 +3087,7 @@ app.get('/api/categorydetails001mb/:id', (req, res) => {
  * @swagger
  * /api/categorydetails001mb/category:
  *   post:
- *    tags: [categorydetails001mb]  
+ *    tags: [categorydetailsmaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -3127,7 +3127,7 @@ app.post('/api/categorydetails001mb/category', (req, res) => {
  * @swagger
  * /api/categorydetails001mb/{id}:
  *   put:
- *    tags: [categorydetails001mb]
+ *    tags: [categorydetailsmaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -3194,7 +3194,7 @@ app.put('/api/categorydetails001mb/:id', (req, res) => {
  * @swagger
  * /api/categorydetails001mb/{id}:
  *   delete:
- *    tags: [categorydetails001mb]
+ *    tags: [categorydetailsmaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -3232,7 +3232,7 @@ app.delete('/api/categorydetails001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      companydetails001mb:
+ *      companydetailsmaster:
  *            type: object
  *            properties:
  *             companyname:
@@ -3262,7 +3262,7 @@ app.delete('/api/categorydetails001mb/:id', (req, res) => {
  * @swagger
  * /api/companydetails001mb:
  *   get:
- *     tags: [companydetails001mb]
+ *     tags: [companydetailsmaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -3295,7 +3295,7 @@ app.get('/api/companydetails001mb', (req, res) => {
  * @swagger
  * /api/companydetails001mb/{id}:
  *   get:
- *     tags: [companydetails001mb]
+ *     tags: [companydetailsmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -3342,7 +3342,7 @@ app.get('/api/companydetails001mb/:id', (req, res) => {
  * @swagger
  * /api/companydetails001mb/company:
  *   post:
- *    tags: [companydetails001mb]  
+ *    tags: [companydetailsmaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -3383,7 +3383,7 @@ app.post('/api/companydetails001mb/company', (req, res) => {
  * @swagger
  * /api/companydetails001mb/{id}:
  *   put:
- *    tags: [companydetails001mb]
+ *    tags: [companydetailsmaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -3453,7 +3453,7 @@ app.put('/api/companydetails001mb/:id', (req, res) => {
  * @swagger
  * /api/companydetails001mb/{id}:
  *   delete:
- *    tags: [companydetails001mb]
+ *    tags: [companydetailsmaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -3490,7 +3490,7 @@ app.delete('/api/companydetails001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      language001mb:
+ *      languagemaster:
  *            type: object
  *            properties:
  *             languagename:
@@ -3514,7 +3514,7 @@ app.delete('/api/companydetails001mb/:id', (req, res) => {
  * @swagger
  * /api/language001mb:
  *   get:
- *     tags: [language001mb]
+ *     tags: [languagemaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -3547,7 +3547,7 @@ app.get('/api/language001mb', (req, res) => {
  * @swagger
  * /api/language001mb/{id}:
  *   get:
- *     tags: [language001mb]
+ *     tags: [languagemaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -3595,7 +3595,7 @@ app.get('/api/language001mb/:id', (req, res) => {
  * @swagger
  * /api/language001mb/language:
  *   post:
- *    tags: [language001mb]  
+ *    tags: [languagemaster]  
  *    security:
  *        - bearerAuth: []
  *    summary: Post Method
@@ -3635,7 +3635,7 @@ app.post('/api/language001mb/language', verifyToken, rolebaseauth(["admin"]), (r
  * @swagger
  * /api/language001mb/{id}:
  *   put:
- *    tags: [language001mb]
+ *    tags: [languagemaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -3702,7 +3702,7 @@ app.put('/api/language001mb/:id', (req, res) => {
  * @swagger
  * /api/language001mb/{id}:
  *   delete:
- *    tags: [language001mb]
+ *    tags: [languagemaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -3743,7 +3743,7 @@ app.delete('/api/language001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      regionaldetails001mb:
+ *      regionaldetailsmaster:
  *            type: object
  *            properties:
  *             regionalname:
@@ -3767,7 +3767,7 @@ app.delete('/api/language001mb/:id', (req, res) => {
  * @swagger
  * /api/regionaldetails001mb:
  *   get:
- *     tags: [regionaldetails001mb]
+ *     tags: [regionaldetailsmaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -3800,7 +3800,7 @@ app.get('/api/regionaldetails001mb', (req, res) => {
  * @swagger
  * /api/regionaldetails001mb/{id}:
  *   get:
- *     tags: [regionaldetails001mb]
+ *     tags: [regionaldetailsmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -3848,7 +3848,7 @@ app.get('/api/regionaldetails001mb/:id', (req, res) => {
  * @swagger
  * /api/regionaldetails001mb/regional:
  *   post:
- *    tags: [regionaldetails001mb]  
+ *    tags: [regionaldetailsmaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -3887,7 +3887,7 @@ app.post('/api/regionaldetails001mb/regional', (req, res) => {
  * @swagger
  * /api/regionaldetails001mb/{id}:
  *   put:
- *    tags: [regionaldetails001mb]
+ *    tags: [regionaldetailsmaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -3956,7 +3956,7 @@ app.put('/api/regionaldetails001mb/:id', (req, res) => {
  * @swagger
  * /api/regionaldetails001mb/{id}:
  *   delete:
- *    tags: [regionaldetails001mb]
+ *    tags: [regionaldetailsmaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -3995,7 +3995,7 @@ app.delete('/api/regionaldetails001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      login001mb:
+ *      loginmaster:
  *            type: object
  *            properties:
  *             username:
@@ -4032,7 +4032,7 @@ app.delete('/api/regionaldetails001mb/:id', (req, res) => {
  * @swagger
  * /api/login001mb:
  *   get:
- *     tags: [login001mb]
+ *     tags: [loginmaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -4065,7 +4065,7 @@ app.get('/api/login001mb', (req, res) => {
  * @swagger
  * /api/login001mb/{id}:
  *   get:
- *     tags: [login001mb]
+ *     tags: [loginmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -4114,7 +4114,7 @@ app.get('/api/login001mb/:id', (req, res) => {
  * @swagger
  * /api/login001mb/{username}/{password}:
  *  get:
- *     tags: [login001mb]
+ *     tags: [loginmaster]
  *     summary: Retrieve a data by username and password.
  *     description: Retrieve a data by username and password.
  *     parameters:
@@ -4175,7 +4175,7 @@ app.get('/api/login001mb/:username/:password', async (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      person001mb:
+ *      personmaster:
  *            type: object
  *            properties:
  *             firstname:
@@ -4296,7 +4296,7 @@ app.get('/api/login001mb/:username/:password', async (req, res) => {
  * @swagger
  * /api/person001mb:
  *   get:
- *     tags: [person001mb]
+ *     tags: [personmaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -4329,7 +4329,7 @@ app.get('/api/person001mb', (req, res) => {
  * @swagger
  * /api/person001mb/{id}:
  *   get:
- *     tags: [person001mb]
+ *     tags: [personmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -4376,7 +4376,7 @@ app.get('/api/person001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      religion001mb:
+ *      religionmaster:
  *            type: object
  *            properties: 
  *             religionname:
@@ -4400,7 +4400,7 @@ app.get('/api/person001mb/:id', (req, res) => {
  * @swagger
  * /api/religion001mb:
  *   get:
- *     tags: [religion001mb]
+ *     tags: [religionmaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -4433,7 +4433,7 @@ app.get('/api/religion001mb', (req, res) => {
  * @swagger
  * /api/religion001mb/{id}:
  *   get:
- *     tags: [religion001mb]
+ *     tags: [religionmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -4480,7 +4480,7 @@ app.get('/api/religion001mb/:id', (req, res) => {
  * @swagger
  * /api/religion001mb/religion:
  *   post:
- *    tags: [religion001mb]  
+ *    tags: [religionmaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -4520,7 +4520,7 @@ app.post('/api/religion001mb/religion', (req, res) => {
  * @swagger
  * /api/religion001mb/{id}:
  *   put:
- *    tags: [religion001mb]
+ *    tags: [religionmaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -4589,7 +4589,7 @@ app.put('/api/religion001mb/:id', (req, res) => {
  * @swagger
  * /api/religion001mb/{id}:
  *   delete:
- *    tags: [religion001mb]
+ *    tags: [religionmaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -4628,7 +4628,7 @@ app.delete('/api/religion001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      subcatclassification001mb:
+ *      subcatclassificationmaster:
  *            type: object
  *            properties: 
  *              subcatcode:
@@ -4660,7 +4660,7 @@ app.delete('/api/religion001mb/:id', (req, res) => {
  * @swagger
  * /api/subcatclassification001mb:
  *   get:
- *     tags: [subcatclassification001mb]
+ *     tags: [subcatclassificationmaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -4693,7 +4693,7 @@ app.get('/api/subcatclassification001mb', (req, res) => {
  * @swagger
  * /api/subcatclassification001mb/{id}:
  *   get:
- *     tags: [subcatclassification001mb]
+ *     tags: [subcatclassificationmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -4740,7 +4740,7 @@ app.get('/api/subcatclassification001mb/:id', (req, res) => {
  * @swagger
  * /api/subcatclassification001mb/subcatclassification:
  *   post:
- *    tags: [subcatclassification001mb]  
+ *    tags: [subcatclassificationmaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -4780,7 +4780,7 @@ app.post('/api/subcatclassification001mb/subcatclassification', (req, res) => {
  * @swagger
  * /api/subcatclassification001mb/{id}:
  *   put:
- *    tags: [subcatclassification001mb]
+ *    tags: [subcatclassificationmaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -4849,7 +4849,7 @@ app.put('/api/subcatclassification001mb/:id', (req, res) => {
  * @swagger
  * /api/subcatclassification001mb/{id}:
  *   delete:
- *    tags: [subcatclassification001mb]
+ *    tags: [subcatclassificationmaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -4886,7 +4886,7 @@ app.delete('/api/subcatclassification001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      subcategory001mb:
+ *      subcategorymaster:
  *            type: object
  *            properties:
  *             catcode:
@@ -4915,7 +4915,7 @@ app.delete('/api/subcatclassification001mb/:id', (req, res) => {
  * @swagger
  * /api/subcategory001mb:
  *   get:
- *     tags: [subcategory001mb]
+ *     tags: [subcategorymaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -4948,7 +4948,7 @@ app.get('/api/subcategory001mb', (req, res) => {
  * @swagger
  * /api/subcategory001mb/{id}:
  *   get:
- *     tags: [subcategory001mb]
+ *     tags: [subcategorymaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -4995,7 +4995,7 @@ app.get('/api/subcategory001mb/:id', (req, res) => {
  * @swagger
  * /api/subcategory001mb/subcategory:
  *   post:
- *    tags: [subcategory001mb]  
+ *    tags: [subcategorymaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -5035,7 +5035,7 @@ app.post('/api/subcategory001mb/subcategory', (req, res) => {
  * @swagger
  * /api/subcategory001mb/{id}:
  *   put:
- *    tags: [subcategory001mb]
+ *    tags: [subcategorymaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -5104,7 +5104,7 @@ app.put('/api/subcategory001mb/:id', (req, res) => {
  * @swagger
  * /api/subcategory001mb/{id}:
  *   delete:
- *    tags: [subcategory001mb]
+ *    tags: [subcategorymaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -5141,7 +5141,7 @@ app.delete('/api/subcategory001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      subscribercontentauth001wb:
+ *      subscribercontentauthworkbase:
  *            type: object
  *            properties:    
  *             subscsubpstatus:
@@ -5167,7 +5167,7 @@ app.delete('/api/subcategory001mb/:id', (req, res) => {
  * @swagger
  * /api/subscribercontentauth001wb:
  *   get:
- *     tags: [subscribercontentauth001wb]
+ *     tags: [subscribercontentauthworkbase]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -5200,7 +5200,7 @@ app.get('/api/subscribercontentauth001wb', (req, res) => {
  * @swagger
  * /api/subscribercontentauth001wb/{id}:
  *   get:
- *     tags: [subscribercontentauth001wb]
+ *     tags: [subscribercontentauthworkbase]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -5247,7 +5247,7 @@ app.get('/api/subscribercontentauth001wb/:id', (req, res) => {
  * @swagger
  * /api/subscribercontentauth001wb/subscribercontent:
  *   post:
- *    tags: [subscribercontentauth001wb]  
+ *    tags: [subscribercontentauthworkbase]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -5287,7 +5287,7 @@ app.post('/api/subscribercontentauth001wb/subscribercontent', (req, res) => {
  * @swagger
  * /api/subscribercontentauth001wb/{id}:
  *   put:
- *    tags: [subscribercontentauth001wb]
+ *    tags: [subscribercontentauthworkbase]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -5356,7 +5356,7 @@ app.put('/api/subscribercontentauth001wb/:id', (req, res) => {
  * @swagger
  * /api/subscribercontentauth001wb/{id}:
  *   delete:
- *    tags: [subscribercontentauth001wb]
+ *    tags: [subscribercontentauthworkbase]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -5393,7 +5393,7 @@ app.delete('/api/subscribercontentauth001wb/:id', (req, res) => {
  * @swagger
  * components:
  *   schemas:
- *     subscriberdetails001wb:
+ *     subscriberdetailsworkbase:
  *        allOf:
  *           - $ref: '#/components/schemas/person001mb'
  *           - $ref: '#/components/schemas/login001mb'
@@ -5447,7 +5447,7 @@ app.delete('/api/subscribercontentauth001wb/:id', (req, res) => {
  * @swagger
  * /api/subscriberdetails001wb:
  *   get:
- *     tags: [subscriberdetails001wb]
+ *     tags: [subscriberdetailsworkbase]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -5480,7 +5480,7 @@ app.get('/api/subscriberdetails001wb', (req, res) => {
  * @swagger
  * /api/subscriberdetails001wb/verify:
  *   get:
- *     tags: [subscriberdetails001wb]
+ *     tags: [subscriberdetailsworkbase]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -5521,7 +5521,7 @@ app.get('/api/subscriberdetails001wb/verify', async (req, res) => {
  * @swagger
  * /api/subscriberdetails001wb/{id}:
  *   get:
- *     tags: [subscriberdetails001wb]
+ *     tags: [subscriberdetailsworkbase]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -5568,7 +5568,7 @@ app.get('/api/subscriberdetails001wb/:id', (req, res) => {
  * @swagger
  * /api/subscriberdetails001wb/subscriberdetails:
  *   post:
- *    tags: [subscriberdetails001wb]  
+ *    tags: [subscriberdetailsworkbase]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -5661,12 +5661,13 @@ app.post('/api/subscriberdetails001wb/subscriberdetails', async (req, res) => {
     subscriberdetails001wb.updateduser = req.body.updateduser;
     subscriberdetails001wb.status = req.body.status;
     await subscriberdetails001wb.save()
-
+    // user: 'siriusmatrimoney@gmail.com',
+    // pass: 'Welcome!23'
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
             user: 'siriusmatrimoney@gmail.com',
-            pass: 'Welcome!23'
+            pass: 'omhwphrccuelcgsa'
         }
     });
     const handlebarOptions = {
@@ -5700,7 +5701,7 @@ app.post('/api/subscriberdetails001wb/subscriberdetails', async (req, res) => {
  * @swagger
  * /api/subscriberdetails001wb/{personid}/{loginid}/{subid}:
  *   put:
- *    tags: [subscriberdetails001wb]
+ *    tags: [subscriberdetailsworkbase]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -5823,7 +5824,7 @@ app.put('/api/subscriberdetails001wb/:personid/:loginid/:subid', async (req, res
  * @swagger
  * /api/subscriberdetails001wb/{personid}/{loginid}/{subid}:
  *   delete:
- *    tags: [subscriberdetails001wb]
+ *    tags: [subscriberdetailsworkbase]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -5876,7 +5877,7 @@ app.delete('/api/subscriberdetails001wb/:personid/:loginid/:subid', async (req, 
  * @swagger
  * components:
  *    schemas:
- *      subscriberpersonalinfo001wb:
+ *      subscriberpersonalinfoworkbase:
  *            type: object
  *            properties:    
  *             personaldetails:
@@ -5924,7 +5925,7 @@ app.delete('/api/subscriberdetails001wb/:personid/:loginid/:subid', async (req, 
  * @swagger
  * /api/subscriberpersonalinfo001wb:
  *   get:
- *     tags: [subscriberpersonalinfo001wb]
+ *     tags: [subscriberpersonalinfoworkbase]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -5957,7 +5958,7 @@ app.get('/api/subscriberpersonalinfo001wb', (req, res) => {
  * @swagger
  * /api/subscriberpersonalinfo001wb/{id}:
  *   get:
- *     tags: [subscriberpersonalinfo001wb]
+ *     tags: [subscriberpersonalinfoworkbase]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -6004,7 +6005,7 @@ app.get('/api/subscriberpersonalinfo001wb/:id', (req, res) => {
  * @swagger
  * /api/subscriberpersonalinfo001wb/personal:
  *   post:
- *    tags: [subscriberpersonalinfo001wb]  
+ *    tags: [subscriberpersonalinfoworkbase]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -6054,7 +6055,7 @@ app.post('/api/subscriberpersonalinfo001wb/personal', (req, res) => {
  * @swagger
  * /api/subscriberpersonalinfo001wb/{id}:
  *   put:
- *    tags: [subscriberpersonalinfo001wb]
+ *    tags: [subscriberpersonalinfoworkbase]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -6134,7 +6135,7 @@ app.put('/api/subscriberpersonalinfo001wb/:id', (req, res) => {
  * @swagger
  * /api/subscriberpersonalinfo001wb/{id}:
  *   delete:
- *    tags: [subscriberpersonalinfo001wb]
+ *    tags: [subscriberpersonalinfoworkbase]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -6173,7 +6174,7 @@ app.delete('/api/subscriberpersonalinfo001wb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      subscriberprofessionalinfo002wb:
+ *      subscriberprofessionalinfoworkbase:
  *            type: object
  *            properties:
  *             professionaldetails:
@@ -6221,7 +6222,7 @@ app.delete('/api/subscriberpersonalinfo001wb/:id', (req, res) => {
  * @swagger
  * /api/subscriberprofessionalinfo002wb:
  *   get:
- *     tags: [subscriberprofessionalinfo002wb]
+ *     tags: [subscriberprofessionalinfoworkbase]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -6254,7 +6255,7 @@ app.get('/api/subscriberprofessionalinfo002wb', (req, res) => {
  * @swagger
  * /api/subscriberprofessionalinfo002wb/{id}:
  *   get:
- *     tags: [subscriberprofessionalinfo002wb]
+ *     tags: [subscriberprofessionalinfoworkbase]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -6301,7 +6302,7 @@ app.get('/api/subscriberprofessionalinfo002wb/:id', (req, res) => {
  * @swagger
  * /api/subscriberprofessionalinfo002wb/professional:
  *   post:
- *    tags: [subscriberprofessionalinfo002wb]  
+ *    tags: [subscriberprofessionalinfoworkbase]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -6352,7 +6353,7 @@ app.post('/api/subscriberprofessionalinfo002wb/professional', (req, res) => {
  * @swagger
  * /api/subscriberprofessionalinfo002wb/{id}:
  *   put:
- *    tags: [subscriberprofessionalinfo002wb]
+ *    tags: [subscriberprofessionalinfoworkbase]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -6431,7 +6432,7 @@ app.put('/api/subscriberprofessionalinfo002wb/:id', (req, res) => {
  * @swagger
  * /api/subscriberprofessionalinfo002wb/{id}:
  *   delete:
- *    tags: [subscriberprofessionalinfo002wb]
+ *    tags: [subscriberprofessionalinfoworkbase]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -6470,7 +6471,7 @@ app.delete('/api/subscriberprofessionalinfo002wb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      subscriptionmaster001mb:
+ *      subscriptionmaster:
  *            type: object
  *            properties:    
  *             subpname:
@@ -6500,7 +6501,7 @@ app.delete('/api/subscriberprofessionalinfo002wb/:id', (req, res) => {
  * @swagger
  * /api/subscriptionmaster001mb:
  *   get:
- *     tags: [subscriptionmaster001mb]
+ *     tags: [subscriptionmaster]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -6533,7 +6534,7 @@ app.get('/api/subscriptionmaster001mb', (req, res) => {
  * @swagger
  * /api/subscriptionmaster001mb/{id}:
  *   get:
- *     tags: [subscriptionmaster001mb]
+ *     tags: [subscriptionmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -6580,7 +6581,7 @@ app.get('/api/subscriptionmaster001mb/:id', (req, res) => {
  * @swagger
  * /api/subscriptionmaster001mb/master:
  *   post:
- *    tags: [subscriptionmaster001mb]  
+ *    tags: [subscriptionmaster]  
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -6625,7 +6626,7 @@ app.post('/api/subscriptionmaster001mb/master', (req, res) => {
  * @swagger
  * /api/subscriptionmaster001mb/{id}:
  *   put:
- *    tags: [subscriptionmaster001mb]
+ *    tags: [subscriptionmaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -6697,7 +6698,7 @@ app.put('/api/subscriptionmaster001mb/:id', (req, res) => {
  * @swagger
  * /api/subscriptionmaster001mb/{id}:
  *   delete:
- *    tags: [subscriptionmaster001mb]
+ *    tags: [subscriptionmaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -6734,7 +6735,7 @@ app.delete('/api/subscriptionmaster001mb/:id', (req, res) => {
  * @swagger
  * components:
  *    schemas:                 
- *      users001wb:
+ *      usersworkbase:
  *           allOf:
  *            - $ref: '#/components/schemas/person001mb'
  *            - $ref: '#/components/schemas/login001mb'
@@ -6773,7 +6774,7 @@ app.delete('/api/subscriptionmaster001mb/:id', (req, res) => {
  * @swagger
  * /api/users001wb:
  *   get:
- *     tags: [users001wb]
+ *     tags: [usersworkbase]
  *     summary: Get Method
  *     description: Retrieve the list of data
  *     security:
@@ -6805,7 +6806,7 @@ app.get('/api/users001wb', (req, res) => {
  * @swagger
  * /api/users001wb/verify:
  *   get:
- *     tags: [users001wb]
+ *     tags: [usersworkbase]
  *     summary: Get Method
  *     description: Get the list of data
  *     security:
@@ -6844,7 +6845,7 @@ app.get('/api/users001wb/verify', async (req, res) => {
  * @swagger
  * /api/users001wb/{id}:
  *   get:
- *     tags: [users001wb]
+ *     tags: [usersworkbase]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -6887,7 +6888,7 @@ app.get('/api/users001wb/:id', (req, res) => {
  * @swagger
  * /api/users001wb/user:
  *   post:
- *    tags: [users001wb]
+ *    tags: [usersworkbase]
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -7018,7 +7019,7 @@ app.post('/api/users001wb/user', async (req, res) => {
  * @swagger
  * /api/users001wb/{personid}/{loginid}/{userid}:
  *   put:
- *    tags: [users001wb]
+ *    tags: [usersworkbase]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -7129,7 +7130,7 @@ app.put('/api/users001wb/:personid/:loginid/:userid', async (req, res) => {
  * @swagger
  * /api/users001wb/{personid}/{loginid}/{userid}:
  *   delete:
- *    tags: [users001wb]
+ *    tags: [usersworkbase]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:
@@ -7182,7 +7183,7 @@ app.delete('/api/users001wb/:personid/:loginid/:userid', async (req, res) => {
  * @swagger
  * components:
  *    schemas:
- *      payment001mb:
+ *      paymentmaster:
  *            type: object
  *            properties:    
  *             subpid:
@@ -7213,7 +7214,7 @@ app.delete('/api/users001wb/:personid/:loginid/:userid', async (req, res) => {
  * @swagger
  * /api/payment001mb:
  *   get:
- *     tags: [payment001mb]
+ *     tags: [paymentmaster]
  *     summary: Get Method
  *     description: Retrieve the list of data
  *     security:
@@ -7244,7 +7245,7 @@ app.get('/api/payment001mb', (req, res) => {
  * @swagger
  * /api/payment001mb/{id}:
  *   get:
- *     tags: [payment001mb]
+ *     tags: [paymentmaster]
  *     summary: Retrieve a data by id.
  *     description: Retrieve a data by id.
  *     security:
@@ -7288,7 +7289,7 @@ app.get('/api/payment001mb/:id', (req, res) => {
  * @swagger
  * /api/payment001mb/payment:
  *   post:
- *    tags: [payment001mb]
+ *    tags: [paymentmaster]
  *    summary: Post Method
  *    description: Retrieve the list of data
  *    security:
@@ -7334,7 +7335,7 @@ app.post('/api/payment001mb/payment', async (req, res) => {
  * @swagger
  * /api/payment001mb/{id}:
  *   put:
- *    tags: [payment001mb]
+ *    tags: [paymentmaster]
  *    summary: Put Method
  *    description: Retrieve the list of data
  *    security:
@@ -7404,7 +7405,7 @@ app.put('/api/payment001mb/:id', (req, res) => {
  * @swagger
  * /api/payment001mb/{id}:
  *   delete:
- *    tags: [payment001mb]
+ *    tags: [paymentmaster]
  *    summary: Delete Method
  *    description: Delete the list of data
  *    security:

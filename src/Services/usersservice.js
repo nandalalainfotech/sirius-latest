@@ -145,15 +145,15 @@ export const create = async (req, res, err) => {
         service: 'gmail',
         auth: {
             user: 'siriusmatrimoney@gmail.com',
-            pass: 'Welcome!23'
+            pass: 'omhwphrccuelcgsa'
         }
     });
     const handlebarOptions = {
         viewEngine: {
-            partialsDir: path.resolve('./app/templates'),
+            partialsDir: path.resolve('./src/templates'),
             defaultLayout: false,
         },
-        viewPath: path.resolve('./app/templates'),
+        viewPath: path.resolve('./src/templates'),
         extName: ".handlebars"
     };
     transporter.use('compile', hbs(handlebarOptions))
@@ -164,7 +164,7 @@ export const create = async (req, res, err) => {
         template: 'mail',
         context: {
             name: "Sirius Matrimony",
-            url: `http://localhost:8081/api/userscontroller/verify?token=${token}`
+            url: `https://sirius-latest.herokuapp.com/api/userscontroller/verify?token=${token}`
         }
     };
     transporter.sendMail(mailOptions, function (err, info) {
