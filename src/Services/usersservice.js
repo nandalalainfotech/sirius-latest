@@ -97,7 +97,7 @@ export const create = async (req, res, err) => {
     if (!(person001mb.email && person001mb.firstname && person001mb.roleid)) {
         return res.status(402).json("Enter a Required Field");
     }
-    const oldUser = await Person001mb.findOne({ email: person001mb.email});
+    const oldUser = await Person001mb.findOne({ email: person001mb.email });
     if (oldUser) {
         return res.status(409).send("User Already Exist");
     }
@@ -164,7 +164,7 @@ export const create = async (req, res, err) => {
         template: 'mail',
         context: {
             name: "Sirius Matrimony",
-            url: `https://sirius-latest.herokuapp.com/api/userscontroller/verify?token=${token}`
+            url: `https://siriusmatrimony.herokuapp.com/api/userscontroller/verify?token=${token}`
         }
     };
     transporter.sendMail(mailOptions, function (err, info) {
@@ -198,7 +198,7 @@ export const verify = async (req, res) => {
     }
 };
 
-export const update = async (req, res,err) => {
+export const update = async (req, res, err) => {
     var personid = req.body.personid;
     var loginid = req.body.loginid;
     var userid = req.body.userid;
@@ -236,7 +236,7 @@ export const update = async (req, res,err) => {
         person001mb.confirmemail = req.body.person001mb.confirmemail ? req.body.person001mb.confirmemail : person001mb.confirmemail;
         person001mb.landline = req.body.person001mb.landline ? req.body.person001mb.landline : person001mb.landline;
         person001mb.status = req.body.person001mb.status ? req.body.person001mb.status : person001mb.status;
-        console.log("person001mb",person001mb)
+        console.log("person001mb", person001mb)
         let person = person001mb.save();
         const login001mb = await Login001mb.findOne({ _id: loginid });
         login001mb.personid = person._id ? person._id : login001mb.personid;
@@ -245,7 +245,7 @@ export const update = async (req, res,err) => {
         login001mb.roleid = req.body.login001mb.roleid ? req.body.login001mb.roleid : login001mb.roleid;
         login001mb.status = req.body.login001mb.status ? req.body.login001mb.status : login001mb.status
         login001mb.inserteduser = person001mb.inserteduser ? person001mb.inserteduser : login001mb.inserteduser;
-        login001mb.inserteddatetime = person001mb.inserteddatetime ?person001mb.inserteddatetime : login001mb.inserteddatetime;
+        login001mb.inserteddatetime = person001mb.inserteddatetime ? person001mb.inserteddatetime : login001mb.inserteddatetime;
         login001mb.updateduser = person001mb.updateduser ? person001mb.updateduser : login001mb.updateduser;
         login001mb.updateddatetime = person001mb.updateddatetime ? person001mb.updateddatetime : login001mb.updateddatetime;
         login001mb.save();
@@ -257,35 +257,35 @@ export const update = async (req, res,err) => {
         users001wb.insurance = req.body.user001wb.insurance ? req.body.user001wb.insurance : users001wb.insurance;
         users001wb.accounttype = req.body.user001wb.accounttype ? req.body.user001wb.accounttype : users001wb.accounttype;
         users001wb.inserteduser = person001mb.inserteduser ? person001mb.inserteduser : users001wb.inserteduser;
-        users001wb.inserteddatetime = person001mb.inserteddatetime ?person001mb.inserteddatetime : users001wb.inserteddatetime;
+        users001wb.inserteddatetime = person001mb.inserteddatetime ? person001mb.inserteddatetime : users001wb.inserteddatetime;
         users001wb.updateduser = person001mb.updateduser ? person001mb.updateduser : users001wb.updateduser;
         users001wb.updateddatetime = person001mb.updateddatetime ? person001mb.updateddatetime : users001wb.updateddatetime;
         users001wb.save(function (err, users001wb) {
-            return res.json({users001wb,login001mb,person001mb});
-        });  
+            return res.json({ users001wb, login001mb, person001mb });
+        });
     } else {
         return res.status(500).json({
             message: 'Error when updating users001wb.',
             error: err
         });
-       
-    }
-    };
-    export const remove = async (req, res) => {
-        var userid = req.params.userid;
-        var loginid = req.params.loginid;
-        var personid = req.params.personid;
-        if (userid && loginid && personid) {
-            console.log("testing", userid, loginid, personid)
-            await Person001mb.findByIdAndRemove({ _id: personid });
-            await Login001mb.findByIdAndRemove({ _id: loginid });
-            await Users001wb.findByIdAndRemove({ _id: userid });
-            return res.json('users001wb deleted');
-        } else {
-            return res.status(500).json({
-                message: 'Error when deleting users001wb.',
-                error: err
-            });
-        }
 
-    };
+    }
+};
+export const remove = async (req, res) => {
+    var userid = req.params.userid;
+    var loginid = req.params.loginid;
+    var personid = req.params.personid;
+    if (userid && loginid && personid) {
+        console.log("testing", userid, loginid, personid)
+        await Person001mb.findByIdAndRemove({ _id: personid });
+        await Login001mb.findByIdAndRemove({ _id: loginid });
+        await Users001wb.findByIdAndRemove({ _id: userid });
+        return res.json('users001wb deleted');
+    } else {
+        return res.status(500).json({
+            message: 'Error when deleting users001wb.',
+            error: err
+        });
+    }
+
+};
