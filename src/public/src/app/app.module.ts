@@ -34,7 +34,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import { UserRegistrationModule } from './user-registration/user-registration.module';
 import { JwtInterceptor } from './_helpers';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
-
+import { HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -81,7 +81,7 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 	exports: [PopupComponent, NgbCollapseModule],
 	providers: [AuthManager, CalloutService, DataSharedService, UserManager, BaseService,
 		appSettingManager, PersonManager, UserManager,
-		PhotoManager, AudioManager, VideoManager,
+		PhotoManager, AudioManager, VideoManager, {provide:LocationStrategy, useClass: HashLocationStrategy},
 		{ provide: LocationStrategy, useClass: PathLocationStrategy },
 		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
 		{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
