@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/auth.guard';
 
@@ -19,10 +19,14 @@ const routes: Routes = [
         loadChildren: () => import("./dash-board/dash-board.module").then(m => m.DashboardModule),
         // canActivate: [AuthGuard]
     },
+    {
+        path: '**',
+        redirectTo: ''
+    }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { useHash: true })],
+    imports: [RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: PreloadAllModules })],
     exports: [RouterModule]
 })
 
