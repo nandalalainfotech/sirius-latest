@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './_guards/auth.guard';
 
 
 const routes: Routes = [
     {
         path: '',
-        component: LoginComponent,
-        pathMatch: 'full'
+        component: LoginComponent
     },
     {
         path: 'app-user-registration',
@@ -26,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: PreloadAllModules })],
+    imports: [RouterModule.forRoot(routes, { useHash: true })],
     exports: [RouterModule]
 })
 
