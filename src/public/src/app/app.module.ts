@@ -1,4 +1,4 @@
-import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { CommonModule, LocationStrategy, PathLocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -34,7 +34,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import { UserRegistrationModule } from './user-registration/user-registration.module';
 import { JwtInterceptor } from './_helpers';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
-import { HashLocationStrategy } from '@angular/common';
+
 
 
 @NgModule({
@@ -81,7 +81,8 @@ import { HashLocationStrategy } from '@angular/common';
 	exports: [PopupComponent, NgbCollapseModule],
 	providers: [AuthManager, CalloutService, DataSharedService, UserManager, BaseService,
 		appSettingManager, PersonManager, UserManager,
-		PhotoManager, AudioManager, VideoManager, {provide:LocationStrategy, useClass: HashLocationStrategy},
+		PhotoManager, AudioManager, VideoManager,
+		{ provide: LocationStrategy, useClass: HashLocationStrategy },
 		{ provide: LocationStrategy, useClass: PathLocationStrategy },
 		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
 		{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
