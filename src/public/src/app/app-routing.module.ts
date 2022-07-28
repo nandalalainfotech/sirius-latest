@@ -8,6 +8,7 @@ const routes: Routes = [
     {
         path: '',
         component: LoginComponent,
+        pathMatch: 'full'
     },
     {
         path: 'app-user-registration',
