@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -59,14 +59,15 @@ import { DashBoardComponent } from './dash-board.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-// import { ProgressBarModule } from 'primeng/progressbar';
-// import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SubscriberdetailsManager } from '../shared/services/restcontroller/bizservice/subscriberdetails.service';
 // import * as ApexCharts from 'apexcharts';
 import { NgApexchartsModule } from 'ng-apexcharts';
 // import { ProgressbarModule } from 'ngx-bootstrap/ProgressbarModule';
 import { NgCircleProgressModule } from "ng-circle-progress"
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -150,8 +151,8 @@ import { NgCircleProgressModule } from "ng-circle-progress"
         // MatDividerModule,
         // MatToolbarModule,
         // PerfectScrollbarModule,
-        // ProgressBarModule,
-        // ProgressbarModule.forRoot(),
+        ProgressBarModule,
+        ProgressbarModule.forRoot(),
         // RoundProgressModule,
         TranslateModule.forRoot(),
         // FusionChartsModule,
@@ -174,6 +175,7 @@ import { NgCircleProgressModule } from "ng-circle-progress"
         ColorPickerModule,
         DashboardRoutingModule,
         MatDialogModule
+
     ],
     providers: [DataSharedService, UserManager, SubscriptionmasterManager, SubscriberdetailsManager],
     exports: [NgbCollapseModule],
