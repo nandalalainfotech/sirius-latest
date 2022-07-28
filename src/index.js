@@ -64,9 +64,9 @@ if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
 //     //   res.sendFile('index.html', { root: `${__dirname}/public/dist/omega` });
 //     res.sendFile(path.resolve(path.dirname('./src/public/dist/sirius')));
 // });
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(
-        path.join(__dirname, './src/public/dist/sirius')
+        path.join(__dirname, './src/public/dist/sirius/index.html')
     );
 });
 app.use(
