@@ -7435,3 +7435,7 @@ app.delete('/api/payment001mb/:id', (req, res) => {
         return res.json({ message: 'Deleted successfully' });
     });
 });
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './src/public/dist/sirius/index.html'));
+});
