@@ -47,17 +47,8 @@ const __dirname = path.resolve();
 
 const app = express();
 
-if (process.env.NODE_ENV === "prod") {
-    app.use(express.static(path.join(__dirname, './src/public/dist/sirius')));
 
-    app.get('*', (req, res) => {
-        res.sendFile(
-            path.join(__dirname, './src/public/dist/sirius')
-        );
-    });
-}
-// if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
-
+if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
 // dotenv.config({ path: `${__dirname}/../env/.env.${process.env.NODE_ENV.trim()}` });
 
 
