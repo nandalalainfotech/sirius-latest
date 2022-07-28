@@ -64,7 +64,7 @@ if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
 //     //   res.sendFile('index.html', { root: `${__dirname}/public/dist/omega` });
 //     res.sendFile(path.resolve(path.dirname('./src/public/dist/sirius')));
 // });
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(
         path.join(__dirname, './src/public/dist/sirius')
     );
@@ -739,7 +739,7 @@ app.use("/api/personcontroller", personcontroller);
 app.use("/api/paymentcontroller", paymentcontroller);
 app.use("/api/verifyToken", verifyToken);
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8081;
 
 db.mongoose
     .connect(process.env.DATABASE_URI, {
