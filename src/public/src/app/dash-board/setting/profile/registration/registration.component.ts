@@ -183,6 +183,7 @@ export class RegistrationComponent implements OnInit {
             this.companys = response;
         })
         this.roleManager.allrole().subscribe((response) => {
+            console.log("res", response);
             this.roles = response;
         })
         this.subcatcodeManager.allsubcatcode().subscribe((response) => {
@@ -224,7 +225,7 @@ export class RegistrationComponent implements OnInit {
     }
     loaddata() {
         this.personManager.allperson().subscribe((response) => {
-
+            console.log("res-->person", response);
             if (response.person001mb.length > 0) {
                 this.gridOptions?.api?.setRowData(response.person001mb);
             } else {
@@ -350,6 +351,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Role',
@@ -359,6 +361,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Subcatcode',
@@ -368,6 +371,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Professional',
@@ -377,6 +381,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"    
             },
             {
                 headerName: 'Category',
@@ -386,6 +391,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Language',
@@ -395,6 +401,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Personal',
@@ -404,6 +411,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Religion',
@@ -413,6 +421,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Classification',
@@ -422,6 +431,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Subscribercontentauth',
@@ -431,6 +441,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'State',
@@ -440,6 +451,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'City',
@@ -449,6 +461,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Country',
@@ -458,6 +471,7 @@ export class RegistrationComponent implements OnInit {
                 filter: true,
                 resizable: true,
                 suppressSizeToFit: true,
+                hide: "true"
             },
             {
                 headerName: 'Zipcode',
@@ -813,7 +827,7 @@ export class RegistrationComponent implements OnInit {
         const modalRef = this.modalService.open(AuditComponent);
         modalRef.componentInstance.title = "Registration";
         modalRef.componentInstance.details = params.data;
-        
+
     }
 
     onFirstDataRendered(params: any) {
@@ -904,7 +918,7 @@ export class RegistrationComponent implements OnInit {
             login001mb.updateddatetime = person001mb.updateddatetime;
             user001wb.updateduser = person001mb.updateduser;
             user001wb.updateddatetime = person001mb.updateddatetime;
-    
+
             this.registerManager.updateuser(user001wb, person001mb, login001mb, this.personid, this.loginid, this.userid).subscribe((response) => {
                 this.calloutService.showSuccess("Order Updated Successfully");
 

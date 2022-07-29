@@ -85,7 +85,8 @@ export class VideoComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true" 
       },
       {
         headerName: 'fieldname',
@@ -105,7 +106,8 @@ export class VideoComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true" 
       },
       {
         headerName: 'originalname',

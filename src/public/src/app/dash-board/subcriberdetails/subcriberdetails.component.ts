@@ -91,7 +91,8 @@ export class SubcriberdetailsComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'subpid',
@@ -101,7 +102,8 @@ export class SubcriberdetailsComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'payid',
@@ -111,7 +113,8 @@ export class SubcriberdetailsComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'contentid',
@@ -121,7 +124,8 @@ export class SubcriberdetailsComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'horoscope',
@@ -131,7 +135,8 @@ export class SubcriberdetailsComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'subscdesc',

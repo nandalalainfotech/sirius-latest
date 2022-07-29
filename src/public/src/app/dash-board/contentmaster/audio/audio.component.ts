@@ -21,12 +21,12 @@ import { CalloutService } from 'src/app/shared/services/services/callout.service
 export class AudioComponent implements OnInit {
 
   frameworkComponents: any;
-  contentid?:Contentmaster001mb;
-  fieldname:string="";
-  filename:string="";
-  originalname:string="";
+  contentid?: Contentmaster001mb;
+  fieldname: string = "";
+  filename: string = "";
+  originalname: string = "";
   content?: Buffer;
-  audioid:string|any;
+  audioid: string | any;
   public gridOptions: GridOptions | any;
   subCategoryForm: FormGroup | any;
   submitted = false;
@@ -53,7 +53,7 @@ export class AudioComponent implements OnInit {
       }
     })
   }
-   get f() { return this.subCategoryForm.controls; }
+  get f() { return this.subCategoryForm.controls; }
   createDataGrid001(): void {
     this.gridOptions = {
       paginationPageSize: 10,
@@ -65,18 +65,18 @@ export class AudioComponent implements OnInit {
     this.gridOptions.animateRows = true;
     this.gridOptions.columnDefs = [
       {
-      	headerName: '#Id',
-      	field: 'audioid',
-      	width: 200,
-      	flex: 1,
-      	sortable: true,
-      	filter: true,
-      	resizable: true,
-      	headerCheckboxSelection: true,
-      	headerCheckboxSelectionFilteredOnly: true,
-      	checkboxSelection: true,
-      	suppressSizeToFit: true,
-        hide: "true" 
+        headerName: '#Id',
+        field: 'audioid',
+        width: 200,
+        flex: 1,
+        sortable: true,
+        filter: true,
+        resizable: true,
+        headerCheckboxSelection: true,
+        headerCheckboxSelectionFilteredOnly: true,
+        checkboxSelection: true,
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'contentid',
@@ -87,7 +87,7 @@ export class AudioComponent implements OnInit {
         filter: true,
         resizable: true,
         suppressSizeToFit: true,
-        hide: "true" 
+        hide: "true"
       },
       {
         headerName: 'fieldname',
@@ -97,7 +97,8 @@ export class AudioComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+
       },
       {
         headerName: 'filename',
@@ -107,7 +108,8 @@ export class AudioComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'originalname',
@@ -198,7 +200,7 @@ export class AudioComponent implements OnInit {
       },
     ];
   }
-  onaudioButtonClick(params:any){
+  onaudioButtonClick(params: any) {
 
   }
   onEditButtonClick(params: any) {
@@ -210,8 +212,8 @@ export class AudioComponent implements OnInit {
     this.insertUser = params.data.insertUser;
     this.insertDatetime = params.data.insertDatetime;
     this.subCategoryForm.patchValue({
-      'subcatname': params.data.subcatname, 
-      'catcode':params.data.catcode     
+      'subcatname': params.data.subcatname,
+      'catcode': params.data.catcode
     });
   }
   onDeleteButtonClick(params: any) {
@@ -246,7 +248,7 @@ export class AudioComponent implements OnInit {
   //   });
   // }
   onOrderClick(event: any, subCategoryForm: any) {
-    
+
     // this.markFormGroupTouched(this.subCategoryForm);
     this.submitted = true;
     if (this.subCategoryForm.invalid) {
@@ -266,7 +268,7 @@ export class AudioComponent implements OnInit {
       audio001wb.inserteddatetime = this.insertDatetime;
       audio001wb.updateduser = this.authManager.getcurrentUser.username;
       audio001wb.updateddatetime = new Date();
-      this.audioManager.updatesub(audio001wb,this.audioid).subscribe(response => {
+      this.audioManager.updatesub(audio001wb, this.audioid).subscribe(response => {
         this.calloutService.showSuccess("Order Update Successfully");
         let audio = deserialize<Audio001wb>(Audio001wb, response);
         for (let analytic of this.audio) {
@@ -274,7 +276,7 @@ export class AudioComponent implements OnInit {
             analytic.content = audio.content;
             analytic.contentid = audio.contentid;
             analytic.fieldname = audio.fieldname;
-            analytic.originalname =audio.originalname
+            analytic.originalname = audio.originalname
             analytic.filename = audio.filename;
             analytic.inserteduser = this.insertUser;
             analytic.inserteddatetime = this.insertDatetime;
@@ -287,7 +289,7 @@ export class AudioComponent implements OnInit {
         this.gridOptions.api.deselectAll();
         this.subCategoryForm.reset();
         this.submitted = false;
-         this.audioid = null;
+        this.audioid = null;
       })
     }
   }

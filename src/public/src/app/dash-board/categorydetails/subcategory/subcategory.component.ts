@@ -98,7 +98,8 @@ export class SubcategoryComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true" 
       },
       // {
       // 	headerName: 'From Date',

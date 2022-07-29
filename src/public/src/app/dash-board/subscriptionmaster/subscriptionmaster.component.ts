@@ -134,7 +134,8 @@ export class SubscriptionmasterComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true" 
       },
       // {
       // 	headerName: 'From Date',

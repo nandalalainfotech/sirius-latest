@@ -19,17 +19,17 @@ export class SubcatclassificationComponent implements OnInit {
 
   frameworkComponents: any;
   subcatname: string = "";
-  catcode:string="";
-  subcatcode:string="";
-  classificationname:string="";
+  catcode: string = "";
+  subcatcode: string = "";
+  classificationname: string = "";
   public gridOptions: GridOptions | any;
   subCatClassiForm: FormGroup | any;
   submitted = false;
-  subcatclasiid:number|any; 
+  subcatclasiid: number | any;
   subCatClassification: Subcatclassification001mb[] = [];
   insertUser: any;
   insertDatetime: any;
-  constructor(private  subcatclassificationManager: SubCatClassificationManager,
+  constructor(private subcatclassificationManager: SubCatClassificationManager,
     private formBuilder: FormBuilder,
     private calloutService: CalloutService,
     private authManager: AuthManager,
@@ -68,18 +68,18 @@ export class SubcatclassificationComponent implements OnInit {
     this.gridOptions.animateRows = true;
     this.gridOptions.columnDefs = [
       {
-      	headerName: '#Id',
-      	field: 'subcatclasiid',
-      	width: 200,
-      	flex: 1,
-      	sortable: true,
-      	filter: true,
-      	resizable: true,
-      	headerCheckboxSelection: true,
-      	headerCheckboxSelectionFilteredOnly: true,
-      	checkboxSelection: true,
-      	suppressSizeToFit: true,
-        hide: "true" 
+        headerName: '#Id',
+        field: 'subcatclasiid',
+        width: 200,
+        flex: 1,
+        sortable: true,
+        filter: true,
+        resizable: true,
+        headerCheckboxSelection: true,
+        headerCheckboxSelectionFilteredOnly: true,
+        checkboxSelection: true,
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'catcode',
@@ -89,7 +89,8 @@ export class SubcatclassificationComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'subcatcode',
@@ -99,7 +100,8 @@ export class SubcatclassificationComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true 
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'classificationname',
@@ -182,8 +184,8 @@ export class SubcatclassificationComponent implements OnInit {
     this.insertUser = params.data.insertUser;
     this.insertDatetime = params.data.insertDatetime;
     this.subCatClassiForm.patchValue({
-      'subcatname': params.data.subcatname, 
-      'catcode':params.data.catcode     
+      'subcatname': params.data.subcatname,
+      'catcode': params.data.catcode
     });
   }
   onDeleteButtonClick(params: any) {
@@ -254,7 +256,7 @@ export class SubcatclassificationComponent implements OnInit {
         this.gridOptions.api.deselectAll();
         this.subCatClassiForm.reset();
         this.submitted = false;
-         this.subcatclasiid = null;
+        this.subcatclasiid = null;
       })
     }
   }

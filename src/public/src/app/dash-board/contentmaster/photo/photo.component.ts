@@ -32,15 +32,15 @@ export class PhotoComponent implements OnInit {
   photo: Photo001wb[] = [];
   insertUser: any;
   insertDatetime: any;
-  image:any;
-  arrayBuffer:any;
-  buffer:any;
-  imageurl:any;
+  image: any;
+  arrayBuffer: any;
+  buffer: any;
+  imageurl: any;
   constructor(private photoManager: PhotoManager,
     private formBuilder: FormBuilder,
     private calloutService: CalloutService,
     private authManager: AuthManager,
-    private modalService: NgbModal,  private sanitizer: DomSanitizer) {
+    private modalService: NgbModal, private sanitizer: DomSanitizer) {
     this.frameworkComponents = {
       iconRenderer: IconRendererComponent
     }
@@ -49,6 +49,7 @@ export class PhotoComponent implements OnInit {
   ngOnInit() {
     this.createDataGrid001();
     this.photoManager.allsub().subscribe((response) => {
+      console.log("response", response)
       // var buffer = new ArrayBuffer(32);
 
       // var bufffers=new Blob([buffer]);
@@ -68,16 +69,16 @@ export class PhotoComponent implements OnInit {
         this.gridOptions?.api?.setRowData([]);
       }
     })
-        // var binary = '';
-        // var bytes = new Uint8Array( this.buffer );
-        // var len = bytes.byteLength;
-        // for (var i = 0; i < len; i++) {
-        //     binary += String.fromCharCode( bytes[ i ] );
-        // }
-       
-        // return window.btoa( binary );
-  
-//   function base64ToArrayBuffer(base64) {
+    // var binary = '';
+    // var bytes = new Uint8Array( this.buffer );
+    // var len = bytes.byteLength;
+    // for (var i = 0; i < len; i++) {
+    //     binary += String.fromCharCode( bytes[ i ] );
+    // }
+
+    // return window.btoa( binary );
+
+    //   function base64ToArrayBuffer(base64) {
     //     var binaryString = window.atob(base64);
     //     var binaryLen = binaryString.length;
     //     var bytes = new Uint8Array(binaryLen);
@@ -87,32 +88,32 @@ export class PhotoComponent implements OnInit {
     //     }
     //     return bytes;
     //  }
-      // var buffer = Buffer.from('response.content');
-      // var string64 = buffer.toString('base64');
-      // var string64 = response.content.data.toString('base64');
-      // const reader = new FileReader();
-      // reader.onload = (e) => this.image = e.target.result;
-      // reader.readAsDataURL(new Blob([data]));
-      // let hh = new Uint8Array(response.content);
-      // const STRING_CHAR =hh.reduce((data, byte)=> {
-      //   return data + String.fromCharCode(byte);
-      //   }, '');
-      //   let base64String = btoa(STRING_CHAR);
-      //   this.imageurl = this.domSanitizer.bypassSecurityTrustUrl(‘data:image/jpg;base64, ‘ + base64String);
-     
+    // var buffer = Buffer.from('response.content');
+    // var string64 = buffer.toString('base64');
+    // var string64 = response.content.data.toString('base64');
+    // const reader = new FileReader();
+    // reader.onload = (e) => this.image = e.target.result;
+    // reader.readAsDataURL(new Blob([data]));
+    // let hh = new Uint8Array(response.content);
+    // const STRING_CHAR =hh.reduce((data, byte)=> {
+    //   return data + String.fromCharCode(byte);
+    //   }, '');
+    //   let base64String = btoa(STRING_CHAR);
+    //   this.imageurl = this.domSanitizer.bypassSecurityTrustUrl(‘data:image/jpg;base64, ‘ + base64String);
+
   }
   get f() { return this.subCategoryForm.controls; }
-  
-    //    base64ToArrayBuffer(base64:any) {
-    //     var binaryString = window.atob(base64);
-    //     var binaryLen = binaryString.length;
-    //     var bytes = new Uint8Array(binaryLen);
-    //     for (var i = 0; i < binaryLen; i++) {
-    //        var ascii = binaryString.charCodeAt(i);
-    //        bytes[i] = ascii;
-    //     }
-    //     return bytes;
-    //  }
+
+  //    base64ToArrayBuffer(base64:any) {
+  //     var binaryString = window.atob(base64);
+  //     var binaryLen = binaryString.length;
+  //     var bytes = new Uint8Array(binaryLen);
+  //     for (var i = 0; i < binaryLen; i++) {
+  //        var ascii = binaryString.charCodeAt(i);
+  //        bytes[i] = ascii;
+  //     }
+  //     return bytes;
+  //  }
   //    arrayBufferToBase64 = function( buffer: Iterable<number> | undefined ) {
   //     var binary = '';
   //     var bytes = new Uint8Array( buffer );
@@ -154,7 +155,8 @@ export class PhotoComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true"
       },
       {
         headerName: 'fieldname',
@@ -174,7 +176,8 @@ export class PhotoComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        hide: "true" 
       },
       {
         headerName: 'originalname',
@@ -336,12 +339,12 @@ export class PhotoComponent implements OnInit {
       //       analytic.updatedDatetime = new Date();
       //     }
       //   }
-        this.gridOptions.api.setRowData(this.photo);
-        this.gridOptions.api.refreshView();
-        this.gridOptions.api.deselectAll();
-        this.subCategoryForm.reset();
-        this.submitted = false;
-        this.subcatid = null;
+      this.gridOptions.api.setRowData(this.photo);
+      this.gridOptions.api.refreshView();
+      this.gridOptions.api.deselectAll();
+      this.subCategoryForm.reset();
+      this.submitted = false;
+      this.subcatid = null;
       // })
     }
   }
