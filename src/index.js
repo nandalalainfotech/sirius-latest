@@ -846,7 +846,7 @@ app.use('/index', swaggerUi.serve, swaggerUi.setup(specs));
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/role001mb'
+ *                           $ref: '#/components/schemas/rolemaster'
  */
 app.get('/api/role001mb', (req, res) => {
     Role001mb.find(function (err, role001mb) {
@@ -890,7 +890,7 @@ app.get('/api/role001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/role001mb'
+ *                           $ref: '#/components/schemas/rolemaster'
  */
 
 app.get('/api/role001mb/:id', (req, res) => {
@@ -928,7 +928,7 @@ app.get('/api/role001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/role001mb'
+ *                          $ref: '#/components/schemas/rolemaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -975,7 +975,7 @@ app.post('/api/role001mb/role', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/role001mb'
+ *                         $ref: '#/components/schemas/rolemaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -984,7 +984,7 @@ app.post('/api/role001mb/role', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/role001mb'
+ *                          $ref: '#/components/schemas/rolemaster'
  */
 
 app.put('/api/role001mb/:id', (req, res) => {
@@ -1100,7 +1100,7 @@ app.delete('/api/role001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/country001mb'
+ *                          $ref: '#/components/schemas/countrymaster'
  */
 
 app.get('/api/country001mb', (req, res) => {
@@ -1140,7 +1140,7 @@ app.get('/api/country001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/country001mb'
+ *                           $ref: '#/components/schemas/countrymaster'
  */
 
 app.get('/api/country001mb/:id', (req, res) => {
@@ -1178,7 +1178,7 @@ app.get('/api/country001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/country001mb'
+ *                          $ref: '#/components/schemas/countrymaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -1226,7 +1226,7 @@ app.post('/api/country001mb/country', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/country001mb'
+ *                         $ref: '#/components/schemas/countrymaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -1235,7 +1235,7 @@ app.post('/api/country001mb/country', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/country001mb'
+ *                            $ref: '#/components/schemas/countrymaster'
  */
 
 app.put('/api/country001mb/:id', (req, res) => {
@@ -1363,7 +1363,7 @@ app.delete('/api/country001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/state001mb'
+ *                           $ref: '#/components/schemas/statemaster'
  */
 
 app.get('/api/state001mb', (req, res) => {
@@ -1403,7 +1403,7 @@ app.get('/api/state001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/state001mb'
+ *                           $ref: '#/components/schemas/statemaster'
  */
 
 app.get('/api/state001mb/:id', (req, res) => {
@@ -1441,7 +1441,7 @@ app.get('/api/state001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/state001mb'
+ *                          $ref: '#/components/schemas/statemaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -1495,7 +1495,7 @@ app.post('/api/state001mb/state', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/state001mb'
+ *                         $ref: '#/components/schemas/statemaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -1504,7 +1504,7 @@ app.post('/api/state001mb/state', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/state001mb'
+ *                           $ref: '#/components/schemas/statemaster'
  */
 
 app.put('/api/state001mb/:id', (req, res) => {
@@ -1632,7 +1632,7 @@ app.delete('/api/state001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/city001mb'
+ *                          $ref: '#/components/schemas/citymaster'
  */
 
 app.get('/api/city001mb', (req, res) => {
@@ -1672,7 +1672,7 @@ app.get('/api/city001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/city001mb'
+ *                          $ref: '#/components/schemas/citymaster'
  */
 
 app.get('/api/city001mb/:id', (req, res) => {
@@ -1710,7 +1710,7 @@ app.get('/api/city001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/city001mb'
+ *                          $ref: '#/components/schemas/citymaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -1765,7 +1765,7 @@ app.post('/api/city001mb/city', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/city001mb'
+ *                         $ref: '#/components/schemas/citymaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -1774,7 +1774,7 @@ app.post('/api/city001mb/city', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/city001mb'
+ *                           $ref: '#/components/schemas/citymaster'
  */
 
 app.put('/api/city001mb/:id', (req, res) => {
@@ -1906,7 +1906,7 @@ app.delete('/api/city001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/photo001wb'
+ *                          $ref: '#/components/schemas/photoworkbase'
  */
 
 app.get('/api/photo001wb', (req, res) => {
@@ -1943,7 +1943,7 @@ app.get('/api/photo001wb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/photo001wb'
+ *                          $ref: '#/components/schemas/photoworkbase'
  */
 
 app.get('/api/photo001wb/:id', (req, res) => {
@@ -1980,7 +1980,7 @@ app.get('/api/photo001wb/:id', (req, res) => {
  *         content:
  *             multipart/form-data:
  *                       schema:
- *                          $ref: '#/components/schemas/photo001wb'
+ *                          $ref: '#/components/schemas/photoworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -1989,7 +1989,7 @@ app.get('/api/photo001wb/:id', (req, res) => {
  *         content:
  *           application/json:
  *                     schema:
- *                         $ref: '#/components/schemas/photo001wb'
+ *                         $ref: '#/components/schemas/photoworkbase'
  */
 
 app.post('/api/photo001wb/photo', [upload.single("content")], (req, res) => {
@@ -2040,7 +2040,7 @@ app.post('/api/photo001wb/photo', [upload.single("content")], (req, res) => {
  *         content:
  *             multipart/form-data:
  *                       schema:
- *                         $ref: '#/components/schemas/photo001wb'
+ *                         $ref: '#/components/schemas/photoworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -2049,7 +2049,7 @@ app.post('/api/photo001wb/photo', [upload.single("content")], (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/photo001wb'
+ *                          $ref: '#/components/schemas/photoworkbase'
  */
 
 app.put('/api/photo001wb/:id', [upload.single("content")], (req, res) => {
@@ -2180,7 +2180,7 @@ app.delete('/api/photo001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/video001wb'
+ *                           $ref: '#/components/schemas/videoworkbase'
  */
 
 app.get('/api/video001wb', (req, res) => {
@@ -2220,7 +2220,7 @@ app.get('/api/video001wb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/video001wb'
+ *                            $ref: '#/components/schemas/videoworkbase'
  */
 
 app.get('/api/video001wb/:id', (req, res) => {
@@ -2257,7 +2257,7 @@ app.get('/api/video001wb/:id', (req, res) => {
  *         content:
  *             multipart/form-data:
  *                       schema:
- *                          $ref: '#/components/schemas/video001wb'
+ *                          $ref: '#/components/schemas/videoworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -2266,7 +2266,7 @@ app.get('/api/video001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/video001wb'
+ *                          $ref: '#/components/schemas/videoworkbase'
  */
 
 app.post('/api/video001wb/video', [videoUpload.single("content")], (req, res) => {
@@ -2319,7 +2319,7 @@ app.post('/api/video001wb/video', [videoUpload.single("content")], (req, res) =>
  *         content:
  *             multipart/form-data:
  *                       schema:
- *                         $ref: '#/components/schemas/video001wb'
+ *                         $ref: '#/components/schemas/videoworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -2328,7 +2328,7 @@ app.post('/api/video001wb/video', [videoUpload.single("content")], (req, res) =>
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/video001wb'
+ *                             $ref: '#/components/schemas/videoworkbase'
  */
 
 app.put('/api/video001wb/:id', [videoUpload.single("content")], (req, res) => {
@@ -2462,7 +2462,7 @@ app.delete('/api/video001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/audio001wb'
+ *                            $ref: '#/components/schemas/audioworkbase'
  */
 
 app.get('/api/audio001wb', (req, res) => {
@@ -2502,7 +2502,7 @@ app.get('/api/audio001wb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/audio001wb'
+ *                           $ref: '#/components/schemas/audioworkbase'
  */
 
 app.get('/api/audio001wb/:id', (req, res) => {
@@ -2539,7 +2539,7 @@ app.get('/api/audio001wb/:id', (req, res) => {
  *         content:
  *             multipart/form-data:
  *                       schema:
- *                          $ref: '#/components/schemas/audio001wb'
+ *                          $ref: '#/components/schemas/audioworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -2548,7 +2548,7 @@ app.get('/api/audio001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/audio001wb'
+ *                          $ref: '#/components/schemas/audioworkbase'
  */
 
 app.post('/api/audio001wb/audio', [audio.single("content")], (req, res) => {
@@ -2601,7 +2601,7 @@ app.post('/api/audio001wb/audio', [audio.single("content")], (req, res) => {
  *         content:
  *             multipart/form-data:
  *                       schema:
- *                         $ref: '#/components/schemas/audio001wb'
+ *                         $ref: '#/components/schemas/audioworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -2610,7 +2610,7 @@ app.post('/api/audio001wb/audio', [audio.single("content")], (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/audio001wb'
+ *                            $ref: '#/components/schemas/audioworkbase'
  */
 
 app.put('/api/audio001wb/:id', [audio.single("content")], (req, res) => {
@@ -2754,7 +2754,7 @@ app.delete('/api/audio001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/contentmaster001mb'
+ *                            $ref: '#/components/schemas/contentmaster'
  */
 
 app.get('/api/contentmaster001mb', (req, res) => {
@@ -2794,7 +2794,7 @@ app.get('/api/contentmaster001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/contentmaster001mb'
+ *                            $ref: '#/components/schemas/contentmaster'
  */
 
 app.get('/api/contentmaster001mb/:id', (req, res) => {
@@ -2832,7 +2832,7 @@ app.get('/api/contentmaster001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/contentmaster001mb'
+ *                          $ref: '#/components/schemas/contentmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -2887,7 +2887,7 @@ app.post('/api/contentmaster001mb/master', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/contentmaster001mb'
+ *                         $ref: '#/components/schemas/contentmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -2896,7 +2896,7 @@ app.post('/api/contentmaster001mb/master', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/contentmaster001mb'
+ *                            $ref: '#/components/schemas/contentmaster'
  */
 
 app.put('/api/contentmaster001mb/:id', (req, res) => {
@@ -3019,7 +3019,7 @@ app.delete('/api/contentmaster001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/categorydetails001mb'
+ *                             $ref: '#/components/schemas/categorydetailsmaster'
  */
 
 app.get('/api/categorydetails001mb', (req, res) => {
@@ -3059,7 +3059,7 @@ app.get('/api/categorydetails001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/categorydetails001mb'
+ *                            $ref: '#/components/schemas/categorydetailsmaster'
  */
 
 app.get('/api/categorydetails001mb/:id', (req, res) => {
@@ -3097,7 +3097,7 @@ app.get('/api/categorydetails001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/categorydetails001mb'
+ *                          $ref: '#/components/schemas/categorydetailsmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -3144,7 +3144,7 @@ app.post('/api/categorydetails001mb/category', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/categorydetails001mb'
+ *                         $ref: '#/components/schemas/categorydetailsmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -3153,7 +3153,7 @@ app.post('/api/categorydetails001mb/category', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/categorydetails001mb'
+ *                             $ref: '#/components/schemas/categorydetailsmaster'
  */
 
 app.put('/api/categorydetails001mb/:id', (req, res) => {
@@ -3275,7 +3275,7 @@ app.delete('/api/categorydetails001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/companydetails001mb'
+ *                             $ref: '#/components/schemas/companydetailsmaster'
  */
 
 app.get('/api/companydetails001mb', (req, res) => {
@@ -3315,7 +3315,7 @@ app.get('/api/companydetails001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                           $ref: '#/components/schemas/companydetails001mb'
+ *                           $ref: '#/components/schemas/companydetailsmaster'
  */
 
 app.get('/api/companydetails001mb/:id', (req, res) => {
@@ -3352,7 +3352,7 @@ app.get('/api/companydetails001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/companydetails001mb'
+ *                          $ref: '#/components/schemas/companydetailsmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -3400,7 +3400,7 @@ app.post('/api/companydetails001mb/company', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/companydetails001mb'
+ *                         $ref: '#/components/schemas/companydetailsmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -3409,7 +3409,7 @@ app.post('/api/companydetails001mb/company', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/companydetails001mb'
+ *                             $ref: '#/components/schemas/companydetailsmaster'
  */
 
 app.put('/api/companydetails001mb/:id', (req, res) => {
@@ -3527,7 +3527,7 @@ app.delete('/api/companydetails001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/language001mb'
+ *                             $ref: '#/components/schemas/languagemaster'
  */
 
 app.get('/api/language001mb', (req, res) => {
@@ -3567,7 +3567,7 @@ app.get('/api/language001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/language001mb'
+ *                             $ref: '#/components/schemas/languagemaster'
  */
 
 app.get('/api/language001mb/:id', (req, res) => {
@@ -3605,7 +3605,7 @@ app.get('/api/language001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/language001mb'
+ *                          $ref: '#/components/schemas/languagemaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -3652,7 +3652,7 @@ app.post('/api/language001mb/language', verifyToken, rolebaseauth(["admin"]), (r
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/language001mb'
+ *                         $ref: '#/components/schemas/languagemaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -3661,7 +3661,7 @@ app.post('/api/language001mb/language', verifyToken, rolebaseauth(["admin"]), (r
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/language001mb'
+ *                             $ref: '#/components/schemas/languagemaster'
  */
 
 app.put('/api/language001mb/:id', (req, res) => {
@@ -3780,7 +3780,7 @@ app.delete('/api/language001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/regionaldetails001mb'
+ *                             $ref: '#/components/schemas/regionaldetailsmaster'
  */
 
 app.get('/api/regionaldetails001mb', (req, res) => {
@@ -3820,7 +3820,7 @@ app.get('/api/regionaldetails001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/regionaldetails001mb'
+ *                             $ref: '#/components/schemas/regionaldetailsmaster'
  */
 
 app.get('/api/regionaldetails001mb/:id', (req, res) => {
@@ -3858,7 +3858,7 @@ app.get('/api/regionaldetails001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/regionaldetails001mb'
+ *                          $ref: '#/components/schemas/regionaldetailsmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -3904,7 +3904,7 @@ app.post('/api/regionaldetails001mb/regional', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/regionaldetails001mb'
+ *                         $ref: '#/components/schemas/regionaldetailsmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -3913,7 +3913,7 @@ app.post('/api/regionaldetails001mb/regional', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/regionaldetails001mb'
+ *                             $ref: '#/components/schemas/regionaldetailsmaster'
  */
 
 app.put('/api/regionaldetails001mb/:id', (req, res) => {
@@ -4045,7 +4045,7 @@ app.delete('/api/regionaldetails001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/login001mb'
+ *                             $ref: '#/components/schemas/loginmaster'
  */
 
 app.get('/api/login001mb', (req, res) => {
@@ -4085,7 +4085,7 @@ app.get('/api/login001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/login001mb'
+ *                             $ref: '#/components/schemas/loginmaster'
  */
 
 app.get('/api/login001mb/:id', (req, res) => {
@@ -4138,7 +4138,7 @@ app.get('/api/login001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/login001mb'
+ *                            $ref: '#/components/schemas/loginmaster'
  */
 
 
@@ -4309,7 +4309,7 @@ app.get('/api/login001mb/:username/:password', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/person001mb'
+ *                             $ref: '#/components/schemas/personmaster'
  */
 
 app.get('/api/person001mb', (req, res) => {
@@ -4349,7 +4349,7 @@ app.get('/api/person001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/person001mb'
+ *                             $ref: '#/components/schemas/personmaster'
  */
 
 app.get('/api/person001mb/:id', (req, res) => {
@@ -4413,7 +4413,7 @@ app.get('/api/person001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/religion001mb'
+ *                             $ref: '#/components/schemas/religionmaster'
  */
 
 app.get('/api/religion001mb', (req, res) => {
@@ -4453,7 +4453,7 @@ app.get('/api/religion001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/religion001mb'
+ *                             $ref: '#/components/schemas/religionmaster'
  */
 
 app.get('/api/religion001mb/:id', (req, res) => {
@@ -4490,7 +4490,7 @@ app.get('/api/religion001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/religion001mb'
+ *                          $ref: '#/components/schemas/religionmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -4537,7 +4537,7 @@ app.post('/api/religion001mb/religion', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/religion001mb'
+ *                         $ref: '#/components/schemas/religionmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -4546,7 +4546,7 @@ app.post('/api/religion001mb/religion', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/religion001mb'
+ *                             $ref: '#/components/schemas/religionmaster'
  */
 
 app.put('/api/religion001mb/:id', (req, res) => {
@@ -4673,7 +4673,7 @@ app.delete('/api/religion001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subcatclassification001mb'
+ *                             $ref: '#/components/schemas/subcatclassificationmaster'
  */
 
 app.get('/api/subcatclassification001mb', (req, res) => {
@@ -4713,7 +4713,7 @@ app.get('/api/subcatclassification001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subcatclassification001mb'
+ *                             $ref: '#/components/schemas/subcatclassificationmaster'
  */
 
 app.get('/api/subcatclassification001mb/:id', (req, res) => {
@@ -4750,7 +4750,7 @@ app.get('/api/subcatclassification001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/subcatclassification001mb'
+ *                          $ref: '#/components/schemas/subcatclassificationmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -4797,7 +4797,7 @@ app.post('/api/subcatclassification001mb/subcatclassification', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/subcatclassification001mb'
+ *                         $ref: '#/components/schemas/subcatclassificationmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -4806,7 +4806,7 @@ app.post('/api/subcatclassification001mb/subcatclassification', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subcatclassification001mb'
+ *                             $ref: '#/components/schemas/subcatclassificationmaster'
  */
 
 app.put('/api/subcatclassification001mb/:id', (req, res) => {
@@ -4928,7 +4928,7 @@ app.delete('/api/subcatclassification001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subcategory001mb'
+ *                             $ref: '#/components/schemas/subcategorymaster'
  */
 
 app.get('/api/subcategory001mb', (req, res) => {
@@ -4968,7 +4968,7 @@ app.get('/api/subcategory001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subcategory001mb'
+ *                             $ref: '#/components/schemas/subcategorymaster'
  */
 
 app.get('/api/subcategory001mb/:id', (req, res) => {
@@ -5005,7 +5005,7 @@ app.get('/api/subcategory001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/subcategory001mb'
+ *                          $ref: '#/components/schemas/subcategorymaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -5052,7 +5052,7 @@ app.post('/api/subcategory001mb/subcategory', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/subcategory001mb'
+ *                         $ref: '#/components/schemas/subcategorymaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -5061,7 +5061,7 @@ app.post('/api/subcategory001mb/subcategory', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subcategory001mb'
+ *                             $ref: '#/components/schemas/subcategorymaster'
  */
 
 app.put('/api/subcategory001mb/:id', (req, res) => {
@@ -5180,7 +5180,7 @@ app.delete('/api/subcategory001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscribercontentauth001wb'
+ *                             $ref: '#/components/schemas/subscribercontentauthworkbase'
  */
 
 app.get('/api/subscribercontentauth001wb', (req, res) => {
@@ -5220,7 +5220,7 @@ app.get('/api/subscribercontentauth001wb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscribercontentauth001wb'
+ *                             $ref: '#/components/schemas/subscribercontentauthworkbase'
  */
 
 app.get('/api/subscribercontentauth001wb/:id', (req, res) => {
@@ -5257,7 +5257,7 @@ app.get('/api/subscribercontentauth001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/subscribercontentauth001wb'
+ *                          $ref: '#/components/schemas/subscribercontentauthworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -5304,7 +5304,7 @@ app.post('/api/subscribercontentauth001wb/subscribercontent', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/subscribercontentauth001wb'
+ *                         $ref: '#/components/schemas/subscribercontentauthworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -5313,7 +5313,7 @@ app.post('/api/subscribercontentauth001wb/subscribercontent', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscribercontentauth001wb'
+ *                             $ref: '#/components/schemas/subscribercontentauthworkbase'
  */
 
 app.put('/api/subscribercontentauth001wb/:id', (req, res) => {
@@ -5395,8 +5395,8 @@ app.delete('/api/subscribercontentauth001wb/:id', (req, res) => {
  *   schemas:
  *     subscriberdetailsworkbase:
  *        allOf:
- *           - $ref: '#/components/schemas/person001mb'
- *           - $ref: '#/components/schemas/login001mb'
+ *           - $ref: '#/components/schemas/personmaster'
+ *           - $ref: '#/components/schemas/loginmaster'
  *        type: object
  *        properties:
  *             horoscope:
@@ -5460,7 +5460,7 @@ app.delete('/api/subscribercontentauth001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/subscriberdetails001wb'
+ *                          $ref: '#/components/schemas/subscriberdetailsworkbase'
  *                        
  */
 
@@ -5493,7 +5493,7 @@ app.get('/api/subscriberdetails001wb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriberdetails001wb'
+ *                             $ref: '#/components/schemas/subscriberdetailsworkbase'
  */
 
 app.get('/api/subscriberdetails001wb/verify', async (req, res) => {
@@ -5541,7 +5541,7 @@ app.get('/api/subscriberdetails001wb/verify', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriberdetails001wb'
+ *                             $ref: '#/components/schemas/subscriberdetailsworkbase'
  */
 
 app.get('/api/subscriberdetails001wb/:id', (req, res) => {
@@ -5578,7 +5578,7 @@ app.get('/api/subscriberdetails001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                            $ref: '#/components/schemas/subscriberdetails001wb'
+ *                            $ref: '#/components/schemas/subscriberdetailsworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -5730,7 +5730,7 @@ app.post('/api/subscriberdetails001wb/subscriberdetails', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/subscriberdetails001wb'
+ *                         $ref: '#/components/schemas/subscriberdetailsworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -5739,7 +5739,7 @@ app.post('/api/subscriberdetails001wb/subscriberdetails', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriberdetails001wb'
+ *                             $ref: '#/components/schemas/subscriberdetailsworkbase'
  */
 
 app.put('/api/subscriberdetails001wb/:personid/:loginid/:subid', async (req, res) => {
@@ -5938,7 +5938,7 @@ app.delete('/api/subscriberdetails001wb/:personid/:loginid/:subid', async (req, 
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriberpersonalinfo001wb'
+ *                             $ref: '#/components/schemas/subscriberpersonalinfoworkbase'
  */
 
 app.get('/api/subscriberpersonalinfo001wb', (req, res) => {
@@ -5978,7 +5978,7 @@ app.get('/api/subscriberpersonalinfo001wb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriberpersonalinfo001wb'
+ *                             $ref: '#/components/schemas/subscriberpersonalinfoworkbase'
  */
 
 app.get('/api/subscriberpersonalinfo001wb/:id', (req, res) => {
@@ -6015,7 +6015,7 @@ app.get('/api/subscriberpersonalinfo001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/subscriberpersonalinfo001wb'
+ *                          $ref: '#/components/schemas/subscriberpersonalinfoworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -6072,7 +6072,7 @@ app.post('/api/subscriberpersonalinfo001wb/personal', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/subscriberpersonalinfo001wb'
+ *                         $ref: '#/components/schemas/subscriberpersonalinfoworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -6081,7 +6081,7 @@ app.post('/api/subscriberpersonalinfo001wb/personal', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriberpersonalinfo001wb'
+ *                             $ref: '#/components/schemas/subscriberpersonalinfoworkbase'
  */
 
 app.put('/api/subscriberpersonalinfo001wb/:id', (req, res) => {
@@ -6235,7 +6235,7 @@ app.delete('/api/subscriberpersonalinfo001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriberprofessionalinfo002wb'
+ *                             $ref: '#/components/schemas/subscriberprofessionalinfoworkbase'
  */
 
 app.get('/api/subscriberprofessionalinfo002wb', (req, res) => {
@@ -6275,7 +6275,7 @@ app.get('/api/subscriberprofessionalinfo002wb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriberprofessionalinfo002wb'
+ *                             $ref: '#/components/schemas/subscriberprofessionalinfoworkbase'
  */
 
 app.get('/api/subscriberprofessionalinfo002wb/:id', (req, res) => {
@@ -6312,7 +6312,7 @@ app.get('/api/subscriberprofessionalinfo002wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/subscriberprofessionalinfo002wb'
+ *                          $ref: '#/components/schemas/subscriberprofessionalinfoworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -6370,7 +6370,7 @@ app.post('/api/subscriberprofessionalinfo002wb/professional', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/subscriberprofessionalinfo002wb'
+ *                         $ref: '#/components/schemas/subscriberprofessionalinfoworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -6379,7 +6379,7 @@ app.post('/api/subscriberprofessionalinfo002wb/professional', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriberprofessionalinfo002wb'
+ *                             $ref: '#/components/schemas/subscriberprofessionalinfoworkbase'
  */
 
 app.put('/api/subscriberprofessionalinfo002wb/:id', (req, res) => {
@@ -6514,7 +6514,7 @@ app.delete('/api/subscriberprofessionalinfo002wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriptionmaster001mb'
+ *                             $ref: '#/components/schemas/subscriptionmaster'
  */
 
 app.get('/api/subscriptionmaster001mb', (req, res) => {
@@ -6554,7 +6554,7 @@ app.get('/api/subscriptionmaster001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriptionmaster001mb'
+ *                             $ref: '#/components/schemas/subscriptionmaster'
  */
 
 app.get('/api/subscriptionmaster001mb/:id', (req, res) => {
@@ -6591,7 +6591,7 @@ app.get('/api/subscriptionmaster001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/subscriptionmaster001mb'
+ *                          $ref: '#/components/schemas/subscriptionmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -6643,7 +6643,7 @@ app.post('/api/subscriptionmaster001mb/master', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/subscriptionmaster001mb'
+ *                         $ref: '#/components/schemas/subscriptionmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -6652,7 +6652,7 @@ app.post('/api/subscriptionmaster001mb/master', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/subscriptionmaster001mb'
+ *                             $ref: '#/components/schemas/subscriptionmaster'
  */
 
 app.put('/api/subscriptionmaster001mb/:id', (req, res) => {
@@ -6737,8 +6737,8 @@ app.delete('/api/subscriptionmaster001mb/:id', (req, res) => {
  *    schemas:                 
  *      usersworkbase:
  *           allOf:
- *            - $ref: '#/components/schemas/person001mb'
- *            - $ref: '#/components/schemas/login001mb'
+ *            - $ref: '#/components/schemas/personmaster'
+ *            - $ref: '#/components/schemas/loginmaster'
  *           type: object
  *           properties:
  *             employeeid:
@@ -6787,7 +6787,7 @@ app.delete('/api/subscriptionmaster001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/users001wb'
+ *                             $ref: '#/components/schemas/usersworkbase'
  */
 
 app.get('/api/users001wb', (req, res) => {
@@ -6819,7 +6819,7 @@ app.get('/api/users001wb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/users001wb'
+ *                             $ref: '#/components/schemas/usersworkbase'
  */
 app.get('/api/users001wb/verify', async (req, res) => {
     const token = req.query.token;
@@ -6865,7 +6865,7 @@ app.get('/api/users001wb/verify', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/users001wb'
+ *                             $ref: '#/components/schemas/usersworkbase'
  */
 app.get('/api/users001wb/:id', (req, res) => {
     var id = req.params.id;
@@ -6898,7 +6898,7 @@ app.get('/api/users001wb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/users001wb'
+ *                          $ref: '#/components/schemas/usersworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -7048,7 +7048,7 @@ app.post('/api/users001wb/user', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/users001wb'
+ *                         $ref: '#/components/schemas/usersworkbase'
  *    responses:
  *       200:
  *         description: Sucess
@@ -7057,7 +7057,7 @@ app.post('/api/users001wb/user', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/users001wb'
+ *                             $ref: '#/components/schemas/usersworkbase'
  */
 app.put('/api/users001wb/:personid/:loginid/:userid', async (req, res) => {
     var personid = req.params.personid;
@@ -7227,7 +7227,7 @@ app.delete('/api/users001wb/:personid/:loginid/:userid', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/payment001mb'
+ *                             $ref: '#/components/schemas/paymentmaster'
  */
 
 app.get('/api/payment001mb', (req, res) => {
@@ -7265,7 +7265,7 @@ app.get('/api/payment001mb', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/payment001mb'
+ *                             $ref: '#/components/schemas/paymentmaster'
  */
 app.get('/api/payment001mb/:id', (req, res) => {
     var id = req.params.id;
@@ -7299,7 +7299,7 @@ app.get('/api/payment001mb/:id', (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                          $ref: '#/components/schemas/payment001mb'
+ *                          $ref: '#/components/schemas/paymentmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -7352,7 +7352,7 @@ app.post('/api/payment001mb/payment', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                         $ref: '#/components/schemas/payment001mb'
+ *                         $ref: '#/components/schemas/paymentmaster'
  *    responses:
  *       200:
  *         description: Sucess
@@ -7361,7 +7361,7 @@ app.post('/api/payment001mb/payment', async (req, res) => {
  *         content:
  *             application/json:
  *                       schema:
- *                             $ref: '#/components/schemas/payment001mb'
+ *                             $ref: '#/components/schemas/paymentmaster'
  */
 app.put('/api/payment001mb/:id', (req, res) => {
 
