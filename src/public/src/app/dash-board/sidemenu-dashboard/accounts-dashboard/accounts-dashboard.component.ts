@@ -10,7 +10,6 @@ export class AccountsDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("account-dashbord called------>");
   }
 
 }

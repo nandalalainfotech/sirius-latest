@@ -29,8 +29,6 @@ export class VideopopupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("this.details", this.details)
-    console.log("this.source", this.sources)
     this.authManager.currentUserSubject.subscribe((object: any) => {
       let rgb = Utils.hexToRgb(object.theme);
 

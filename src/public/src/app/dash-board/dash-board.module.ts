@@ -68,6 +68,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 // import { ProgressbarModule } from 'ngx-bootstrap/ProgressbarModule';
 import { NgCircleProgressModule } from "ng-circle-progress"
 import { CommonModule } from '@angular/common';
+import { RegisterManager } from '../shared/services/restcontroller/bizservice/register.service';
+// import { RegisterManager } from '../shared/services/restcontroller/bizservice/register.service';
 
 
 @NgModule({
@@ -177,7 +179,9 @@ import { CommonModule } from '@angular/common';
         MatDialogModule
 
     ],
-    providers: [DataSharedService, UserManager, SubscriptionmasterManager, SubscriberdetailsManager],
+    providers: [DataSharedService, UserManager, SubscriptionmasterManager, SubscriberdetailsManager,
+         RegisterManager
+    ],
     exports: [NgbCollapseModule],
 })
 export class DashboardModule { }

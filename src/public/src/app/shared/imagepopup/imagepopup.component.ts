@@ -29,7 +29,7 @@ export class ImagepopupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("this.details", this.details)
+
     this.authManager.currentUserSubject.subscribe((object: any) => {
       let rgb = Utils.hexToRgb(object.theme);
 

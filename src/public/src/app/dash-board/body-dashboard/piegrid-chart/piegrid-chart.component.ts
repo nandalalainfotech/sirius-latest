@@ -24,7 +24,6 @@ export class PiegridChartComponent implements OnInit {
 
   load(): void {
     this.percent = Math.random() * 100;
-    console.log(this.percent);
   }
 
   percentToColor(percent: number, min: number, max: number): string {

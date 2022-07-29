@@ -7,5 +7,5 @@ export class Login001mb extends Person001mb   {
     password?: string;
     token?: string;
     roleid?: Role001wb;
-    theme?: string | null;
+    theme?: string ;
 }

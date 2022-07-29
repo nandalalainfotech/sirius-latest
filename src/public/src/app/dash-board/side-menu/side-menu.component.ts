@@ -111,7 +111,6 @@ export class SideMenuComponent implements OnChanges, OnInit {
             this.childMenuString = object.childMenuString;
         });
         this.authManager.currentUserSubject.subscribe((object: any) => {
-            console.log("object",object.theme)
             let rgb = Utils.hexToRgb(object.theme);
 
             this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);

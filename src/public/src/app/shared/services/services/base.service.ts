@@ -233,7 +233,6 @@ export class BaseService {
     }
 
     private handleError(error: Response | any, url: string) {
-        console.log("Response",Response)
         this.dataSharedService.isShowsLoaderIcon(false);
         if (
             error.error.statusCode == BaseService.SC_UNAUTHORIZED ||

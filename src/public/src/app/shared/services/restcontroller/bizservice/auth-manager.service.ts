@@ -16,7 +16,6 @@ export class AuthManager extends BaseService {
         params['username'] = uName;
         params['password'] = pWord;
         // params['domain'] = domain;
-        console.log("params",params);
         return this.getCallService(`${this.authManagerUrl}`+`/lister`, params)
             .pipe(map(res => {
                 if (res) {

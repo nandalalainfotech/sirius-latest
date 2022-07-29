@@ -22,7 +22,6 @@ export class UserManager extends BaseService {
     data['user001'] = user001;
     data['login001mb'] = login001mb;
     data['person001mb'] = person001mb;
-    console.log("data",data)
     return this.postCallService(`${this.userUrl}` + "/save", {}, data);
   }
 
@@ -42,11 +41,6 @@ export class UserManager extends BaseService {
     return this.postCallService(`${this.userUrl}` + "/updatePassword", {}, user001mb);
   }
 
-  updateUserTheme(updateTheme: any) {
-  
-    return this.putCallService(`${this.userUrl}` + "/updatetheme", {}, updateTheme);
-  }
-
   deleteuser(id: any) {
     let data: any = {};
     data['id'] = id;
@@ -56,12 +50,10 @@ export class UserManager extends BaseService {
 // -----------------------------------------USER REGISTRATION---------------------------------------
 
   registerUser(user001mb: Login001mb) {
-    console.log("user",this.userUrl);
     return this.postCallService(`${this.userUrl}` + "/regSave", {}, user001mb);
   }
 
   alluserRegister() {
-    console.log("user service");
     return this.getCallService(`${this.userUrl}` + "/registerfindAll");
   }
 

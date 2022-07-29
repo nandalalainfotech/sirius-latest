@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
 		}
 
 		this.authManager.login(this.f.username.value, this.f.password.value).subscribe(response => {
-			console.log("response", response);
 			//  this.user001mb = this.authManager.getcurrentUser;
 
 				this.router.navigate(['/app-dash-board']);
@@ -90,7 +89,6 @@ export class LoginComponent implements OnInit {
 
 
 	onRegistrationClick() {
-		console.log("called")
 		this.router.navigate(['/app-user-registration']);
 	}
 

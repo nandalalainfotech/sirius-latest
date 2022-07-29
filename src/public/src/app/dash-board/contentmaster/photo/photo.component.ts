@@ -49,16 +49,12 @@ export class PhotoComponent implements OnInit {
   ngOnInit() {
     this.createDataGrid001();
     this.photoManager.allsub().subscribe((response) => {
-      console.log("response", response)
       // var buffer = new ArrayBuffer(32);
 
       // var bufffers=new Blob([buffer]);
-      // console.log("bufffers", bufffers)
       // let objectURL = 'data:image/png;base64,' + response.content;
       // this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       //  var blob = new Blob([response.text()], {type: "image/png"});
-      // console.log(blob);
-      // console.log(window.btoa(blob.toString()));
       // var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)));
       // let TYPED_ARRAY = new Uint8Array(response.content);
       // const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
@@ -92,11 +88,8 @@ export class PhotoComponent implements OnInit {
     //     return bytes;
     //  }
       // var buffer = Buffer.from('response.content');
-      // console.log("buffer", buffer)
       // var string64 = buffer.toString('base64');
-      // console.log("string64", string64)
       // var string64 = response.content.data.toString('base64');
-      // console.log("string64",string64)
       // const reader = new FileReader();
       // reader.onload = (e) => this.image = e.target.result;
       // reader.readAsDataURL(new Blob([data]));
@@ -308,7 +301,6 @@ export class PhotoComponent implements OnInit {
   //   });
   // }
   onOrderClick(event: any, subCategoryForm: any) {
-    console.log("testting---1")
     // this.markFormGroupTouched(this.subCategoryForm);
     this.submitted = true;
     if (this.subCategoryForm.invalid) {

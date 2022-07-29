@@ -14,5 +14,5 @@ router.use(function (req, res, next) {
 router.get('/lister/:username/:password', loginservice.loginauth);
 router.get('/list', loginservice.list);
 router.get('/:id', loginservice.show);
-// router.put('/updatetheme', loginservice.updatetheme);
+
 export default router;

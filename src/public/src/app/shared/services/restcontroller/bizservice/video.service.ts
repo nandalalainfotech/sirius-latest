@@ -16,7 +16,6 @@ export class VideoManager extends BaseService {
     }
 
     // savesub(subcategory001mb: Subcategory001mb) {
-    //     console.log("subcategory001mb",subcategory001mb);
     //     return this.postCallService(`${this.subcatUrl}` + "/create", {}, subcategory001mb);
     // }
     updatesubss(video001wb: Video001wb,id: any) {

@@ -44,8 +44,6 @@ export class IconRendererComponent implements ICellRendererAngularComp {
         });
         this.params = params;
         this.label = this.params.label || null;
-
-        console.log("this.downloadUrl", this.params.data.filename)
     }
     refresh(params?: any): boolean {
         return true;
@@ -69,6 +67,5 @@ export class IconRendererComponent implements ICellRendererAngularComp {
         modalRef.componentInstance.title = "image";
         modalRef.componentInstance.details = params.data;
         modalRef.componentInstance.source = this.downloadUrl + this.params.data.filename;;
-    console.log("params",params)
     }
 }

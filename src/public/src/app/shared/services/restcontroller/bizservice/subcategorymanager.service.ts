@@ -14,7 +14,6 @@ export class SubCategoryManager extends BaseService {
     }
 
     savesub(subcategory001mb: Subcategory001mb) {
-        console.log("subcategory001mb",subcategory001mb);
         return this.postCallService(`${this.subcatUrl}` + "/create", {}, subcategory001mb);
     }
 

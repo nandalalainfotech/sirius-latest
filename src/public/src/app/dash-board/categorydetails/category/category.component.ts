@@ -202,7 +202,6 @@ export class CategoryComponent implements OnInit {
     let categorydetails = new Categorydetails001mb();
     categorydetails.catname = this.f.catname.value ? this.f.catname.value : "";
     if (this.catid) {
-      console.log("testting",this.catid)
       categorydetails.catid = this.catid;
       categorydetails.inserteduser = this.insertUser;
       categorydetails.inserteddatetime = this.insertDatetime;

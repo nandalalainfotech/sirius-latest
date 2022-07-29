@@ -102,7 +102,7 @@ export class RegistrationComponent implements OnInit {
     countrys: any[] = [];
     citys: any[] = [];
     login: any;
-
+    defaultTheme: string = "#286090";
 
     constructor(
         private regionalManager: RegionalManager,
@@ -167,13 +167,13 @@ export class RegistrationComponent implements OnInit {
             accountnumber: ['', Validators.required],
             insurance: ['', Validators.required],
             accounttype: ['', Validators.required],
-            // payid: [],
-            // contentid: [],
-            // horoscope: [],
-            // subscdesc: [],
-            // approvedby: [],
-            // approvedon: [],
-            // subscapproval: []
+            payid: [],
+            contentid: [],
+            horoscope: [],
+            subscdesc: [],
+            approvedby: [],
+            approvedon: [],
+            subscapproval: []
 
         });
         this.regionalManager.allregional().subscribe((response) => {
@@ -750,7 +750,6 @@ export class RegistrationComponent implements OnInit {
         return params.data.subscriberdetailsid ? params.data.subscriberdetailsid.approvedon : null;
     }
     onEditButtonClick(params: any) {
-        console.log("params-edit", params)
         this.personid = params.data._id;
         this.loginid = params.data.loginid._id;
         this.userid = params.data.usersid._id;
@@ -871,7 +870,6 @@ export class RegistrationComponent implements OnInit {
         person001mb.updateduser = "";
         person001mb.inserteduser = this.authManager.getcurrentUser.username;
         person001mb.updateddatetime = null;
-        console.log("person001mb", person001mb)
         let login001mb = new Login001mb();
         login001mb.username = this.f.username.value ? this.f.username.value : "";
         login001mb.password = this.f.password.value ? this.f.password.value : "";
@@ -880,6 +878,7 @@ export class RegistrationComponent implements OnInit {
         login001mb.inserteddatetime = person001mb.inserteddatetime;
         login001mb.updateduser = "";
         login001mb.updateddatetime = null;
+        login001mb.theme = this.defaultTheme;
 
         let user001wb = new User001wb();
         user001wb.employeeid = this.f.employeeid.value ? this.f.employeeid.value : "";
@@ -905,9 +904,8 @@ export class RegistrationComponent implements OnInit {
             login001mb.updateddatetime = person001mb.updateddatetime;
             user001wb.updateduser = person001mb.updateduser;
             user001wb.updateddatetime = person001mb.updateddatetime;
-            console.log("this.personid && this.loginid && this.userid", this.personid, this.loginid, this.userid)
+    
             this.registerManager.updateuser(user001wb, person001mb, login001mb, this.personid, this.loginid, this.userid).subscribe((response) => {
-                console.log("response999999999999", response)
                 this.calloutService.showSuccess("Order Updated Successfully");
 
                 this.loaddata();
@@ -927,7 +925,6 @@ export class RegistrationComponent implements OnInit {
             // person001mb.insertUser = this.authManager.getcurrentUser.username;
             // person001mb.insertDatetime = new Date();
             this.registerManager.saveuser(user001wb, login001mb, person001mb,).subscribe((response) => {
-                console.log("response888888888888", response)
                 this.calloutService.showSuccess("Order Saved Successfully");
                 this.loaddata();
                 // let person001mb = deserialize<Person001mb>(Person001mb, response);

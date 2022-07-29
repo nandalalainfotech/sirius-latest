@@ -205,12 +205,9 @@ export class SubcategoryComponent implements OnInit {
     });
   }
   onOrderClick(event: any, subCategoryForm: any) {
-     console.log("testting---1")
     this.markFormGroupTouched(this.subCategoryForm);
     this.submitted = true;
     if (this.subCategoryForm.invalid) {
-      console.log("this.subCategoryForm",this.subCategoryForm)
-      console.log("testeddd--2")
       return;
     }
     let subcategory001mb = new Subcategory001mb();
@@ -219,7 +216,6 @@ export class SubcategoryComponent implements OnInit {
     subcategory001mb.subcatname = this.f.subcatname.value ? this.f.subcatname.value : "";
      subcategory001mb.catcode = this.f.catcode.value ? this.f.catcode.value : "";
     if (this.subcatid) {
-      console.log("testting",this.subcatid)
       subcategory001mb.subcatid = this.subcatid;
       subcategory001mb.inserteduser = this.insertUser;
       subcategory001mb.inserteddatetime = this.insertDatetime;
