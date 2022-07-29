@@ -45,10 +45,10 @@ export class HeaderComponent implements OnInit {
     public gridOptions: GridOptions | any;
     // temporaryDisabled: boolean = true;
     defaultTheme: string = "#286090";
-    @HostBinding('style.--color_l1') colorthemes_1: any;
-    @HostBinding('style.--color_l2') colorthemes_2: any;
-    @HostBinding('style.--color_l3') colorthemes_3: any;
-    @HostBinding('style.--color_l4') colorthemes_4: any;
+    // @HostBinding('style.--color_l1') colorthemes_1: any;
+    // @HostBinding('style.--color_l2') colorthemes_2: any;
+    // @HostBinding('style.--color_l3') colorthemes_3: any;
+    // @HostBinding('style.--color_l4') colorthemes_4: any;
     params: any
     public downloadUrl: string = `${environment.apiUrl}/appsettings/download/`;
     constructor(private router: Router, private userManager: RegisterManager, private calloutService: CalloutService, private authManager: AuthManager, private dataSharedService: DataSharedService, private authManger: AuthManager, private baseService: BaseService, private appSettingService: appSettingManager,) { }
@@ -62,16 +62,16 @@ export class HeaderComponent implements OnInit {
             this.parentMenuString = object.parentMenuString;
             this.childMenuString = object.childMenuString;
         });
-        this.authManager.currentUserSubject.subscribe((object: any) => {
-            let rgb = Utils.hexToRgb(object.theme);
+        // this.authManager.currentUserSubject.subscribe((object: any) => {
+        //     let rgb = Utils.hexToRgb(object.theme);
 
-            this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
-            this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
+        //     this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
+        //     this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
 
-            this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
+        //     this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
 
-            this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
-        });
+        //     this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
+        // });
         // this.appSettingService.allFiles().subscribe(response => {
         //     this.appSettings = response.originalfilename;
         //     this.downloadUrl = this.downloadUrl + this.appSettings;
@@ -151,11 +151,11 @@ export class HeaderComponent implements OnInit {
 
             this.authManager.setcurrentUser(this.login001mb);
             //   This is a color changed area
-            let rgb = Utils.hexToRgb(response.theme);
-            this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
-            this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
-            this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
-            this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
+            // let rgb = Utils.hexToRgb(response.theme);
+            // this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
+            // this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
+            // this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
+            // this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
         });
     }
 

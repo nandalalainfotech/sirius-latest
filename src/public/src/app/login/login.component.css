@@ -36,7 +36,7 @@
     vertical-align: middle;
 }
 
-.upsign{
+/* .upsign{
     float: left;
     font-family: 'Roboto', sans-serif;
     margin-left: -23%;
@@ -44,7 +44,7 @@
     font-weight: 500;
     cursor: pointer;
     transform: translate(0px, 270px);
-}
+} */
 
 .loginContainer .form-icon {
     color: rgb(177, 170, 170);
@@ -71,6 +71,8 @@
     top: 0%;
     left: 0%;
     transform: translate(50%, 0%);
+    margin-left: 21%;
+    margin-top: -5%;
 }
 
 .loginContainer .textType .title {
@@ -168,19 +170,21 @@
 }
 
 .loginContainer .textType .submit .btn {
+ 
     position: relative;
     color: rgb(255, 255, 255);
     background: rgb(10, 51, 98);
     font-size: 15px;
     font-weight: 500;
     text-transform: uppercase;
-    width: 90%;
+    width: 70%;
     border: none;
     border-radius: 20px;
     font-family: 'Roboto', sans-serif;
-    margin-left: 37px;
     cursor: pointer !important;
     transform: translate(-4px, 10px);
+    margin-left: 25px;
+
 }
 
 
@@ -264,7 +268,7 @@
         vertical-align: middle;
     }
     
-    .upsign{
+    /* .upsign{
         font-family: 'Roboto', sans-serif;
             float: left;
             margin-left: 8%;
@@ -272,7 +276,7 @@
             font-weight: 5s00;
             cursor: pointer;
             transform: translate(23px, 0%);
-    }
+    } */
     
     .loginContainer .form-icon {
         color: rgb(177, 170, 170);

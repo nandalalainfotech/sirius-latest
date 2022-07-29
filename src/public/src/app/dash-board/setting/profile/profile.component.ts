@@ -39,16 +39,16 @@ export class ProfileComponent implements OnInit {
             this.childMenuString = object.childMenuString;
         });
 
-        this.authManager.currentUserSubject.subscribe((object: any) => {
-            let rgb = Utils.hexToRgb(object.theme);
+        // this.authManager.currentUserSubject.subscribe((object: any) => {
+        //     let rgb = Utils.hexToRgb(object.theme);
 
-            this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
+        //     this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
 
-            this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
+        //     this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
 
-            this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
+        //     this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
 
-            this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
-        });
+        //     this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
+        // });
     }
 }

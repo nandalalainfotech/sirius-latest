@@ -1,4 +1,4 @@
-<a [ngStyle]="{'color':colorthemes_1}" *ngIf="this.label == 'Edit' ? true : false" href="javascript:void(0)"
+<a  *ngIf="this.label == 'Edit' ? true : false" href="javascript:void(0)"
     (click)="onClick($event)">
     <div class="iconalign" (click)="changeType(toggle)">
         <span>
@@ -6,16 +6,16 @@
         </span>
     </div>
 </a>
-<a [ngStyle]="{'color':colorthemes_1}" style="color: blue !important;" *ngIf="this.label == 'Delete' ? true : false" href="javascript:void(0)"
+<a  *ngIf="this.label == 'Delete' ? true : false" href="javascript:void(0)"
     (click)="onClick($event)">
     <i class="fa fa-trash"></i>
 </a>
-<a [ngStyle]="{'color':colorthemes_1}" *ngIf="this.label == 'Audit' ? true : false" href="javascript:void(0)"
+<a *ngIf="this.label == 'Audit' ? true : false" href="javascript:void(0)"
     (click)="onClick($event)">
     <i class="fa fa-history"></i>
 </a>
 
 
-<a [ngStyle]="{'color':colorthemes_1}" *ngIf="this.label == 'File' ? true : false" (click)="onPopupButtonClick(params)"   target="_blank">
+<a  *ngIf="this.label == 'File' ? true : false" (click)="onPopupButtonClick(params)"   target="_blank">
     <i class="fa fa-eye"></i>
 </a>

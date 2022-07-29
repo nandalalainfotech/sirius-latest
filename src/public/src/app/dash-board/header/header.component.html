@@ -22,7 +22,7 @@
                     Welcome {{name}} &nbsp;
                 </li>
 
-                <li class="setting">
+                <!-- <li class="setting">
                     <a><i class="fa fa-paint-brush" style="color: white" aria-hidden="true" [(colorPicker)]="themes"
                             [cpOKButton]="true" [cpOKButtonClass]="' btn-primary btn-xs button'"
                             [cpOKButtonText]="'Reset'" [cpCancelButton]="true"
@@ -38,7 +38,7 @@
                             [cpAlphaChannel]="'disabled'" [cpDisableInput]="false" [cpOutputFormat]="'hex'"
                             [cpWidth]="'270px'" [cpHeight]="'390px'" (cpSliderChange)="colorPicker($event)"
                             (colorPickerSelect)="defaultColor()"></i></a>
-                </li>
+                </li> -->
 
                 <li class="link" class="setting">
                     <span id="notification_count"></span>
@@ -68,7 +68,7 @@
 
                         <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
                             <li routerLink="./app-setting/app-profile/app-registration">
-                                <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                <a [ngClass]="
                                             childMenuString == 'Profile'
                                                 ? 'is-active'
                                                 : ''
@@ -81,7 +81,7 @@
                             </li>
 
                             <li routerLink="./app-setting/app-settings">
-                                <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                <a [ngClass]="
                                             childMenuString == 'Settings'
                                                 ? 'is-active'
                                                 : ''
@@ -93,7 +93,7 @@
                                         ">Settings</a>
                             </li>
 
-                            <li routerLink="./app-setting/app-user-theme">
+                            <!-- <li routerLink="./app-setting/app-user-theme">
                                 <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
                                             childMenuString == 'UserTheme'
                                                 ? 'is-active'
@@ -104,17 +104,13 @@
                                                 'UserTheme'
                                             )
                                         ">Themes</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </li>
-                <li class="setting" routerLink="./app-help">
+                <li class="setting">
                     <a>
-                        <i class="fa fa-question-circle" aria-hidden="true" title="Help" style="color: white" [ngClass]="
-                                    parentMenuString == 'Help'
-                                        ? 'is-active'
-                                        : ''
-                                " (click)="onMenuParentClick('Help', 'Help')"></i></a>
+                        <i class="fa fa-question-circle" aria-hidden="true" title="Help" style="color: white"></i></a>
                 </li>
                 <li class="setting">
                     <a (click)="submit()" [ngClass]="

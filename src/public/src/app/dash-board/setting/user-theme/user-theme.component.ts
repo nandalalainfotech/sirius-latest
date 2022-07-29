@@ -20,9 +20,9 @@ export class UserThemeComponent implements OnInit {
     submitted = false;
     hexToRgb: any;
     rgbToHex: any;
-    @HostBinding('style.--color_l1') colorthemes_1: any;
-    @HostBinding('style.--color_l2') colorthemes_2: any;
-    @HostBinding('style.--color_l3') colorthemes_3: any;
+    // @HostBinding('style.--color_l1') colorthemes_1: any;
+    // @HostBinding('style.--color_l2') colorthemes_2: any;
+    // @HostBinding('style.--color_l3') colorthemes_3: any;
 
     constructor(
         private authManager: AuthManager,
@@ -37,12 +37,12 @@ export class UserThemeComponent implements OnInit {
             username: [''],
             theme: [''],
         });
-        this.authManager.currentUserSubject.subscribe((object: any) => {
-            let rgb = Utils.hexToRgb(object.theme);
-            this.colorthemes_1 = Utils.rgbToHex(rgb, -0.6);
-            this.colorthemes_2 = Utils.rgbToHex(rgb, -0.3);
-            this.colorthemes_3 = Utils.rgbToHex(rgb, 0.2);
-        });
+        // this.authManager.currentUserSubject.subscribe((object: any) => {
+        //     let rgb = Utils.hexToRgb(object.theme);
+        //     this.colorthemes_1 = Utils.rgbToHex(rgb, -0.6);
+        //     this.colorthemes_2 = Utils.rgbToHex(rgb, -0.3);
+        //     this.colorthemes_3 = Utils.rgbToHex(rgb, 0.2);
+        // });
         this.userThemeForm.patchValue({
             username: this.user001mb.username,
             theme: this.user001mb.theme,
