@@ -739,7 +739,7 @@ app.use("/api/personcontroller", personcontroller);
 app.use("/api/paymentcontroller", paymentcontroller);
 app.use("/api/verifyToken", verifyToken);
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 80;
 
 db.mongoose
     .connect(process.env.DATABASE_URI, {
