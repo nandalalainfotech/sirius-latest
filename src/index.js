@@ -1111,7 +1111,6 @@ app.get('/api/country001mb', (req, res) => {
                 error: err
             });
         }
-
         return res.json(country001mb);
     });
 });
@@ -1994,7 +1993,7 @@ app.get('/api/photo001wb/:id', (req, res) => {
 
 app.post('/api/photo001wb/photo', [upload.single("content")], (req, res) => {
     const photo001wb = new Photo001wb();
-    photo001wb.content = req.file.path;
+    // photo001wb.content = req.file.path;
     photo001wb.fieldname = req.file.fieldname;
     photo001wb.originalname = req.file.originalname;
     photo001wb.filename = req.file.filename;
@@ -2067,7 +2066,7 @@ app.put('/api/photo001wb/:id', [upload.single("content")], (req, res) => {
             });
         }
         photo001wb.contentid = req.body.contentid ? req.body.contentid : photo001wb.contentid;
-        photo001wb.content = req.file.path ? req.file.path : photo001wb.content;
+        // photo001wb.content = req.file.path ? req.file.path : photo001wb.content;
         photo001wb.fieldname = req.file.fieldname ? req.file.fieldname : photo001wb.fieldname;
         photo001wb.filename = req.file.filename ? req.file.filename : photo001wb.filename;
         photo001wb.originalname = req.file.originalname ? req.file.originalname : photo001wb.originalname;
@@ -2271,10 +2270,10 @@ app.get('/api/video001wb/:id', (req, res) => {
 
 app.post('/api/video001wb/video', [videoUpload.single("content")], (req, res) => {
     const video001wb = new Video001wb();
-    video001wb.flag = req.body.flag;
-    video001wb.fileid = req.body.fileid;
+    // video001wb.flag = req.body.flag;
+    // video001wb.fileid = req.body.fileid;
     video001wb.contentid = req.body.contentid;
-    video001wb.content = req.file.path;
+    // video001wb.content = req.file.path;
     video001wb.fieldname = req.file.fieldname;
     video001wb.originalname = req.file.originalname;
     video001wb.filename = req.file.filename;
@@ -2353,7 +2352,7 @@ app.put('/api/video001wb/:id', [videoUpload.single("content")], (req, res) => {
         video001wb.filename = req.file.filename ? req.file.filename : video001wb.filename;
         video001wb.originalname = req.file.originalname ? req.file.originalname : video001wb.originalname;
         video001wb.status = req.body.status ? req.body.status : video001wb.status;
-        video001wb.content = req.file.path ? req.file.path : video001wb.content;
+        // video001wb.content = req.file.path ? req.file.path : video001wb.content;
         video001wb.inserteduser = req.body.inserteduser ? req.body.inserteduser : video001wb.inserteduser;
         video001wb.inserteddatetime = req.body.inserteddatetime ? req.body.inserteddatetime : video001wb.inserteddatetime;
         video001wb.updateduser = req.body.updateduser ? req.body.updateduser : video001wb.updateduser;
@@ -2632,9 +2631,9 @@ app.put('/api/audio001wb/:id', [audio.single("content")], (req, res) => {
         audio001wb.flag = req.body.flag;
         audio001wb.contentid = req.body.contentid ? req.body.contentid : audio001wb.contentid;
         audio001wb.fileid = req.body.fileid ? req.body.fileid : audio001wb.fileid;
-        // audio001wb.fieldname = req.file.fieldname ? req.file.fieldname : audio001wb.fieldname;
-        // audio001wb.filename = req.file.filename ? req.file.filename : audio001wb.filename;
-        // audio001wb.originalname = req.file.originalname ? req.file.originalname : audio001wb.originalname;
+        audio001wb.fieldname = req.file.fieldname ? req.file.fieldname : audio001wb.fieldname;
+        audio001wb.filename = req.file.filename ? req.file.filename : audio001wb.filename;
+        audio001wb.originalname = req.file.originalname ? req.file.originalname : audio001wb.originalname;
         audio001wb.status = req.body.status ? req.body.status : audio001wb.status;
         // audio001wb.content = req.file.path ? req.file.path : audio001wb.content;
         audio001wb.inserteduser = req.body.inserteduser ? req.body.inserteduser : audio001wb.inserteduser;
@@ -3613,7 +3612,7 @@ app.get('/api/language001mb/:id', (req, res) => {
  *         description: failed
  */
 
-app.post('/api/language001mb/language', verifyToken, rolebaseauth(["admin"]), (req, res) => {
+app.post('/api/language001mb/language', verifyToken, rolebaseauth(["admin","superadmin"]), (req, res) => {
     const language001mb = new Language001mb()
     language001mb.languagename = req.body.languagename;
     language001mb.languagedesc = req.body.languagedesc;
@@ -5014,6 +5013,7 @@ app.get('/api/subcategory001mb/:id', (req, res) => {
  */
 
 app.post('/api/subcategory001mb/subcategory', (req, res) => {
+    console.log("called", req.body.inserteduser);
     const subcategory001mb = new Subcategory001mb();
     subcategory001mb.catcode = req.body.catcode.id;
     subcategory001mb.subcatname = req.body.subcatname;
@@ -5023,8 +5023,10 @@ app.post('/api/subcategory001mb/subcategory', (req, res) => {
     subcategory001mb.inserteddatetime = req.body.inserteddatetime;
     subcategory001mb.updateduser = req.body.updateduser;
     subcategory001mb.updateddatetime = req.body.updateddatetime;
+    console.log("subcategory001mb", subcategory001mb);
     subcategory001mb.save()
         .then((result) => {
+            console.log("result", result);
             return res.json({ message: 'subcategory001mb created!' });
         })
         .catch((error) => {
