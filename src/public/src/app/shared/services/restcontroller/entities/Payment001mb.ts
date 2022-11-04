@@ -5,9 +5,8 @@ import { Subscriptionmaster001mb } from "./Subscriptionmaster001mb";
 
 export class Payment001mb extends BaseEntity {
 
-   payment?:string;
- 
-   subpid?:Subscriptionmaster001mb;
-
-   subcid?:Subscriberdetails001wb;
+   _id?: any;
+   payment?: string | any;
+   subpid?: Subscriptionmaster001mb;
+   subcid?: Subscriberdetails001wb;
    }

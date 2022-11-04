@@ -23,7 +23,7 @@ import { AudioManager } from 'src/app/shared/services/restcontroller/bizservice/
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AgGridModule.withComponents([]),
+    AgGridModule,
     ContentmasterRoutingModule
   ],
   providers:[

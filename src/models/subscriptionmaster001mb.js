@@ -10,7 +10,7 @@ const subscriptionmaster001mb = mongoose.model(
         'tenure': String,
         'amount': Number,
         'status': String,
-        'discountflag': Boolean,
+        'discountflag': String,
         'inserteduser': String,
         'inserteddatetime': String,
         'updateduser': String,

@@ -10,11 +10,11 @@ router.use(function (req, res, next) {
     next();
 });
 router.get('/show/:filename', photoservice.show);
-router.post('/create',[upload.single("image")], photoservice.create);
+router.post('/create',[upload.single("file")], photoservice.create);
 
 router.get('/list', photoservice.list);
 
 router.put('/update/:id',[upload.single("image")], photoservice.update);
-router.delete('/:id', photoservice.remove);
+router.delete('/delete/:_id', photoservice.remove);
 
 export default router;

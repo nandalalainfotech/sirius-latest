@@ -41,6 +41,11 @@ export class UserManager extends BaseService {
     return this.postCallService(`${this.userUrl}` + "/updatePassword", {}, user001mb);
   }
 
+  updateUserTheme(updateTheme: any) {
+  
+    return this.putCallService(`${this.userUrl}` + "/updatetheme", {}, updateTheme);
+  }
+
   deleteuser(id: any) {
     let data: any = {};
     data['id'] = id;

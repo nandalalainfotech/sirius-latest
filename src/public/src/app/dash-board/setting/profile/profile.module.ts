@@ -50,7 +50,7 @@ import { LoginManager } from 'src/app/shared/services/restcontroller/bizservice/
     MatTabsModule,
     // FlexLayoutModule,
     MatSidenavModule,
-    AgGridModule.withComponents([])
+    AgGridModule
   ],
 
   providers: [

@@ -44,10 +44,9 @@ export const list = async (req, res) => {
 
 
 export const create = async (req, res, err) => {
+
     const photo001wb = new Photo001wb();
-    //  photo001wb.content = req.file.path;
     photo001wb.fieldname = req.file.fieldname;
-    photo001wb.fileid = req.body.fileid;
     photo001wb.originalname = req.file.originalname;
     photo001wb.filename = req.file.filename;
     photo001wb.status = req.body.status;
@@ -55,24 +54,22 @@ export const create = async (req, res, err) => {
     photo001wb.inserteduser = req.body.inserteduser;
     photo001wb.inserteddatetime = req.body.inserteddatetime;
     photo001wb.updateduser = req.body.updateduser;
-    photo001wb.flag = req.body.flag;
     photo001wb.updateddatetime = req.body.updateddatetime;
-    Contentmaster001mb.findOne({ _id: photo001wb.contentid }, (err, user) => {
-        if (user) {
-            user.photo.push(photo001wb);
-            user.save();
-            photo001wb.save()
-            return res.json({ message: 'photo created!' });
-        } else {
-            return res.status(500).json({
-                message: 'Error when creating photo001wb'
-            });
-        }
+
+    photo001wb.save()
+    .then((result) => {
+      return res.json({ message: "Subscription Master Details created!" });
+    })
+    .catch((error) => {
+      return res.status(500).json({ error });
     });
 }
 
 export const update = async (req, res) => {
+
+
     var id = req.params.id;
+
     Photo001wb.findOne({ _id: id }, function (err, photo001wb) {
         if (err) {
             return res.status(500).json({
@@ -109,7 +106,8 @@ export const update = async (req, res) => {
     });
 };
 export const remove = async (req, res) => {
-    var id = req.params.id;
+
+    var id = req.params._id;
 
     Photo001wb.findByIdAndRemove(id, function (err, photo001wb) {
         if (err) {

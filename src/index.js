@@ -12,6 +12,7 @@ import regionaldetailscontroller from "../src/controllers/regionaldetailscontrol
 import religioncontroller from "../src/controllers/religioncontroller.js";
 import subscribercontentcontroller from "../src/controllers/subscribercontentcontroller.js";
 import statecontroller from "../src/controllers/statecontroller.js";
+import statussettingcontroller from "../src/controllers/statussettingcontroller.js";
 import subcatclassificationcontroller from "../src/controllers/subcatclassificationcontroller.js";
 import subcategorycontroller from "../src/controllers/subcategorycontroller.js";
 import subscribercontentauthcontroller from "../src/controllers/subscribercontentauthcontroller.js";
@@ -125,6 +126,7 @@ const Regionaldetails001mb = db.regionaldetails001mb;
 const Religion001mb = db.religion001mb;
 const Subscriberdetails001wb = db.subscriberdetails001wb;
 const State001mb = db.state001mb;
+const Status001mb = db.status001mb;
 const Subcatclassification001mb = db.subcatclassification001mb;
 const Subcategory001mb = db.subcategory001mb;
 const Subscribercontent001wb = db.subscribercontent001wb;
@@ -718,6 +720,7 @@ app.use("/api/contentmastercontroller", contentmastercontroller);
 app.use("/api/languagecontroller", languagecontroller);
 app.use("/api/regionaldetailscontroller", regionaldetailscontroller);
 app.use("/api/religioncontroller", religioncontroller);
+app.use("/api/statussettingcontroller", statussettingcontroller);
 app.use("/api/statecontroller", statecontroller);
 app.use("/api/subcatclassificationcontroller", subcatclassificationcontroller);
 app.use("/api/subcategorycontroller", subcategorycontroller);
@@ -739,7 +742,7 @@ app.use("/api/personcontroller", personcontroller);
 app.use("/api/paymentcontroller", paymentcontroller);
 app.use("/api/verifyToken", verifyToken);
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8081;
 
 db.mongoose
     .connect(process.env.DATABASE_URI, {
@@ -766,7 +769,7 @@ db.mongoose
             res.sendFile(path.resolve(path.dirname('./src/public/dist/sirius')));
         })
 
-        initial();
+        // initial();
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}.`);
         });

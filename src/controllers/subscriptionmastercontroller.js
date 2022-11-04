@@ -13,7 +13,7 @@ router.use(function(req, res, next) {
 router.get('/list', subscriptionmasterservice.list);
 router.get('/:id', subscriptionmasterservice.show);
 router.post('/create', subscriptionmasterservice.create);
-router.put('/:id', subscriptionmasterservice.update);
-router.delete('/:id', subscriptionmasterservice.remove);
+router.put('/update', subscriptionmasterservice.update);
+router.delete('/delete/:_id', subscriptionmasterservice.remove);
 
 export default router;

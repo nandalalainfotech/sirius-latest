@@ -20,7 +20,7 @@ export class IconRendererComponent implements ICellRendererAngularComp {
     params: any;
     label: string = "";
     toggle: boolean = false;
-    public downloadUrl: string = `${environment.apiUrl}/photocontroller/show/`;
+    
 
     hexToRgb: any;
     rgbToHex: any;
@@ -62,10 +62,5 @@ export class IconRendererComponent implements ICellRendererAngularComp {
         this.toggle = !this.toggle;
     }
 
-    onPopupButtonClick(params: any) {
-        const modalRef = this.modalService.open(ImagepopupComponent,{backdrop : 'static'});
-        modalRef.componentInstance.title = "image";
-        modalRef.componentInstance.details = params.data;
-        modalRef.componentInstance.source = this.downloadUrl + this.params.data.filename;;
-    }
+    
 }

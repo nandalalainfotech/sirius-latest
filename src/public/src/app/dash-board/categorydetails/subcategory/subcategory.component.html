@@ -1,72 +1,85 @@
-<!-- <fieldset class="scheduler-border">
-    <legend class="scheduler-border">Make New Category</legend>
-    <div class="formData">
-        <form [formGroup]="subCategoryForm" (ngSubmit)="onOrderClick($event, subCategoryForm)">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3">
-                    <div class="form-group">
-                        <label path="subcatname" for="subcatname" cssClass="required">Subcatname</label>
-                        <input class="form-control" path="subcatname"  formControlName="subcatname" [ngClass]="{ 'is-invalid': submitted && f.subcatname.errors }" name="subcatname"/>
-                        <div *ngIf="submitted && f.subcatname.errors" class="invalid-feedback">
-                            <div *ngIf="f.subcatname.errors.required">Subcatname is Required</div>
-                        </div>
-                    </div>
-                </div> -->
-<!-- <div class="col-xs-3 col-sm-3">
-                    <div class="form-group">
-                        <label path="catcode" for="catcode" cssClass="required">catcode</label>
-                        <input class="form-control" path="catcode" formControlName="catcode" [ngClass]="{ 'is-invalid': submitted && f.catcode.errors }" name="company"/> -->
-<!-- <select formControlName="treeType" class="form-control" name="treelist" id="treelist" [ngClass]="{ 'is-invalid': submitted && f.treeType.errors }" name="treeType">
-                                <option value="" hidden> - Select Tree Type - </option>
-                                <option value="null" > - Select Tree Type - </option>
-                                <option *ngFor="let system of systemproperties" [value]="system.description">
-                                    {{system.description}}
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">SubCategory List</legend>
+        <div class="formData">
+            <form [formGroup]="subCategoryForm" (ngSubmit)="onOrderClick($event, subCategoryForm)">
+                <div class="row">
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="catcode" for="catcode" cssClass="required">Category Name</label>
+                            <select class="form-control" name="catcode" formControlName="catcode" [ngClass]="{'is-invalid': submitted && f.catcode.errors}">
+                                <option value="" hidden> - Select Category Name - </option>
+                                <option value="null"> - Select Category Name - </option>
+                                <option *ngFor="let categorydetails001mb of Categorydetails" [value]="categorydetails001mb._id">
+                                    {{categorydetails001mb.catname}}
                                 </option>
-                            </select> -->
-<!-- <div *ngIf="submitted && f.catcode.errors" class="invalid-feedback">
-                            <div *ngIf="f.catcode.errors.required">catcode is Required</div>
+                            </select>
+                            <div *ngIf="submitted && f.catcode.errors" class="invalid-feedback">
+                                <div *ngIf="f.catcode.errors.required">
+                                    Category Name is Required
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div> -->
-<!-- <div class="col-xs-3 col-sm-3">
-                    <div class="form-group">
-                         <label path="subcatid" for="subcatid" cssClass="required">catcode</label>
-                        <input class="form-control" path="subcatid" formControlName="subcatid" type="hidden" [ngClass]="{ 'is-invalid': submitted && f.subcatid.errors }" />
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="subcatname" for="subcatname" cssClass="required">Subscriber Category</label>
+                            <input type="text" class="form-control" path="subcatname" formControlName="subcatname" [ngClass]="{'is-invalid': submitted && f.subcatname.errors}" />
+                            <div *ngIf="submitted && f.subcatname.errors" class="invalid-feedback">
+                                <div *ngIf="f.subcatname.errors.required">
+                                    Subscriber Category is Required
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div> -->
-<!-- </div>
-            <div class="row">
-                <div class="col-sm-12 ">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary submit"
-                            style="background-color: blue !important;">Submit</button>
-                        <button type="button" class="btn btn-warning reset" style="background-color: blue !important;"
-                            (click)="onReset()">Clear</button>
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="subcatstatus" for="subcatstatus" cssClass="required">Status</label>
+                            <select class="form-control" name="subcatstatus" formControlName="subcatstatus" [ngClass]="{'is-invalid': submitted && f.subcatstatus.errors}">
+                                <option value="" hidden> - Select Status - </option>
+                                <option value="null"> - Select Status - </option>
+                                <option *ngFor="let status of statussets" [value]="status._id">
+                                    {{status.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.subcatstatus.errors" class="invalid-feedback">
+                                <div *ngIf="f.subcatstatus.errors.required">
+                                    Status is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 ">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
                     </div>
                 </div>
-            </div> -->
-<!-- </div> -->
-<!-- </form>
-    </div>
-</fieldset> -->
-<!-- <fieldset class="scheduler-border">
 
-    <div class="row" style="margin-bottom: 20px;">
-        <div class="col-sm-12"> -->
-<!-- <div class="form-group">
-                <button type="button" class="btn btn-primary submit" style="margin-right: 45px;" (click)="onGeneratePdfReport()">
-                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>Export Pdf
-                </button>
-                <button type="button" class="btn btn-warning reset" (click)="onGenerateExcelReport()">
-                    <i class="fa fa-file-excel-o" aria-hidden="true"></i>Export Excel
-                </button>
-            </div> -->
-<!-- </div>
-    </div> -->
-<fieldset class="scheduler-border">
+                
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
     <legend class="scheduler-border">SubCategory List</legend>
     <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
         [enableFilter]="true" [enableSorting]="true" [pagination]="true" [showToolPanel]="true"
         [frameworkComponents]="frameworkComponents">
     </ag-grid-angular>
 </fieldset>
+</div>
+
+
+
+

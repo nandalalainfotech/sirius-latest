@@ -51,6 +51,32 @@
 
                 <li class="setting">
                     <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="bttn">
+                            <i class="fa fa-cube" [ngClass]="
+                                    parentMenuString == 'Status Master'
+                                        ? 'is-active'
+                                        : ''
+                                " aria-hidden="true" title="Status Master"></i>
+                        </button>
+                        <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                            <li routerLink="../app-dash-board/app-status-master">
+                                <a [ngStyle]="{ color: colorthemes_1 }" [ngClass]="
+                                        childMenuString == 'Status Master'
+                                            ? 'is-active'
+                                            : ''
+                                    " (click)="
+                                        onMenuChildClick(
+                                            'Status Master',
+                                            'Status'
+                                        )
+                                    ">Status Master</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="setting">
+                    <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                             style="color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                             class="bttn">

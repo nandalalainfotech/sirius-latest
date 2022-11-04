@@ -14,7 +14,7 @@ router.get('/verify',subscriberdetails.verify)
 router.get('/list', subscriberdetails.list);
 router.get('/:id', subscriberdetails.show);
 router.post('/create', subscriberdetails.create);
-router.put('/:personid/:loginid/:subid', subscriberdetails.update);
-router.delete('/:personid/:loginid/:subid', subscriberdetails.remove);
+router.put('/update', subscriberdetails.update);
+router.delete('/delete/:_id', subscriberdetails.remove);
 
 export default router;

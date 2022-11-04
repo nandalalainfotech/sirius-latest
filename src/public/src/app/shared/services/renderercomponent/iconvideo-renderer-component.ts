@@ -19,11 +19,11 @@ import { VideopopupComponent } from '../../videopopup/videopopup.component';
 })
 export class IconVideoRendererComponent implements ICellRendererAngularComp {
 
+   
     params: any;
     label: string = "";
     toggle: boolean = false;
-    public downloadUrl: string = `${environment.apiUrl}/videocontroller/show/`;
-
+    
     hexToRgb: any;
     rgbToHex: any;
     // @HostBinding('style.--color_l1') colorthemes_1: any;
@@ -65,10 +65,5 @@ export class IconVideoRendererComponent implements ICellRendererAngularComp {
         this.toggle = !this.toggle;
     }
 
-    onPopupButtonClick(params: any) {
-        const modalRef = this.modalService.open(VideopopupComponent, {backdrop : 'static'});
-        modalRef.componentInstance.title = "Video";
-        modalRef.componentInstance.details = params.data;
-        modalRef.componentInstance.sources = this.downloadUrl + this.params.data.filename;
-}
+   
 }

@@ -54,7 +54,6 @@ export const show = async (req, res) => {
 
 
 export const create = async (req, res, err) => {
-    console.log("req", req.body)
     const person001mb = new Person001mb();
     person001mb.countryid = req.body.person001mb.countryid;
     person001mb.usersid = null;
@@ -93,7 +92,6 @@ export const create = async (req, res, err) => {
     person001mb.updateduser = req.body.person001mb.updateduser;
     person001mb.updateddatetime = req.body.person001mb.updateddatetime;
     person001mb.status = req.body.person001mb.status;
-    console.log("person001mb", person001mb)
     if (!(person001mb.email && person001mb.firstname && person001mb.roleid)) {
         return res.status(402).json("Enter a Required Field");
     }
@@ -110,7 +108,6 @@ export const create = async (req, res, err) => {
     let person = await person001mb.save();
     const login001mb = new Login001mb()
     login001mb.username = req.body.login001mb.username;
-    console.log("login001mb", login001mb.username)
     login001mb.password = bcrypt.hashSync(req.body.login001mb.password, 10);
     login001mb.roleid = req.body.login001mb.roleid;
     login001mb.inserteduser = person001mb.inserteduser;
@@ -202,7 +199,6 @@ export const update = async (req, res, err) => {
     var personid = req.body.personid;
     var loginid = req.body.loginid;
     var userid = req.body.userid;
-    console.log("req", req)
     const person001mb = await Person001mb.findOne({ _id: personid });
     if (person001mb) {
         console.log("testing")
@@ -236,7 +232,6 @@ export const update = async (req, res, err) => {
         person001mb.confirmemail = req.body.person001mb.confirmemail ? req.body.person001mb.confirmemail : person001mb.confirmemail;
         person001mb.landline = req.body.person001mb.landline ? req.body.person001mb.landline : person001mb.landline;
         person001mb.status = req.body.person001mb.status ? req.body.person001mb.status : person001mb.status;
-        console.log("person001mb", person001mb)
         let person = person001mb.save();
         const login001mb = await Login001mb.findOne({ _id: loginid });
         login001mb.personid = person._id ? person._id : login001mb.personid;
@@ -276,7 +271,6 @@ export const remove = async (req, res) => {
     var loginid = req.params.loginid;
     var personid = req.params.personid;
     if (userid && loginid && personid) {
-        console.log("testing", userid, loginid, personid)
         await Person001mb.findByIdAndRemove({ _id: personid });
         await Login001mb.findByIdAndRemove({ _id: loginid });
         await Users001wb.findByIdAndRemove({ _id: userid });

@@ -30,4 +30,10 @@
  .invalid-feedback{
     color: red;
 }
-
+.modal-backdrop {
+    z-index: 0 !important;
+}
+.mat-step-header:focus {
+    z-index: 1;
+    background-color: rgb(255, 255, 255) !important;
+}

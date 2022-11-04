@@ -13,10 +13,9 @@ export class SubCatClassificationManager extends BaseService {
         return this.getCallService(`${this.subcatclasiUrl}` + "/list");
     }
 
-    // savesub(subcategory001mb: Subcategory001mb) {
-    //     console.log("subcategory001mb",subcategory001mb);
-    //     return this.postCallService(`${this.subcatUrl}` + "/create", {}, subcategory001mb);
-    // }
+    savesub(subcatclassification001mb: Subcatclassification001mb) {
+        return this.postCallService(`${this.subcatclasiUrl}` + "/create", {}, subcatclassification001mb);
+    }
 
     updatesubclasi(subcatclassification001mb: Subcatclassification001mb) {
         return this.putCallService(`${this.subcatclasiUrl}` + "/update", {}, subcatclassification001mb);

@@ -1,18 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GridOptions } from 'ag-grid-community';
+import { forkJoin } from 'rxjs';
 import { deserialize } from 'serializer.ts/Serializer';
 import { AuditComponent } from 'src/app/shared/audit/audit.component';
+import { ConformationComponent } from 'src/app/shared/conformation/conformation.component';
 import { IconRendererComponent } from 'src/app/shared/services/renderercomponent/icon-renderer-component';
 import { AuthManager } from 'src/app/shared/services/restcontroller/bizservice/auth-manager.service';
+import { ContentMasterManager } from 'src/app/shared/services/restcontroller/bizservice/contentmaster.service';
+import { LoginManager } from 'src/app/shared/services/restcontroller/bizservice/login.service';
+import { PaymentManager } from 'src/app/shared/services/restcontroller/bizservice/payment.service';
+import { PersonManager } from 'src/app/shared/services/restcontroller/bizservice/person.service';
 import { SubscriberdetailsManager } from 'src/app/shared/services/restcontroller/bizservice/subscriberdetails.service';
+import { SubscriptionmasterManager } from 'src/app/shared/services/restcontroller/bizservice/subscriptionmaster.service';
 import { Contentmaster001mb } from 'src/app/shared/services/restcontroller/entities/Contentmaster001mb';
+import { Login001mb } from 'src/app/shared/services/restcontroller/entities/Login001mb';
 import { Payment001mb } from 'src/app/shared/services/restcontroller/entities/Payment001mb';
 import { Person001mb } from 'src/app/shared/services/restcontroller/entities/Person001mb';
 import { Subscriberdetails001wb } from 'src/app/shared/services/restcontroller/entities/subscriberdetails001wb';
 import { Subscriptionmaster001mb } from 'src/app/shared/services/restcontroller/entities/Subscriptionmaster001mb';
 import { CalloutService } from 'src/app/shared/services/services/callout.service';
+import { DataSharedService } from 'src/app/shared/services/services/datashared.service';
+import { Utils } from 'src/app/shared/utils/utils';
 
 @Component({
   selector: 'app-subcriberdetails',
@@ -23,42 +34,138 @@ export class SubcriberdetailsComponent implements OnInit {
 
   frameworkComponents: any;
   personid: Person001mb[] = [];
-  subpid: Subscriptionmaster001mb[] = [];
+  subscriptionmaster: Subscriptionmaster001mb[] = [];
   payid: Payment001mb[] = [];
+  payment: Payment001mb[] = [];
   contentid: Contentmaster001mb[] = [];
+  content:  Contentmaster001mb[] = [];
   horoscope: string = "";
   subscdesc: string = "";
-  subscapproval?: boolean;
+  subscapproval?: string = "";
   approvedby?: string;
-  approvedon?: string;
+  approvedon?: Date | any;
   subdid: string | any;
   public gridOptions: GridOptions | any;
-  subCategoryForm: FormGroup | any;
+  subDetailForm: FormGroup | any;
   submitted = false;
-  subscriptionmaster: Subscriberdetails001wb[] = [];
-  insertUser: any;
-  insertDatetime: any;
+  subscriberdetails: Subscriberdetails001wb[] = [];
+  persons: Person001mb[] = [];
+  login: Login001mb[] = [];
+  inserteduser: any;
+  inserteddatetime: any;
+  _id: any;
+  isOpen: boolean = false;
+  parentMenuString: string = '';
+  childMenuString: string = '';
+  isActive: boolean | undefined;
+  user?: Login001mb;
+  themes: any;
+  minDate = new Date();
+  maxDate = new Date();
+  // rgbToHex: any;
+  // hexToRgb: any;
+  login001mb: Login001mb = new Login001mb();
+  color: any;
+  defaultTheme: string = '#286090';
+  @HostBinding('style.--color_l1') colorthemes_1: any;
+  @HostBinding('style.--color_l2') colorthemes_2: any;
+  @HostBinding('style.--color_l3') colorthemes_3: any;
+  @HostBinding('style.--color_l4') colorthemes_4: any;
   constructor(private subscriberdetailsManager: SubscriberdetailsManager,
+    private paymentManager: PaymentManager,
+    private loginManager: LoginManager,
+    private contentMasterManager: ContentMasterManager,
+    private datepipe: DatePipe,
+    private personManager: PersonManager,
     private formBuilder: FormBuilder,
+    private subscriptionmasterManager: SubscriptionmasterManager,
     private calloutService: CalloutService,
     private authManager: AuthManager,
+    private dataSharedService: DataSharedService,
     private modalService: NgbModal) {
     this.frameworkComponents = {
       iconRenderer: IconRendererComponent
     }
   }
   ngOnInit() {
+
+    this.loadData();
+
+    this.maxDate.setFullYear(this.maxDate.getFullYear() + 10);
+
+    this.subDetailForm = this.formBuilder.group({ 
+      horoscope: ['', Validators.required],
+      subscdesc: ['', Validators.required],
+      subscapproval: ['', Validators.required],
+      approvedby: ['', Validators.required],
+      approvedon: ['', Validators.required],
+      subpid: ['', Validators.required],
+      payid: ['', Validators.required],
+      contentid: ['', Validators.required],
+      personid: ['', Validators.required]
+    });
+
+    this.user = this.authManager.getcurrentUser;
+    this.dataSharedService.currentMenuObject.subscribe((object: any) => {
+      this.parentMenuString = object.parentMenuString;
+      this.childMenuString = object.childMenuString;
+    });
+
+    this.authManager.currentUserSubject.subscribe((object: any) => {
+      let rgb = Utils.hexToRgb(object.theme);
+      this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
+      this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
+      this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
+      this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
+    });
+
+    let res0 = this.subscriptionmasterManager.allsubmaster();
+    let res1 = this.paymentManager.allpayment();
+    let res2 = this.contentMasterManager.allcontent();
+    let res3 = this.personManager.allperson();
+  
+    forkJoin([res0, res1, res2, res3]).subscribe((data: any) => {
+      this.subscriptionmaster = deserialize<Subscriptionmaster001mb[]>(Subscriptionmaster001mb, data[0]);
+      this.payment = deserialize<Payment001mb[]>(Payment001mb, data[1]);
+      this.content = deserialize<Contentmaster001mb[]>(Contentmaster001mb, data[2]);
+      this.persons = deserialize<Person001mb[]>(Person001mb, data[3]);
+      this.loadData();
+    });
+
     this.createDataGrid001();
+
+    this.subscriptionmasterManager.allsubmaster().subscribe((response) => {   
+      this.subscriptionmaster = deserialize<Subscriptionmaster001mb[]>(Subscriptionmaster001mb, response);
+    })
+
+    this.paymentManager.allpayment().subscribe((response) => {   
+      this.payment = deserialize<Payment001mb[]>(Payment001mb, response);
+    })
+
+    this.contentMasterManager.allcontent().subscribe((response) => {   
+      this.content = deserialize<Contentmaster001mb[]>(Contentmaster001mb, response);
+    })
+
+    this.personManager.allperson().subscribe((response) => {
+      this.persons = deserialize<Person001mb[]>(Person001mb, response);
+    })
+
+    
+  }
+
+  loadData() {
     this.subscriberdetailsManager.allsubdetails().subscribe((response) => {
-      this.subscriptionmaster = deserialize<Subscriberdetails001wb[]>(Subscriberdetails001wb, response);
-      if (this.subscriptionmaster.length > 0) {
-        this.gridOptions?.api?.setRowData(this.subscriptionmaster);
+      
+      this.subscriberdetails = deserialize<Subscriberdetails001wb[]>(Subscriberdetails001wb, response);
+      if (this.subscriberdetails.length > 0) {
+        this.gridOptions?.api?.setRowData(this.subscriberdetails);
       } else {
         this.gridOptions?.api?.setRowData([]);
       }
     })
   }
-  get f() { return this.subCategoryForm.controls; }
+
+  get f() { return this.subDetailForm.controls; }
   createDataGrid001(): void {
     this.gridOptions = {
       paginationPageSize: 10,
@@ -84,7 +191,7 @@ export class SubcriberdetailsComponent implements OnInit {
         hide: "true"
       },
       {
-        headerName: 'personid',
+        headerName: 'Person Name',
         field: 'personid',
         width: 200,
         flex: 1,
@@ -92,10 +199,10 @@ export class SubcriberdetailsComponent implements OnInit {
         filter: true,
         resizable: true,
         suppressSizeToFit: true,
-        hide: "true"
+        valueGetter: this.setPersonname.bind(this)
       },
       {
-        headerName: 'subpid',
+        headerName: 'Subscription Name',
         field: 'subpid',
         width: 200,
         flex: 1,
@@ -103,7 +210,7 @@ export class SubcriberdetailsComponent implements OnInit {
         filter: true,
         resizable: true,
         suppressSizeToFit: true,
-        hide: "true"
+        valueGetter: this.setSubname.bind(this)
       },
       {
         headerName: 'payid',
@@ -114,18 +221,17 @@ export class SubcriberdetailsComponent implements OnInit {
         filter: true,
         resizable: true,
         suppressSizeToFit: true,
-        hide: "true"
+        valueGetter: this.setPaymentname.bind(this)
       },
       {
-        headerName: 'contentid',
+        headerName: 'Content Id',
         field: 'contentid',
         width: 200,
         flex: 1,
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true,
-        hide: "true"
+        suppressSizeToFit: true
       },
       {
         headerName: 'horoscope',
@@ -135,8 +241,7 @@ export class SubcriberdetailsComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true,
-        hide: "true"
+        suppressSizeToFit: true
       },
       {
         headerName: 'subscdesc',
@@ -176,34 +281,12 @@ export class SubcriberdetailsComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true
+        suppressSizeToFit: true,
+        valueGetter: (params: any) => {
+          return params.data.approvedon ? this.datepipe.transform(params.data.approvedon, 'dd-MM-yyyy') : '';
+      }
       },
-      // {
-      // 	headerName: 'From Date',
-      // 	field: 'fromDate',
-      // 	width: 200,
-      // 	flex: 1,
-      // 	sortable: true,
-      // 	filter: true,
-      // 	resizable: true,
-      // 	suppressSizeToFit: true,
-      // 	valueGetter: (params: any) => {
-      //               return params.data.fromDate ? this.datePipe.transform(params.data.fromDate, 'MM/dd/yyyy') : '';
-      //           }
-      // },
-      // {
-      // 	headerName: 'To Date',
-      // 	field: 'toDate',
-      // 	width: 200,
-      // 	flex: 1,
-      // 	sortable: true,
-      // 	filter: true,
-      // 	resizable: true,
-      // 	suppressSizeToFit: true,
-      // 	valueGetter: (params: any) => {
-      //               return params.data.toDate ? this.datePipe.transform(params.data.toDate, 'MM/dd/yyyy') : '';
-      //           }
-      // },
+     
       {
         headerName: 'Edit',
         cellRenderer: 'iconRenderer',
@@ -242,121 +325,127 @@ export class SubcriberdetailsComponent implements OnInit {
       },
     ];
   }
+
+  setSubname(params: any): string {  
+    return params.data.subpid ? this.subscriptionmaster.find(x => x._id === params.data.subpid)?.subpname: '';
+  }
+
+  setPaymentname(params: any): string {  
+    return params.data.payid ? this.payment.find(x => x._id === params.data.payid)?.payment: '';
+  }
+
+  setPersonname(params: any): any {  
+    return params.data.personid ? this.persons.find(x => x._id === params.data.personid)?.firstname.concat(" "+ this.persons.find(x => x._id === params.data.personid)?.lastname): '';
+
+  }
+  
+
   onEditButtonClick(params: any) {
-    this.approvedby = params.data.approvedby;
-    this.approvedon = params.data.approvedon;
-    this.personid = params.data.personid;
-    this.subpid = params.data.subpid;
-    this.payid = params.data.payid;
-    this.contentid = params.data.contentid;
-    this.horoscope = params.data.horoscope;
-    this.subscdesc = params.data.subscdesc;
-    this.subscapproval = params.data.subscapproval;
-    this.insertUser = params.data.insertUser;
-    this.insertDatetime = params.data.insertDatetime;
-    // this.subCategoryForm.patchValue({
-    //   'subcatname': params.data.subcatname, 
-    //   'catcode':params.data.catcode     
-    // });
+    this._id = params.data._id;
+    this.inserteduser = params.data.inserteduser;
+    this.inserteddatetime = params.data.inserteddatetime;
+    this.subDetailForm.patchValue({
+      'horoscope': params.data.horoscope, 
+      'subscdesc':params.data.subscdesc,  
+      'subscapproval': params.data.subscapproval, 
+      'approvedby':params.data.approvedby,  
+      'approvedon': params.data.approvedon,
+      'subpid': params.data.subpid,
+      'payid': params.data.payid,
+      'contentid': params.data.contentid,
+      'personid': params.data.personid,
+    });
   }
   onDeleteButtonClick(params: any) {
-    this.subscriberdetailsManager.deletesub(params.data.subdid).subscribe((response) => {
-      for (let i = 0; i < this.subscriptionmaster.length; i++) {
-        // if (this.subscriptionmaster[i].subdid == params.data.subdid) {
-        //   this.subscriptionmaster?.splice(i, 1);
-        //   break;
-        // }
-      }
-      const selectedRows = params.api.getSelectedRows();
-      params.api.applyTransaction({ remove: selectedRows });
-      this.calloutService.showSuccess("Order Removed Successfully");
-    });
+    const modalRef = this.modalService.open(ConformationComponent);
+		modalRef.componentInstance.details = "Subscriber Detail List";
+		modalRef.result.then((data) => {
+			if (data == "Yes") {
+				this.subscriberdetailsManager.deletesub(params.data._id).subscribe((response) => {
+					for (let i = 0; i < this.subscriberdetails.length; i++) {
+						if (this.subscriberdetails[i]._id == params.data._id) {
+							this.subscriberdetails?.splice(i, 1);
+							break;
+						}
+					}
+					const selectedRows = params.api.getSelectedRows();
+					params.api.applyTransaction({ remove: selectedRows });
+					this.gridOptions.api.deselectAll();
+					this.calloutService.showSuccess("Subscription Details Removed Successfully");
+				});
+			}
+		})
   }
 
   onAuditButtonClick(params: any) {
     const modalRef = this.modalService.open(AuditComponent);
-    modalRef.componentInstance.title = "subCategory";
+    modalRef.componentInstance.title = "subDetailForm";
     modalRef.componentInstance.details = params.data;
   }
 
   onFirstDataRendered(params: any) {
     params.api.sizeColumnsToFit();
   }
-  // private markFormGroupTouched(formGroup: FormGroup) {
-  //   (<any>Object).values(formGroup.controls).forEach((control: any) => {
-  //     control.markAsTouched();
-  //     if (control.controls) {
-  //       this.markFormGroupTouched(control);
-  //     }
-  //   });
-  // }
-  onOrderClick(event: any, subCategoryForm: any) {
-
-    // this.markFormGroupTouched(this.subCategoryForm);
-    this.submitted = true;
-    if (this.subCategoryForm.invalid) {
-      return;
-    }
+  private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach((control: any) => {
+      control.markAsTouched();
+      if (control.controls) {
+        this.markFormGroupTouched(control);
+      }
+    });
+  }
+  onOrderClick(event: any, subDetailForm: any) {   
+        
+    this.markFormGroupTouched(this.subDetailForm);
+		this.submitted = true;
+		if (this.subDetailForm.invalid) {
+			return;
+		}
+    
+    
+    
     let subscriberdetails001wb = new Subscriberdetails001wb();
-
-    // puranalytics001mb.fromDate = new Date(this.f.fromDate.value);
-    subscriberdetails001wb.approvedby = this.f.approvedby.value ? this.f.approvedby.value : "";
-    subscriberdetails001wb.approvedon = this.f.approvedon.value ? this.f.approvedon.value : "";
-    subscriberdetails001wb.contentid = this.f.contentid.value ? this.f.contentid.value : "";
     subscriberdetails001wb.horoscope = this.f.horoscope.value ? this.f.horoscope.value : "";
-    subscriberdetails001wb.payid = this.f.payid.value ? this.f.payid.value : "";
     subscriberdetails001wb.subscdesc = this.f.subscdesc.value ? this.f.subscdesc.value : "";
-    subscriberdetails001wb.subscapproval = this.f.subscapproval.value ? this.f.subscapproval.value : "";
+		subscriberdetails001wb.subscapproval = this.f.subscapproval.value ? this.f.subscapproval.value : "";
+    subscriberdetails001wb.approvedby = this.f.approvedby.value ? this.f.approvedby.value : "";
+		subscriberdetails001wb.approvedon = this.f.approvedon.value ? this.f.approvedon.value : "";
+    subscriberdetails001wb.subpid = this.f.subpid.value ? this.f.subpid.value : "";
+    subscriberdetails001wb.payid = this.f.payid.value ? this.f.payid.value : "";
+    subscriberdetails001wb.contentid = this.f.contentid.value ? this.f.contentid.value : "";
     subscriberdetails001wb.personid = this.f.personid.value ? this.f.personid.value : "";
-    if (this.subdid) {
-      // subscriberdetails001wb.subdid = this.subdid;
-      // subscriberdetails001wb.insertUser = this.insertUser;
-      // subscriberdetails001wb.insertDatetime = this.insertDatetime;
-      // subscriberdetails001wb.updatedUser = this.authManager.getcurrentUser.username;
-      // subscriberdetails001wb.updatedDatetime = new Date();
-      this.subscriberdetailsManager.updatesub(subscriberdetails001wb).subscribe(response => {
-        this.calloutService.showSuccess("Order Update Successfully");
-        let submaster = deserialize<Subscriberdetails001wb>(Subscriberdetails001wb, response);
-        for (let analytic of this.subscriptionmaster) {
-          // if (analytic.subdid == submaster.subdid) {
-          //   analytic.personid = submaster.personid;
-          //   analytic.approvedby = submaster.approvedby;
-          //   analytic.approvedon = submaster.approvedon;
-          //   analytic.horoscope = submaster.horoscope;
-          //   analytic.payid = submaster.payid;
-          //   analytic.subpid = submaster.subpid;
-          //   analytic.subscdesc = submaster.subscdesc;
-          //   analytic.subscapproval = submaster.subscapproval;
-          //   analytic.insertUser = this.insertUser;
-          //   analytic.insertDatetime = this.insertDatetime;
-          //   analytic.updatedUser = this.authManager.getcurrentUser.username;
-          //   analytic.updatedDatetime = new Date();
-          // }
-        }
-        this.gridOptions.api.setRowData(this.subscriptionmaster);
-        this.gridOptions.api.refreshView();
-        this.gridOptions.api.deselectAll();
-        this.subCategoryForm.reset();
-        this.submitted = false;
-        this.subdid = null;
-      })
-    }
+
+    
+    if (this._id) {
+			subscriberdetails001wb._id = this._id;
+			subscriberdetails001wb.inserteduser = this.inserteduser;
+			subscriberdetails001wb.inserteddatetime = this.inserteddatetime;
+			subscriberdetails001wb.updateduser = this.authManager.getcurrentUser.username;
+			subscriberdetails001wb.updateddatetime = new Date();
+			this.subscriberdetailsManager.updatesub(subscriberdetails001wb).subscribe((response) => {
+				this.calloutService.showSuccess("Subscription Details Updated Successfully");
+				this.loadData();
+				this.subDetailForm.reset();
+				this._id = null;
+				this.submitted = false;
+			});
+
+		}
+		else {
+			subscriberdetails001wb.inserteduser = this.authManager.getcurrentUser.username;
+      subscriberdetails001wb.inserteddatetime = new Date();
+			this.subscriberdetailsManager.savesub(subscriberdetails001wb).subscribe((response) => {
+				this.calloutService.showSuccess("Subscription Details Saved Successfully");
+				this.loadData();
+				this.subDetailForm.reset();
+				this.submitted = false;
+			});
+		}
   }
   onReset() {
-    this.subCategoryForm.reset();
+    this.subDetailForm.reset();
     this.submitted = false;
   }
 
-  // onGeneratePdfReport(){
-  // 	this.puAnalyticsManager.puAnalyticsPdf().subscribe((response) =>{
-  //           saveAs(response,"AnalyticsList");
-
-  // 	});
-  // }
-
-  // onGenerateExcelReport(){
-  // 	this.puAnalyticsManager.puAnalyticsExcel().subscribe((response) => {
-  // 		saveAs(response,"AnalyticsList");
-  //       })
-  // }
+ 
 }

@@ -1,4 +1,4 @@
-// import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +17,6 @@ import { TranslateModule } from '@ngx-translate/core';
 // import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorPickerModule } from 'ngx-color-picker';
 // import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { SubscriptionmasterManager } from '../shared/services/restcontroller/bizservice/subscriptionmaster.service';
 import { UserManager } from '../shared/services/restcontroller/bizservice/user.service';
 import { DataSharedService } from '../shared/services/services/datashared.service';
 import { BodyDashboardComponent } from './body-dashboard/body-dashboard.component';
@@ -67,8 +66,10 @@ import { SubscriberdetailsManager } from '../shared/services/restcontroller/bizs
 import { NgApexchartsModule } from 'ng-apexcharts';
 // import { ProgressbarModule } from 'ngx-bootstrap/ProgressbarModule';
 import { NgCircleProgressModule } from "ng-circle-progress"
-import { CommonModule } from '@angular/common';
 import { RegisterManager } from '../shared/services/restcontroller/bizservice/register.service';
+import { StatusSettingManager } from '../shared/services/restcontroller/bizservice/status-master.service';
+import { ContentMasterManager } from '../shared/services/restcontroller/bizservice/contentmaster.service';
+import { SubscriptionmasterManager } from '../shared/services/restcontroller/bizservice/subscriptionmaster.service';
 // import { RegisterManager } from '../shared/services/restcontroller/bizservice/register.service';
 
 
@@ -139,6 +140,7 @@ import { RegisterManager } from '../shared/services/restcontroller/bizservice/re
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         // BarChartModule,
         // LineChartModule,
         // NgxChartsModule,
@@ -167,7 +169,6 @@ import { RegisterManager } from '../shared/services/restcontroller/bizservice/re
         // NgxChartsModule,
         // BreadcrumbModule,
         MatMenuModule,
-        CommonModule,
         FormsModule,
         ReactiveFormsModule,
         NgbModule,
@@ -176,11 +177,18 @@ import { RegisterManager } from '../shared/services/restcontroller/bizservice/re
         MatTabsModule,
         ColorPickerModule,
         DashboardRoutingModule,
-        MatDialogModule
+        MatDialogModule,
+        DatePipe,
 
     ],
-    providers: [DataSharedService, UserManager, SubscriptionmasterManager, SubscriberdetailsManager,
-         RegisterManager
+    providers: [
+        DataSharedService, 
+        UserManager, 
+        SubscriberdetailsManager,
+        SubscriptionmasterManager,
+        RegisterManager,
+        StatusSettingManager, 
+        ContentMasterManager
     ],
     exports: [NgbCollapseModule],
 })

@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { SubscriptionmasterRoutingModule } from './subscriptionmaster-routing.module';
 import { SubscriptionmasterComponent } from './subscriptionmaster.component';
 import { AgGridModule } from 'ag-grid-angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubscriptionmasterManager } from 'src/app/shared/services/restcontroller/bizservice/subscriptionmaster.service';
+import { LoginManager } from 'src/app/shared/services/restcontroller/bizservice/login.service';
 
 
 @NgModule({
@@ -16,10 +17,12 @@ import { SubscriptionmasterManager } from 'src/app/shared/services/restcontrolle
     CommonModule,
     FormsModule,
     SubscriptionmasterRoutingModule,
-    AgGridModule.withComponents([])
+    AgGridModule,
+    ReactiveFormsModule  
   ],
   providers:[
-    SubscriptionmasterManager
+    SubscriptionmasterManager,
+    LoginManager 
   ],
   exports: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]

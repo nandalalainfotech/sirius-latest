@@ -13,10 +13,10 @@ const subscriberdetails001wb = mongoose.model(
             type: mongoose.Types.ObjectId,
             ref: 'subscriptionmaster001mb'
         },
-        'payid': [{
+        'payid': {
             type: mongoose.Types.ObjectId,
             ref: 'payment001mb'
-        }],
+        },
         'contentid': {
             type: mongoose.Types.ObjectId,
             ref: 'contentmaster001mb'
@@ -28,7 +28,7 @@ const subscriberdetails001wb = mongoose.model(
         'inserteddatetime': String,
         'updateduser': String,
         'updateddatetime': String,
-        'subscapproval': Boolean,
+        'subscapproval': String,
         'approvedby': String,
         'approvedon': String
     },

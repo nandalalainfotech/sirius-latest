@@ -39,7 +39,9 @@ export const show = async(req, res) => {
 
 
 export const create = async(req, res) => {
+   
     const categorydetails001mb = new Categorydetails001mb()
+    
     categorydetails001mb.catname = req.body.catname;
     categorydetails001mb.status = req.body.status;
     categorydetails001mb.inserteduser = req.body.inserteduser;
@@ -57,7 +59,8 @@ export const create = async(req, res) => {
 
 
 export const update = async(req, res) => {
-    var id = req.params.id;
+    
+    var id = req.body._id;
 
     Categorydetails001mb.findOne({ _id: id }, function(err, categorydetails001mb) {
         if (err) {
@@ -92,7 +95,10 @@ export const update = async(req, res) => {
     });
 };
 export const remove = async(req, res) => {
-    var id = req.params.id;
+    
+    var id = req.params._id;
+
+    
 
     Categorydetails001mb.findByIdAndRemove(id, function(err, categorydetails001mb) {
         if (err) {

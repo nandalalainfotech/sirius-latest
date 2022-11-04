@@ -42,29 +42,22 @@ export const show = async (req, res) => {
 export const create = async (req, res, err) => {
 
     const video001wb = new Video001wb();
-    video001wb.flag = req.body.flag;
-    video001wb.fileid = req.body.fileid;
-    video001wb.contentid = req.body.contentid;
-    video001wb.content = req.file.path;
     video001wb.fieldname = req.file.fieldname;
     video001wb.originalname = req.file.originalname;
     video001wb.filename = req.file.filename;
     video001wb.status = req.body.status;
+    video001wb.contentid = req.body.contentid;
     video001wb.inserteduser = req.body.inserteduser;
     video001wb.inserteddatetime = req.body.inserteddatetime;
     video001wb.updateduser = req.body.updateduser;
     video001wb.updateddatetime = req.body.updateddatetime;
-    Contentmaster001mb.findOne({ _id: video001wb.contentid }, (err, user) => {
-        if (user) {
-            user.video.push(video001wb);
-            user.save();
-            video001wb.save()
-            return res.json({ message: 'Video created!' });
-        } else {
-            return res.status(500).json({
-                message: 'Error when creating video001wb'
-            });
-        }
+
+    video001wb.save()
+    .then((result) => {
+      return res.json({ message: "Subscription Master Details created!" });
+    })
+    .catch((error) => {
+      return res.status(500).json({ error });
     });
 };
 
@@ -110,7 +103,8 @@ export const update = async (req, res) => {
     });
 };
 export const remove = async (req, res) => {
-    var id = req.params.id;
+
+    var id = req.params._id;
 
     Video001wb.findByIdAndRemove(id, function (err, video001wb) {
         if (err) {

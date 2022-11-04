@@ -7,7 +7,7 @@ import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { SubcatclassificationComponent } from './subcatclassification/subcatclassification.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { SubCategoryManager } from 'src/app/shared/services/restcontroller/bizservice/subcategorymanager.service';
- import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubCatClassificationManager } from 'src/app/shared/services/restcontroller/bizservice/subcatcassification.service';
 import { CategoryComponent } from './category/category.component';
 import { CategoryManager } from 'src/app/shared/services/restcontroller/bizservice/category.service';
@@ -25,7 +25,7 @@ import { CategoryManager } from 'src/app/shared/services/restcontroller/bizservi
     ReactiveFormsModule,
     CommonModule,
     CategorydetailsRoutingModule,
-    AgGridModule.withComponents([])
+    AgGridModule
   ],
   providers: [
     SubCategoryManager,

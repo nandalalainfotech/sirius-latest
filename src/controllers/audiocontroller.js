@@ -12,8 +12,8 @@ router.use(function(req, res, next) {
 
 router.get('/list', audioservice.list);
 router.get('/show/:filename', audioservice.show);
-router.post('/create' , [upload.single("audio")], audioservice.create);
-router.put('/update/:id' , [upload.single("audio")], audioservice.update);
-router.delete('/:id', audioservice.remove);
+router.post('/create' , [upload.single("file")], audioservice.create);
+router.put('/update/:id' , [upload.single("file")], audioservice.update);
+router.delete('/delete/:_id', audioservice.remove);
 
 export default router;

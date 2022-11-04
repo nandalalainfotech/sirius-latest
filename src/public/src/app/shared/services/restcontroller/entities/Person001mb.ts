@@ -18,6 +18,7 @@ import { Subscriberprofessionalinfo002wb } from "./Subscriberprofessionalinfo002
 import { User001wb } from "./users001wb";
 
 export class Person001mb extends BaseEntity {
+  _id?: any;
   userid?: User001wb | any;
   loginid?: Login001mb | any;
   subscriberdetailsid?: Subscriberdetails001wb | any;

@@ -40,11 +40,8 @@ export const show = async(req, res) => {
 };
 
 export const create = async(req, res) => {
+
     const audio001wb = new Audio001wb();
-    audio001wb.flag = req.body.flag;
-    // audio001wb.content = req.file.path;
-    audio001wb.fileid = req.body.fileid;
-    audio001wb.fieldname = req.file.fieldname;
     audio001wb.fieldname = req.file.fieldname;
     audio001wb.originalname = req.file.originalname;
     audio001wb.filename = req.file.filename;
@@ -54,18 +51,14 @@ export const create = async(req, res) => {
     audio001wb.inserteddatetime = req.body.inserteddatetime;
     audio001wb.updateduser = req.body.updateduser;
     audio001wb.updateddatetime = req.body.updateddatetime;
-    Contentmaster001mb.findOne({ _id: audio001wb.contentid }, (err, user) => {
-                if (user) {
-                    user.audio.push(audio001wb);
-                    user.save();
-                    audio001wb.save();
-                    return res.json({ message: 'Audio created!' });
-                }else {
-                    return res.status(500).json({
-                        message: 'Error when creating audio001wb'
-                    });
-                }
-            });
+
+    audio001wb.save()
+    .then((result) => {
+      return res.json({ message: "Subscription Master Details created!" });
+    })
+    .catch((error) => {
+      return res.status(500).json({ error });
+    });
 };
 
 export const update = async(req, res) => {
@@ -110,7 +103,7 @@ export const update = async(req, res) => {
     });
 };
 export const remove = async(req, res) => {
-    var id = req.params.id;
+    var id = req.params._id;
 
     Audio001wb.findByIdAndRemove(id, function(err, audio001wb) {
         if (err) {

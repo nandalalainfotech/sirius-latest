@@ -13,7 +13,7 @@ export const list = async (req, res) => {
                     });
                 }
 
-                return res.json({person001mb})
+                return res.json(person001mb)
             }).populate({ path: 'usersid', model: Users001wb}).populate({path: 'loginid',model: Login001mb}).populate({ path: 'subscriberdetailsid', model:Subscriberdetails001wb}); ;
 };
 export const show = async (req, res) => {

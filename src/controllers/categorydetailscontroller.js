@@ -14,7 +14,7 @@ router.use(function (req, res, next) {
 router.get('/list', categorydetailsservice.list);
 router.get('/:id', categorydetailsservice.show);
 router.post('/create', categorydetailsservice.create);
-router.put('/:id', categorydetailsservice.update);
-router.delete('/:id', categorydetailsservice.remove);
+router.put('/update', categorydetailsservice.update);
+router.delete('/delete/:_id', categorydetailsservice.remove);
 
 export default router;

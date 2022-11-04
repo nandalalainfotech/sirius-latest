@@ -1,9 +1,9 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { catchError, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
-// import { environment } from "src/environments/environment";
 import { BaseService } from "../../services/base.service";
 import { Audio001wb } from "../entities/Audio001wb";
-import { Photo001wb } from "../entities/Photo001wb";
 
 
 @Injectable()
@@ -16,14 +16,37 @@ export class AudioManager extends BaseService {
         return this.getCallService(`${this.audioUrl}` + "/list");
     }
 
-    // savesub(subcategory001mb: Subcategory001mb) {
-    //     console.log("subcategory001mb",subcategory001mb);
-    //     return this.postCallService(`${this.subcatUrl}` + "/create", {}, subcategory001mb);
-    // }
-    updatesubss(audio001wb: Audio001wb, id: any) {
-        return this.putCallService(`${this.audioUrl}` + "/update/" + id, {}, audio001wb);
+    savesub(audio001wb: Audio001wb,selectedFile: any) {
+
+        let formData: any = new FormData();
+        formData.append("file", selectedFile, selectedFile.name);
+        formData.append("contenttype", "contenttype");
+        formData.append("filename", selectedFile.name);
+        formData.append("filepath", audio001wb.filepath);
+        formData.append("contentid", audio001wb.contentid);
+        formData.append("status", audio001wb.status);
+        formData.append("inserteduser", audio001wb.inserteduser);
+        formData.append("inserteddatetime", new Date());
+        return this.postCallService(`${this.audioUrl}` + "/create", {}, formData).pipe(
+            catchError(this.errorMgmt)
+        )
+        
     }
-    updatesub(audio001wb: Audio001wb, id: any) {
+
+    errorMgmt(error: HttpErrorResponse) {
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            errorMessage = error.error.message;
+        } else {
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        return throwError(errorMessage);
+    }
+
+    updatesubss(audio001wb: Audio001wb) {
+        return this.putCallService(`${this.audioUrl}` + "/update/"+ {}, audio001wb);
+    }
+    updatesub(audio001wb: Audio001wb,id: any) {
         return this.putCallService(`${this.audioUrl}` + "/update/" + id, {}, audio001wb);
     }
 

@@ -1,7 +1,107 @@
-<fieldset class="scheduler-border">
-    <legend class="scheduler-border">SubCatClassification List</legend>
-    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
-        [enableFilter]="true" [enableSorting]="true" [pagination]="true" [showToolPanel]="true"
-        [frameworkComponents]="frameworkComponents">
-    </ag-grid-angular>
-</fieldset>
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">SubCategory Classification List</legend>
+        <div class="formData">
+            <form [formGroup]="subCatClassiForm" (ngSubmit)="onOrderClick($event, subCatClassiForm)">
+                <div class="row">
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="catcode" for="catcode" cssClass="required">Category Name</label>
+                            <select class="form-control" name="catcode" formControlName="catcode" [ngClass]="{'is-invalid': submitted && f.catcode.errors}">
+                                <option value="" hidden> - Select Category Name - </option>
+                                <option value="null"> - Select Category Name - </option>
+                                <option *ngFor="let categorydetails001mb of Categorydetails" [value]="categorydetails001mb._id">
+                                    {{categorydetails001mb.catname}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.catcode.errors" class="invalid-feedback">
+                                <div *ngIf="f.catcode.errors.required">
+                                    Category Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="subcatcode" for="subcatcode" cssClass="required">Subscriber Category Name</label>
+                            <select class="form-control" name="subcatcode" formControlName="subcatcode" [ngClass]="{'is-invalid': submitted && f.subcatcode.errors}">
+                                <option value="" hidden> - Select Subscriber Category Name - </option>
+                                <option value="null"> - Select Subscriber Category Name - </option>
+                                <option *ngFor="let Subcategory001mb of subCategory" [value]="Subcategory001mb._id">
+                                    {{Subcategory001mb.subcatname}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.subcatcode.errors" class="invalid-feedback">
+                                <div *ngIf="f.subcatcode.errors.required">
+                                    Subscriber Category Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="classificationname" for="classificationname" cssClass="required">Subscriber Classification Name</label>
+                            <input type="text" class="form-control" path="classificationname" formControlName="classificationname" [ngClass]="{'is-invalid': submitted && f.classificationname.errors}" />
+                            <div *ngIf="submitted && f.classificationname.errors" class="invalid-feedback">
+                                <div *ngIf="f.classificationname.errors.required">
+                                    Subscriber Classification Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="status" for="status" cssClass="required">Status</label>
+                            <select class="form-control" name="status" formControlName="status" [ngClass]="{'is-invalid': submitted && f.status.errors}">
+                                <option value="" hidden> - Select Status - </option>
+                                <option value="null"> - Select Status - </option>
+                                <option *ngFor="let status of statussets" [value]="status._id">
+                                    {{status.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                                <div *ngIf="f.status.errors.required">
+                                    Status is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+                   
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 ">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">SubCatClassification List</legend>
+        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+            [enableFilter]="true" [enableSorting]="true" [pagination]="true" [showToolPanel]="true"
+            [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+    </fieldset>
+</div>
+
+
+
+
+
+

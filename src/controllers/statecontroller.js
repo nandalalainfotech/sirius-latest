@@ -1,4 +1,3 @@
-// import * as stateservice from "../services/stateservice.js";
 import * as stateservice from "../Services/stateservice.js";
 import express from 'express';
 

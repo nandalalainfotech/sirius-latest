@@ -1,15 +1,17 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { forkJoin } from 'rxjs';
 import { deserialize } from 'serializer.ts/Serializer';
 import { AuthManager } from '../services/restcontroller/bizservice/auth-manager.service';
 import { PhotoManager } from '../services/restcontroller/bizservice/photo.service';
 import { Photo001wb } from '../services/restcontroller/entities/Photo001wb';
+import { CalloutService } from '../services/services/callout.service';
 import { Utils } from '../utils/utils';
 
 @Component({
   selector: 'app-imagepopup',
   templateUrl: './imagepopup.component.html',
-  styleUrls: ['./imagepopup.component.css']
+  styleUrls: ['./imagepopup.component.css'],
 })
 export class ImagepopupComponent implements OnInit {
   @Input() title: string = '';
@@ -17,6 +19,7 @@ export class ImagepopupComponent implements OnInit {
   @Input() source: any;
   hexToRgb: any;
   photo: Photo001wb[] = [];
+  photo001wb: Photo001wb[] = [];
   rgbToHex: any;
   // @HostBinding('style.--color_l1') colorthemes_1: any;
   // @HostBinding('style.--color_l2') colorthemes_2: any;
@@ -25,41 +28,43 @@ export class ImagepopupComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private authManager: AuthManager, private photoManager: PhotoManager,
-  ) { }
+    private authManager: AuthManager,
+    private photoManager: PhotoManager,
+    private calloutService: CalloutService
+  ) {}
 
   ngOnInit(): void {
+   
+  }
 
-    // this.authManager.currentUserSubject.subscribe((object: any) => {
-    //   let rgb = Utils.hexToRgb(object.theme);
-
-    //   this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
-
-    //   this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
-
-    //   this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
-
-    //   this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
-    // });
-
-    // this.title = this.title + ' - Show TimeStamp';
+  loadData() {
+ 
   }
 
   onAcceptClick() {
-    if (this.details._id) {
-      let photo001wb = new Photo001wb();
-      photo001wb.flag = true;
-      this.photoManager.updatesub(photo001wb,this.details._id).subscribe((response) => {
-      })
-      this.activeModal.close('No');
+    if (this.details._id) {      
+      if (this.details.status == 'INACTIVE') {
+        let photo001wb = new Photo001wb();
+        photo001wb.status = 'ACTIVE';
+        photo001wb.flag = true;
+        let res0 = this.photoManager.updatesub(photo001wb, this.details._id,);
+        forkJoin([res0]).subscribe((data: any) => {
+          this.photo = deserialize<Photo001wb[]>(Photo001wb, data[0]);
+          this.calloutService.showSuccess('Image Updated Successfully');
+          this.activeModal.close('Yes');
+        });
+      
+      }
+      else {
+        this.calloutService.showWarning('Image Already Updated');
+      }
     }
   }
   onCloseClick() {
     if (this.details._id) {
       let photo001wb = new Photo001wb();
       photo001wb.flag = false;
-      this.photoManager.updatesubss(photo001wb,this.details._id).subscribe((response) => {
-      })
+      this.photoManager.updatesubss(photo001wb).subscribe((response) => {});
       this.activeModal.close('No');
     }
   }

@@ -183,7 +183,6 @@ export class RegistrationComponent implements OnInit {
             this.companys = response;
         })
         this.roleManager.allrole().subscribe((response) => {
-            console.log("res", response);
             this.roles = response;
         })
         this.subcatcodeManager.allsubcatcode().subscribe((response) => {
@@ -225,7 +224,6 @@ export class RegistrationComponent implements OnInit {
     }
     loaddata() {
         this.personManager.allperson().subscribe((response) => {
-            console.log("res-->person", response);
             if (response.person001mb.length > 0) {
                 this.gridOptions?.api?.setRowData(response.person001mb);
             } else {

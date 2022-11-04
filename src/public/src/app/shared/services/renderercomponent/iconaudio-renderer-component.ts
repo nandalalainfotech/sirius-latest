@@ -21,7 +21,6 @@ export class IconAudioRendererComponent implements ICellRendererAngularComp {
     params: any;
     label: string = "";
     toggle: boolean = false;
-    public downloadUrl: string = `${environment.apiUrl}/audiocontroller/show/`;
 
     hexToRgb: any;
     rgbToHex: any;
@@ -63,10 +62,5 @@ export class IconAudioRendererComponent implements ICellRendererAngularComp {
         this.toggle = !this.toggle;
     }
 
-    onPopupButtonClick(params: any) {
-        const modalRef = this.modalService.open(AudiopopupComponent,{backdrop : 'static'});
-        modalRef.componentInstance.title = "Audio";
-        modalRef.componentInstance.details = params.data;
-        modalRef.componentInstance.sources = this.downloadUrl + this.params.data.filename;
-}
+    
 }

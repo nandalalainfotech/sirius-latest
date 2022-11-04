@@ -40,6 +40,10 @@ const routes: Routes = [
       {
         path: 'app-setting',
         loadChildren: () => import("./setting/setting.module").then(m => m.SettingModule)
+      },
+      {
+        path: 'app-status-master',
+        loadChildren: () => import("./status-master/status-master.module").then(m => m.StatusMasterModule)
       }
     ]
   }

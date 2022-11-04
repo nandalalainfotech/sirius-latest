@@ -27,7 +27,7 @@ import { SettingsComponent } from './settings.component';
     // FlexLayoutModule,
     BreadcrumbModule,
     MatSidenavModule,
-    AgGridModule.withComponents([])
+    AgGridModule
   ],
   providers: [
     UserManager,

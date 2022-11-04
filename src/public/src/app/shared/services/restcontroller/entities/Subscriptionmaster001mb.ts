@@ -2,11 +2,16 @@ import { BaseEntity } from "./BaseEntity";
 import { Person001mb } from "./Person001mb";
 
 export class Subscriptionmaster001mb extends BaseEntity {
-    subpid?: string|any;
-    subpname?: string;
+    _id?: any;
+    subpname?: string | any;
     description?: string;
     tenure?: string;
     amount?: number;
-    discountflag?: boolean;
+    status?: string;
+    discountflag?: string;
     personid?: Person001mb;
+    inserteduser?: String | any;
+    inserteddatetime?: String| any;
+	updateduser?: String| any;
+	updateddatetime?: String| any;
 }

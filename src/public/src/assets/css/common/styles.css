@@ -281,7 +281,7 @@ header .header-container .dropdown .dropdown-menu::before {
 
 .side_menu2 {
     position: fixed;
-    z-index: 999;
+    z-index: 0;
     left: 0;
     width: 240px !important;
     top: 60px;

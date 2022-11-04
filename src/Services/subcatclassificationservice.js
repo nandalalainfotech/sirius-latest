@@ -39,8 +39,8 @@ export const show = async (req, res) => {
 
 export const create = async (req, res) => {
     const subcatclassification001mb = new Subcatclassification001mb();
-    subcatclassification001mb.subcatcode = req.body.subcatcode.id;
-    subcatclassification001mb.catcode = req.body.catcode.id,
+    subcatclassification001mb.catcode = req.body.catcode,
+    subcatclassification001mb.subcatcode = req.body.subcatcode;
     subcatclassification001mb.classificationname = req.body.classificationname;
     subcatclassification001mb.status = req.body.status;
     subcatclassification001mb.inserteduser = req.body.inserteduser;
@@ -57,7 +57,7 @@ export const create = async (req, res) => {
 };
 
 export const update = (req, res) => {
-    var id = req.params.id;
+    var id = req.body._id;
 
     Subcatclassification001mb.findOne({ _id: id }, function (err, subcatclassification001mb) {
         if (err) {
@@ -72,8 +72,9 @@ export const update = (req, res) => {
                 message: 'No such subcatclassification001mb'
             });
         }
-        subcatclassification001mb.subcatcode = req.body.subcatcode.id ? req.body.subcatcode.id : subcatclassification001mb.subcatcode;
-        subcatclassification001mb.catcode = req.body.catcode.id ? req.body.catcode.id : subcatclassification001mb.catcode;
+
+        subcatclassification001mb.catcode = req.body.catcode ? req.body.catcode : subcatclassification001mb.catcode;
+        subcatclassification001mb.subcatcode = req.body.subcatcode ? req.body.subcatcode : subcatclassification001mb.subcatcode;
         subcatclassification001mb.classificationname = req.body.classificationname ? req.body.classificationname : subcatclassification001mb.classificationname;
         subcatclassification001mb.status = req.body.status ? req.body.status : subcatclassification001mb.status;
         subcatclassification001mb.inserteduser = req.body.inserteduser ? req.body.inserteduser : subcatclassification001mb.inserteduser;
@@ -95,7 +96,7 @@ export const update = (req, res) => {
 };
 
 export const remove = (req, res) => {
-    var id = req.params.id;
+    var id = req.params._id;
 
     Subcatclassification001mb.findByIdAndRemove(id, function (err, subcatclassification001mb) {
         if (err) {

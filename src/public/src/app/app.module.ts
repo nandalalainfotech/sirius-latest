@@ -1,4 +1,4 @@
-import { CommonModule, LocationStrategy, PathLocationStrategy, HashLocationStrategy } from '@angular/common';
+import { CommonModule, LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AudiopopupComponent } from './shared/audiopopup/audiopopup.component';
 import { AuditComponent } from './shared/audit/audit.component';
+import { ConformationComponent } from './shared/conformation/conformation.component';
 import { ImagepopupComponent } from './shared/imagepopup/imagepopup.component';
 import { PopupComponent } from './shared/popup/popup.component';
 import { CalloutComponent } from './shared/services/callout/callout.component';
@@ -52,6 +53,7 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 		ImagepopupComponent,
 		AudiopopupComponent,
 		VideopopupComponent,
+		ConformationComponent,
 
 
 		// 
@@ -73,7 +75,7 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 		BrowserAnimationsModule,
 		AppRoutingModule,
 		NgbModule,
-		AgGridModule.withComponents([]),
+		AgGridModule,
 		NgbCollapseModule,
 		UserRegistrationModule,
 		// GojsAngularModule

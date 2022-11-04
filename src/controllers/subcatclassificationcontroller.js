@@ -13,7 +13,7 @@ router.use(function(req, res, next) {
 router.get('/list', subcatclassificationservice.list);
 router.get('/:id', subcatclassificationservice.show);
 router.post('/create', subcatclassificationservice.create);
-router.put('/:id', subcatclassificationservice.update);
-router.delete('/:id', subcatclassificationservice.remove);
+router.put('/update', subcatclassificationservice.update);
+router.delete('/delete/:_id', subcatclassificationservice.remove);
 
 export default router;

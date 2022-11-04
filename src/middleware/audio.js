@@ -7,7 +7,6 @@ const url = 'mongodb+srv://sirius_db:ChettyStreet2021@siriuscluster.hkn0z.mongod
 const storage = new GridFsStorage({
     url: url,
     file: (req, file) => {
-        console.log("req",req)
         return new Promise((resolve, reject) => {
             crypto.randomBytes(16, (err, buf) => {
                 if (err) {

@@ -1,8 +1,148 @@
-<fieldset class="scheduler-border">
-    <legend class="scheduler-border">Subscriptionmaster List</legend>
+
+<div class="wrapper1">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Subscription Master List</legend>
+        <div class="formData">
+            <form [formGroup]="subMasterForm" (ngSubmit)="onOrderClick($event, subMasterForm)">
+                <div class="row">
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="personid" for="personid" cssClass="required">Person Name</label>
+                            <select class="form-control" name="personid" formControlName="personid" [ngClass]="{'is-invalid': submitted && f.personid.errors}">
+                                <option value="" hidden> - Select Person Name - </option>
+                                <option value="null"> - Select Person Name - </option>
+                                <option *ngFor="let person of persons" [value]="person._id">
+                                    {{person.firstname}} {{person.lastname}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.personid.errors" class="invalid-feedback">
+                                <div *ngIf="f.personid.errors.required">
+                                    Person Name  is Required
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="subpname" for="subpname" cssClass="required">Subscription Name</label>
+                            <input type="text" class="form-control" path="subpname" formControlName="subpname" [ngClass]="{'is-invalid': submitted && f.subpname.errors}" />
+                            <div *ngIf="submitted && f.subpname.errors" class="invalid-feedback">
+                                <div *ngIf="f.subpname.errors.required">
+                                    Subscription Name is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="description" for="description" cssClass="required">Description</label>
+                            <input type="text" class="form-control" path="description" formControlName="description" [ngClass]="{'is-invalid': submitted && f.description.errors}" />
+                            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                <div *ngIf="f.description.errors.required">
+                                    Description is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                   
+                </div>
+
+                <div class="row">
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="tenure" for="tenure" cssClass="required">Tenure</label>
+                            <input type="text" class="form-control" path="tenure" formControlName="tenure" [ngClass]="{'is-invalid': submitted && f.tenure.errors}" />
+                            <div *ngIf="submitted && f.tenure.errors" class="invalid-feedback">
+                                <div *ngIf="f.tenure.errors.required">
+                                    Tenure is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="amount" for="amount" cssClass="required">Amount</label>
+                            <input type="number" class="form-control" path="amount" formControlName="amount" [ngClass]="{'is-invalid': submitted && f.amount.errors}" />
+                            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                                <div *ngIf="f.amount.errors.required">
+                                    Amount is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="discountflag" for="discountflag" cssClass="required">Discount Flag</label>
+                            <input type="text" class="form-control" path="discountflag" formControlName="discountflag" [ngClass]="{'is-invalid': submitted && f.discountflag.errors}" />
+                            <div *ngIf="submitted && f.discountflag.errors" class="invalid-feedback">
+                                <div *ngIf="f.discountflag.errors.required">
+                                    Discount Flag is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+
+                <div class="row">
+
+                    <div class="col-xs-4 col-sm-4">
+                        <div class="form-group">
+                            <label path="status" for="status" cssClass="required">Status</label>
+                            <select class="form-control" name="status" formControlName="status" [ngClass]="{'is-invalid': submitted && f.status.errors}">
+                                <option value="" hidden> - Select Status - </option>
+                                <option value="null"> - Select Status - </option>
+                                <option *ngFor="let status of statussets" [value]="status._id">
+                                    {{status.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                                <div *ngIf="f.status.errors.required">
+                                    Status is Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-10 ">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="button" class="btn btn-warning reset" (click)="onReset()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+<div class="scrollbar">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Subscription Master List</legend>
     <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
         [enableFilter]="true" [enableSorting]="true" [pagination]="true" [showToolPanel]="true"
         [frameworkComponents]="frameworkComponents">
     </ag-grid-angular>
-</fieldset>
+    </fieldset>
+</div>
+
+
+
+
+
 

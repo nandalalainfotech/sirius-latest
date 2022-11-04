@@ -13,8 +13,8 @@ router.use(function(req, res, next) {
 
 router.get('/list', videoservice.list);
 router.get('/show/:filename', videoservice.show);
-router.put('/update/:id', [videoUpload.single("video")], videoservice.update);
-router.delete('/:id', videoservice.remove);
-router.post('/create', [videoUpload.single("video")], videoservice.create);
+router.put('/update/:id', [videoUpload.single("file")], videoservice.update);
+router.delete('/delete/:_id', videoservice.remove);
+router.post('/create', [videoUpload.single("file")], videoservice.create);
 
 export default router;

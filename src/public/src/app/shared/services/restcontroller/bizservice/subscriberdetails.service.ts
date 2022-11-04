@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { BaseService } from "../../services/base.service";
-import { Photo001wb } from "../entities/Photo001wb";
+import { Subscriberdetails001wb } from "../entities/subscriberdetails001wb";
 
 
 @Injectable()
@@ -14,13 +14,12 @@ export class SubscriberdetailsManager extends BaseService {
         return this.getCallService(`${this.subdetailsUrl}` + "/list");
     }
 
-    // savesub(subcategory001mb: Subcategory001mb) {
-    //     console.log("subcategory001mb",subcategory001mb);
-    //     return this.postCallService(`${this.subcatUrl}` + "/create", {}, subcategory001mb);
-    // }
+    savesub(subscriberdetails001wb: Subscriberdetails001wb) {        
+        return this.postCallService(`${this.subdetailsUrl}` + "/create", {}, subscriberdetails001wb);
+    }
 
-    updatesub(photo001wb: Photo001wb) {
-        return this.putCallService(`${this.subdetailsUrl}` + "/update", {}, photo001wb);
+    updatesub(subscriberdetails001wb: Subscriberdetails001wb) {
+        return this.putCallService(`${this.subdetailsUrl}` + "/update", {}, subscriberdetails001wb);
     }
 
     deletesub(id: any) {

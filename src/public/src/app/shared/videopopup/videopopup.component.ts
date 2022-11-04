@@ -1,8 +1,11 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { forkJoin } from 'rxjs';
+import { deserialize } from 'serializer.ts/Serializer';
 import { AuthManager } from '../services/restcontroller/bizservice/auth-manager.service';
 import { VideoManager } from '../services/restcontroller/bizservice/video.service';
 import { Video001wb } from '../services/restcontroller/entities/Video001wb';
+import { CalloutService } from '../services/services/callout.service';
 import { Utils } from '../utils/utils';
 
 @Component({
@@ -25,37 +28,49 @@ export class VideopopupComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal,
+    private calloutService: CalloutService,
     private authManager: AuthManager, private videoManager: VideoManager,
   ) { }
 
   ngOnInit(): void {
-    // this.authManager.currentUserSubject.subscribe((object: any) => {
-    //   let rgb = Utils.hexToRgb(object.theme);
-
-    //   this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
-
-    //   this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
-
-    //   this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
-
-    //   this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
-    // });
+    let res0 = this.videoManager.allvideo();
+    forkJoin([res0]).subscribe((data: any) => {
+      this.video = deserialize<Video001wb[]>(Video001wb, data[0]);
+      this.loadData();
+    });
   }
+
+  loadData() {
+    this.videoManager.allvideo().subscribe((response) => {
+      this.video = deserialize<Video001wb[]>(Video001wb, response);
+    });
+  }
+
+  
 
   onAcceptClick() {
     if (this.details._id) {
-      let video001wb = new Video001wb();
-      video001wb.flag = true;
-      this.videoManager.updatesub(video001wb,this.details._id).subscribe((response) => {
-      })
-      this.activeModal.close('No');
+      if (this.details.status == 'INACTIVE') {
+        let video001wb = new Video001wb();
+        video001wb.status = 'ACTIVE';
+        video001wb.flag = true;
+        let res0 = this.videoManager.updatesub(video001wb, this.details._id);
+        forkJoin([res0]).subscribe((data: any) => {
+          this.video = deserialize<Video001wb[]>(Video001wb, data[0]);
+          this.calloutService.showSuccess('Video Updated Successfully');
+          this.activeModal.close('Yes');
+        }); 
+      }
+      else {
+        this.calloutService.showWarning('Image Already Updated');
+      }
     }
   }
   onCloseClick() {
     if (this.details._id) {
       let video001wb = new Video001wb();
       video001wb.flag = false;
-      this.videoManager.updatesubss(video001wb,this.details._id).subscribe((response) => {
+      this.videoManager.updatesubss(video001wb).subscribe((response) => {
       })
       this.activeModal.close('No');
     }

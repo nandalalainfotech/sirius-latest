@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GridOptions } from 'ag-grid-community';
 import { deserialize } from 'serializer.ts/Serializer';
@@ -12,6 +12,13 @@ import { Photo001wb } from 'src/app/shared/services/restcontroller/entities/Phot
 import { CalloutService } from 'src/app/shared/services/services/callout.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { saveAs } from 'file-saver'
+import { forkJoin } from 'rxjs';
+import { ConformationComponent } from 'src/app/shared/conformation/conformation.component';
+import { ContentMasterManager } from 'src/app/shared/services/restcontroller/bizservice/contentmaster.service';
+import { StatusSettingManager } from 'src/app/shared/services/restcontroller/bizservice/status-master.service';
+import { Status001mb } from 'src/app/shared/services/restcontroller/entities/Status001mb';
+import { ImagepopupComponent } from 'src/app/shared/imagepopup/imagepopup.component';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-photo',
   templateUrl: './photo.component.html',
@@ -21,47 +28,79 @@ export class PhotoComponent implements OnInit {
   frameworkComponents: any;
   contentid?: Contentmaster001mb;
   fieldname: string = "";
-  filename: string = "";
+  filename?: string;
+  filepath?: string;
   originalname: string = "";
   content?: Buffer;
+  status:string=""; 
   photoid: number | any;
   public gridOptions: GridOptions | any;
-  subCategoryForm: FormGroup | any;
+  photoListForm: FormGroup | any;
   submitted = false;
   subcatid: number | any;
   photo: Photo001wb[] = [];
-  insertUser: any;
-  insertDatetime: any;
-  image: any;
-  arrayBuffer: any;
-  buffer: any;
-  imageurl: any;
+  statussets: Status001mb[] =[];
+  contents:  Contentmaster001mb[] = [];
+  selectedFile: any;
+  inserteduser: any;
+  inserteddatetime: any;
+  image:any;
+  arrayBuffer:any;
+  buffer:any;
+  imageurl:any;
+  _id: any;
+  public downloadUrl: string = `${environment.apiUrl}/photocontroller/show/`;
+  params: any;
   constructor(private photoManager: PhotoManager,
     private formBuilder: FormBuilder,
     private calloutService: CalloutService,
+    private statusSettingManager: StatusSettingManager,
     private authManager: AuthManager,
-    private modalService: NgbModal, private sanitizer: DomSanitizer) {
+    private contentMasterManager: ContentMasterManager,
+    private modalService: NgbModal,  private sanitizer: DomSanitizer) {
     this.frameworkComponents = {
       iconRenderer: IconRendererComponent
     }
 
   }
   ngOnInit() {
-    this.createDataGrid001();
-    this.photoManager.allsub().subscribe((response) => {
-      console.log("response", response)
-      // var buffer = new ArrayBuffer(32);
+    
 
-      // var bufffers=new Blob([buffer]);
-      // let objectURL = 'data:image/png;base64,' + response.content;
-      // this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-      //  var blob = new Blob([response.text()], {type: "image/png"});
-      // var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)));
-      // let TYPED_ARRAY = new Uint8Array(response.content);
-      // const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
-      //   return data + String.fromCharCode(byte);
-      //   }, '');
-      //   let base64String = btoa(STRING_CHAR);
+    this.photoListForm = this.formBuilder.group({
+      filename: ['', Validators.required],
+      status: [''],
+      contentid: ['', Validators.required],
+    });
+
+    this.loadData();
+
+    this.createDataGrid001();
+
+    let res0 = this.contentMasterManager.allcontent();
+    let res1 = this.statusSettingManager.allstatus();
+    let res2 = this.photoManager.allsub();
+  
+    forkJoin([res0, res1, res2]).subscribe((data: any) => {
+      this.contents = deserialize<Contentmaster001mb[]>(Contentmaster001mb, data[0]);
+      this.statussets = deserialize<Status001mb[]>(Status001mb, data[1]);
+      this.photo = deserialize<Photo001wb[]>(Photo001wb, data[2]);
+      this.loadData();
+    });
+
+
+    this.contentMasterManager.allcontent().subscribe((response) => {   
+      this.contents = deserialize<Contentmaster001mb[]>(Contentmaster001mb, response);
+    })
+
+    this.statusSettingManager.allstatus().subscribe(response => {
+      this.statussets = deserialize<Status001mb[]>(Status001mb, response);
+    });
+
+   
+  }
+
+  loadData() {
+    this.photoManager.allsub().subscribe((response) => {
       this.photo = deserialize<Photo001wb[]>(Photo001wb, response);
       if (this.photo.length > 0) {
         this.gridOptions?.api?.setRowData(this.photo);
@@ -69,60 +108,10 @@ export class PhotoComponent implements OnInit {
         this.gridOptions?.api?.setRowData([]);
       }
     })
-    // var binary = '';
-    // var bytes = new Uint8Array( this.buffer );
-    // var len = bytes.byteLength;
-    // for (var i = 0; i < len; i++) {
-    //     binary += String.fromCharCode( bytes[ i ] );
-    // }
-
-    // return window.btoa( binary );
-
-    //   function base64ToArrayBuffer(base64) {
-    //     var binaryString = window.atob(base64);
-    //     var binaryLen = binaryString.length;
-    //     var bytes = new Uint8Array(binaryLen);
-    //     for (var i = 0; i < binaryLen; i++) {
-    //        var ascii = binaryString.charCodeAt(i);
-    //        bytes[i] = ascii;
-    //     }
-    //     return bytes;
-    //  }
-    // var buffer = Buffer.from('response.content');
-    // var string64 = buffer.toString('base64');
-    // var string64 = response.content.data.toString('base64');
-    // const reader = new FileReader();
-    // reader.onload = (e) => this.image = e.target.result;
-    // reader.readAsDataURL(new Blob([data]));
-    // let hh = new Uint8Array(response.content);
-    // const STRING_CHAR =hh.reduce((data, byte)=> {
-    //   return data + String.fromCharCode(byte);
-    //   }, '');
-    //   let base64String = btoa(STRING_CHAR);
-    //   this.imageurl = this.domSanitizer.bypassSecurityTrustUrl(‘data:image/jpg;base64, ‘ + base64String);
-
   }
-  get f() { return this.subCategoryForm.controls; }
 
-  //    base64ToArrayBuffer(base64:any) {
-  //     var binaryString = window.atob(base64);
-  //     var binaryLen = binaryString.length;
-  //     var bytes = new Uint8Array(binaryLen);
-  //     for (var i = 0; i < binaryLen; i++) {
-  //        var ascii = binaryString.charCodeAt(i);
-  //        bytes[i] = ascii;
-  //     }
-  //     return bytes;
-  //  }
-  //    arrayBufferToBase64 = function( buffer: Iterable<number> | undefined ) {
-  //     var binary = '';
-  //     var bytes = new Uint8Array( buffer );
-  //     var len = bytes.byteLength;
-  //     for (var i = 0; i < len; i++) {
-  //         binary += String.fromCharCode( bytes[ i ] );
-  //     }
-  //     return window.btoa( binary );
-  // }
+  get f() { return this.photoListForm.controls; }
+
   createDataGrid001(): void {
     this.gridOptions = {
       paginationPageSize: 10,
@@ -148,7 +137,7 @@ export class PhotoComponent implements OnInit {
         hide: "true"
       },
       {
-        headerName: 'contentid',
+        headerName: 'Content Id',
         field: 'contentid',
         width: 200,
         flex: 1,
@@ -156,7 +145,6 @@ export class PhotoComponent implements OnInit {
         filter: true,
         resizable: true,
         suppressSizeToFit: true,
-        hide: "true"
       },
       {
         headerName: 'fieldname',
@@ -176,8 +164,7 @@ export class PhotoComponent implements OnInit {
         sortable: true,
         filter: true,
         resizable: true,
-        suppressSizeToFit: true,
-        hide: "true" 
+        suppressSizeToFit: true
       },
       {
         headerName: 'originalname',
@@ -190,6 +177,16 @@ export class PhotoComponent implements OnInit {
         suppressSizeToFit: true
       },
       {
+        headerName: 'Status',
+        field: 'status',
+        width: 200,
+        flex: 1,
+        sortable: true,
+        filter: true,
+        resizable: true,
+        suppressSizeToFit: true,
+      },
+      {
         headerName: 'content',
         cellRenderer: 'iconRenderer',
         width: 200,
@@ -197,39 +194,13 @@ export class PhotoComponent implements OnInit {
         cellStyle: { textAlign: 'center' },
         cellRendererParams: {
           onClick: this.onphotoButtonClick.bind(this),
-          label: 'File'
+          label: 'image'
         },
         sortable: true,
         filter: true,
         resizable: true,
         suppressSizeToFit: true
       },
-      // {
-      // 	headerName: 'From Date',
-      // 	field: 'fromDate',
-      // 	width: 200,
-      // 	flex: 1,
-      // 	sortable: true,
-      // 	filter: true,
-      // 	resizable: true,
-      // 	suppressSizeToFit: true,
-      // 	valueGetter: (params: any) => {
-      //               return params.data.fromDate ? this.datePipe.transform(params.data.fromDate, 'MM/dd/yyyy') : '';
-      //           }
-      // },
-      // {
-      // 	headerName: 'To Date',
-      // 	field: 'toDate',
-      // 	width: 200,
-      // 	flex: 1,
-      // 	sortable: true,
-      // 	filter: true,
-      // 	resizable: true,
-      // 	suppressSizeToFit: true,
-      // 	valueGetter: (params: any) => {
-      //               return params.data.toDate ? this.datePipe.transform(params.data.toDate, 'MM/dd/yyyy') : '';
-      //           }
-      // }
       {
         headerName: 'Delete',
         cellRenderer: 'iconRenderer',
@@ -256,34 +227,80 @@ export class PhotoComponent implements OnInit {
       },
     ];
   }
-  onphotoButtonClick(params: any) {
 
+  rowClicked(params: any) {
+    params.node.setData({
+        ...params.data,
+    });
+}
+
+  getRowStyle(params: any) {
+   console.log("params.data.status", params.data.status);
+    if (params.data.status == 'INACTIVE') {
+      return { 'background-color': '#ff8080' };
+    } 
+     if (params.data.status == 'ACTIVE') {
+      return { 'background-color': '#b3ffb3' };
+    }
   }
+
+  onphotoButtonClick(params: any) {    
+    const modalRef = this.modalService.open(ImagepopupComponent,{backdrop : 'static'});
+    modalRef.componentInstance.title = "image";
+    modalRef.componentInstance.details = params.data;
+    modalRef.componentInstance.source = this.downloadUrl + params.data.filename;
+    modalRef.result.then((flag) => {
+      if (flag == 'Yes') {
+        
+        this.photoManager.allsub().subscribe((response) => {
+          this.photo = deserialize<Photo001wb[]>(Photo001wb, response);
+          if (this.photo.length > 0) {
+            this.gridOptions?.api?.setRowData(this.photo);
+          } else {
+            this.gridOptions?.api?.setRowData([]);
+          }
+        })
+      }
+    });
+  }
+
   onEditButtonClick(params: any) {
-    this.contentid = params.data.contentid;
-    this.fieldname = params.data.fieldname;
-    this.filename = params.data.filename;
-    this.originalname = params.data.originalname;
-    this.content = params.data.content;
-    this.insertUser = params.data.insertUser;
-    this.insertDatetime = params.data.insertDatetime;
-    this.subCategoryForm.patchValue({
+    this._id = params.data._id;
+    this.inserteduser = params.data.inserteduser;
+    this.inserteddatetime = params.data.inserteddatetime;
+    this.photoListForm.patchValue({
       'subcatname': params.data.subcatname,
       'catcode': params.data.catcode
     });
   }
+
+  onFileSelected(event: any) {
+    let fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      this.selectedFile = fileList[0];
+    }
+  }
+
   onDeleteButtonClick(params: any) {
-    this.photoManager.deletesub(params.data.photoid).subscribe((response) => {
-      for (let i = 0; i < this.photo.length; i++) {
-        if (this.photo[i].photoid == params.data.photoid) {
-          this.photo?.splice(i, 1);
-          break;
-        }
-      }
-      const selectedRows = params.api.getSelectedRows();
-      params.api.applyTransaction({ remove: selectedRows });
-      this.calloutService.showSuccess("Order Removed Successfully");
-    });
+    const modalRef = this.modalService.open(ConformationComponent);
+		modalRef.componentInstance.details = "Photo";
+		modalRef.result.then((data) => {
+      
+			if (data == "Yes") {       
+				this.photoManager.deletesub(params.data._id).subscribe((response) => {
+					for (let i = 0; i < this.photo.length; i++) {
+						if (this.photo[i]._id == params.data._id) {
+							this.photo?.splice(i, 1);
+							break;
+						}
+					}
+					const selectedRows = params.api.getSelectedRows();
+					params.api.applyTransaction({ remove: selectedRows });
+					this.gridOptions.api.deselectAll();
+					this.calloutService.showSuccess("Image Removed Successfully");
+				});
+			}
+		})
   }
 
   onAuditButtonClick(params: any) {
@@ -295,74 +312,62 @@ export class PhotoComponent implements OnInit {
   onFirstDataRendered(params: any) {
     params.api.sizeColumnsToFit();
   }
-  // private markFormGroupTouched(formGroup: FormGroup) {
-  //   (<any>Object).values(formGroup.controls).forEach((control: any) => {
-  //     control.markAsTouched();
-  //     if (control.controls) {
-  //       this.markFormGroupTouched(control);
-  //     }
-  //   });
-  // }
-  onOrderClick(event: any, subCategoryForm: any) {
-    // this.markFormGroupTouched(this.subCategoryForm);
-    this.submitted = true;
-    if (this.subCategoryForm.invalid) {
-      return;
-    }
-    let photo001wb = new Photo001wb();
 
-    // puranalytics001mb.fromDate = new Date(this.f.fromDate.value);
-    photo001wb.content = this.f.content.value ? this.f.content.value : "";
+  private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach((control: any) => {
+      control.markAsTouched();
+      if (control.controls) {
+        this.markFormGroupTouched(control);
+      }
+    });
+  }
+
+  onOrderClick(event: any, photoListForm: any) {
+
+    console.log("photoListForm", photoListForm);
+   
+    this.markFormGroupTouched(this.photoListForm);
+		this.submitted = true;
+		if (this.photoListForm.invalid) {
+			return;
+		}
+    
+    let photo001wb = new Photo001wb();
+		photo001wb.filename = this.f.filename.value ? this.f.filename.value : "";
+		photo001wb.status = "INACTIVE";
     photo001wb.contentid = this.f.contentid.value ? this.f.contentid.value : "";
-    photo001wb.fieldname = this.f.fieldname.value ? this.f.fieldname.value : "";
-    photo001wb.filename = this.f.filename.value ? this.f.filename.value : "";
-    photo001wb.originalname = this.f.originalname.value ? this.f.originalname.value : "";
-    if (this.photoid) {
-      photo001wb.photoid = this.photoid;
-      // photo001wb.insertUser = this.insertUser;
-      // photo001wb.insertDatetime = this.insertDatetime;
-      // photo001wb.updatedUser = this.authManager.getcurrentUser.username;
-      // photo001wb.updatedDatetime = new Date();
-      // this.photoManager.updatesub(photo001wb).subscribe(response => {
-      //   this.calloutService.showSuccess("Order Update Successfully");
-      //   let photos = deserialize<Photo001wb>(Photo001wb, response);
-      //   for (let analytic of this.photo) {
-      //     if (analytic.photoid == photos.photoid) {
-      //       analytic.content = photos.content;
-      //       analytic.contentid = photos.contentid;
-      //       analytic.fieldname = photos.fieldname;
-      //       analytic.originalname = photos.originalname
-      //       analytic.filename = photos.filename;
-      //       analytic.insertUser = this.insertUser;
-      //       analytic.insertDatetime = this.insertDatetime;
-      //       analytic.updatedUser = this.authManager.getcurrentUser.username;
-      //       analytic.updatedDatetime = new Date();
-      //     }
-      //   }
-      this.gridOptions.api.setRowData(this.photo);
-      this.gridOptions.api.refreshView();
-      this.gridOptions.api.deselectAll();
-      this.subCategoryForm.reset();
-      this.submitted = false;
-      this.subcatid = null;
-      // })
-    }
+
+    if (this._id) {
+			photo001wb._id = this._id;
+			photo001wb.inserteduser = this.inserteduser;
+			photo001wb.inserteddatetime = this.inserteddatetime;
+			photo001wb.updateduser = this.authManager.getcurrentUser.username;
+			photo001wb.updateddatetime = new Date();
+			this.photoManager.updatesubss(photo001wb).subscribe((response) => {
+				this.calloutService.showSuccess("Image Updated Successfully");
+				this.loadData();
+				this.photoListForm.reset();
+				this._id = null;
+				this.submitted = false;
+			});
+
+		}
+		else {
+			photo001wb.inserteduser = this.authManager.getcurrentUser.username;
+      photo001wb.inserteddatetime = new Date();
+			this.photoManager.savesub(photo001wb, this.selectedFile).subscribe((response) => {
+				this.calloutService.showSuccess("Image Saved Successfully");
+				this.loadData();
+				this.photoListForm.reset();
+				this.submitted = false;
+			});
+		}
+
   }
   onReset() {
-    this.subCategoryForm.reset();
+    this.photoListForm.reset();
     this.submitted = false;
   }
 
-  // onGeneratePdfReport(){
-  // 	this.puAnalyticsManager.puAnalyticsPdf().subscribe((response) =>{
-  //           saveAs(response,"AnalyticsList");
-
-  // 	});
-  // }
-
-  // onGenerateExcelReport(){
-  // 	this.puAnalyticsManager.puAnalyticsExcel().subscribe((response) => {
-  // 		saveAs(response,"AnalyticsList");
-  //       })
-  // }
 }
+
