@@ -178,7 +178,7 @@ import { SubscriptionmasterManager } from '../shared/services/restcontroller/biz
         ColorPickerModule,
         DashboardRoutingModule,
         MatDialogModule,
-        DatePipe,
+       
 
     ],
     providers: [
@@ -188,7 +188,8 @@ import { SubscriptionmasterManager } from '../shared/services/restcontroller/biz
         SubscriptionmasterManager,
         RegisterManager,
         StatusSettingManager, 
-        ContentMasterManager
+        ContentMasterManager,
+        DatePipe
     ],
     exports: [NgbCollapseModule],
 })
