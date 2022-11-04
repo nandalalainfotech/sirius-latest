@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, throwError } from "rxjs";
+import { throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { BaseService } from "../../services/base.service";
 import { Photo001wb } from "../entities/Photo001wb";
