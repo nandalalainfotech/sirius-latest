@@ -65,12 +65,9 @@ export class SubcriberdetailsComponent implements OnInit {
   // rgbToHex: any;
   // hexToRgb: any;
   login001mb: Login001mb = new Login001mb();
-  color: any;
-  defaultTheme: string = '#286090';
-  @HostBinding('style.--color_l1') colorthemes_1: any;
-  @HostBinding('style.--color_l2') colorthemes_2: any;
-  @HostBinding('style.--color_l3') colorthemes_3: any;
-  @HostBinding('style.--color_l4') colorthemes_4: any;
+ 
+
+
   constructor(private subscriberdetailsManager: SubscriberdetailsManager,
     private paymentManager: PaymentManager,
     private loginManager: LoginManager,
@@ -111,13 +108,7 @@ export class SubcriberdetailsComponent implements OnInit {
       this.childMenuString = object.childMenuString;
     });
 
-    this.authManager.currentUserSubject.subscribe((object: any) => {
-      let rgb = Utils.hexToRgb(object.theme);
-      this.colorthemes_1 = Utils.rgbToHex(rgb, -0.3);
-      this.colorthemes_2 = Utils.rgbToHex(rgb, 0.1);
-      this.colorthemes_3 = Utils.rgbToHex(rgb, 0.5);
-      this.colorthemes_4 = Utils.rgbToHex(rgb, 0.8);
-    });
+   
 
     let res0 = this.subscriptionmasterManager.allsubmaster();
     let res1 = this.paymentManager.allpayment();
