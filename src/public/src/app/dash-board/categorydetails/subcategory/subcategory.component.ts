@@ -53,7 +53,7 @@ export class SubcategoryComponent implements OnInit {
   }
   ngOnInit() {
 
-    
+    this.createDataGrid001();
     
     this.subCategoryForm = this.formBuilder.group({
       catcode:  ['', Validators.required],
@@ -82,8 +82,7 @@ export class SubcategoryComponent implements OnInit {
       this.statussets = deserialize<Status001mb[]>(Status001mb, response);
     });
 
-   
-    this.createDataGrid001();
+
    
   }
  
@@ -240,6 +239,7 @@ export class SubcategoryComponent implements OnInit {
   }
 
   onAuditButtonClick(params: any) {
+    console.log("params", params.data);
     const modalRef = this.modalService.open(AuditComponent);
     modalRef.componentInstance.title = "SubCategory";
     modalRef.componentInstance.details = params.data;
@@ -278,6 +278,7 @@ export class SubcategoryComponent implements OnInit {
 			subcategory001mb.inserteddatetime = this.inserteddatetime;
 			subcategory001mb.updateduser = this.authManager.getcurrentUser.username;
 			subcategory001mb.updateddatetime = new Date();
+      console.log("subcategory001mb", subcategory001mb);
 			this.subCategoryManager.updatesub(subcategory001mb).subscribe((response) => {
 				this.calloutService.showSuccess("SubCategory Details Updated Successfully");
 				this.loadData();

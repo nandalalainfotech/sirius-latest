@@ -39,6 +39,8 @@ export const show = async(req, res) => {
 
 
 export const create = async(req, res) => {
+
+    console.log("req", req.body);
    
     const categorydetails001mb = new Categorydetails001mb()
     
@@ -48,6 +50,7 @@ export const create = async(req, res) => {
     categorydetails001mb.inserteddatetime = req.body.inserteddatetime;
     categorydetails001mb.updateduser = req.body.updateduser;
     categorydetails001mb.updateddatetime = req.body.updateddatetime;
+    console.log("categorydetails001mb", categorydetails001mb);
     categorydetails001mb.save()
         .then((result) => {
                     return res.json({ message: 'categorydetails created!' });

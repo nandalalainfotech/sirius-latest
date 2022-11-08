@@ -89,7 +89,7 @@ export class SubcriberdetailsComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.loadData();
+    this.createDataGrid001();
 
     this.maxDate.setFullYear(this.maxDate.getFullYear() + 10);
 
@@ -131,8 +131,6 @@ export class SubcriberdetailsComponent implements OnInit {
       this.persons = deserialize<Person001mb[]>(Person001mb, data[3]);
       this.loadData();
     });
-
-    this.createDataGrid001();
 
     this.subscriptionmasterManager.allsubmaster().subscribe((response) => {   
       this.subscriptionmaster = deserialize<Subscriptionmaster001mb[]>(Subscriptionmaster001mb, response);
@@ -349,7 +347,7 @@ export class SubcriberdetailsComponent implements OnInit {
       'subscdesc':params.data.subscdesc,  
       'subscapproval': params.data.subscapproval, 
       'approvedby':params.data.approvedby,  
-      'approvedon': params.data.approvedon,
+      'approvedon': new Date(params.data.approvedon),
       'subpid': params.data.subpid,
       'payid': params.data.payid,
       'contentid': params.data.contentid,

@@ -57,7 +57,7 @@ export class SubcatclassificationComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.loadData();
+    this.createDataGrid001();
 
     this.subCatClassiForm = this.formBuilder.group({
       classificationname: ['', Validators.required],
@@ -65,8 +65,6 @@ export class SubcatclassificationComponent implements OnInit {
       catcode: ['', Validators.required],
       subcatcode: ['', Validators.required],
     });
-
-    this.createDataGrid001();
 
     this.categoryManager.allcatg().subscribe((response) => {
       this.Categorydetails = deserialize<Categorydetails001mb[]>(Categorydetails001mb, response);
@@ -94,8 +92,6 @@ export class SubcatclassificationComponent implements OnInit {
     this.statusSettingManager.allstatus().subscribe(response => {
       this.statussets = deserialize<Status001mb[]>(Status001mb, response);
     });
-
-
     
   }
 

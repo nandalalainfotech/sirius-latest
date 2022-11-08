@@ -62,7 +62,7 @@ export class AudiopopupComponent implements OnInit {
         });
         
       } else {
-        this.calloutService.showWarning('Image Already Updated');
+        this.calloutService.showWarning('Audio Already Updated');
       }
     }
   }

@@ -45,12 +45,13 @@ export class CategoryComponent implements OnInit {
   }
   ngOnInit() {
 
+    this.createDataGrid001();
+
     this.CategoryForm = this.formBuilder.group({
       catname: ['', Validators.required],
       status: ['', Validators.required]
     });
 
-    this.loadData();
 
     let res0 = this.categoryManager.allcatg();
     let res1 = this.statusSettingManager.allstatus();
@@ -60,14 +61,7 @@ export class CategoryComponent implements OnInit {
       this.statussets = deserialize<Status001mb[]>(Status001mb, data[1]);
       this.loadData();
     });
-
-    
-
-    this.createDataGrid001();
-
-   
-
-    
+  
   }
 
   loadData() {
@@ -209,8 +203,10 @@ export class CategoryComponent implements OnInit {
   }
 
   onAuditButtonClick(params: any) {
+    console.log("params", params.data);
+    
     const modalRef = this.modalService.open(AuditComponent);
-    modalRef.componentInstance.title = "subCategory";
+    modalRef.componentInstance.title = "Category";
     modalRef.componentInstance.details = params.data;
   }
 
@@ -226,6 +222,9 @@ export class CategoryComponent implements OnInit {
     });
   }
   onOrderClick(event: any, CategoryForm: any) {   
+
+    console.log("CategoryForm", CategoryForm);
+    
 
     this.markFormGroupTouched(this.CategoryForm);
 		this.submitted = true;
@@ -255,7 +254,7 @@ export class CategoryComponent implements OnInit {
 		}
 		else {
 			categorydetails001mb.inserteduser = this.authManager.getcurrentUser.username;
-    categorydetails001mb.inserteddatetime = new Date();
+      categorydetails001mb.inserteddatetime = new Date();
 			this.categoryManager.savesub(categorydetails001mb).subscribe((response) => {
 				this.calloutService.showSuccess("Category Details Saved Successfully");
 				this.loadData();

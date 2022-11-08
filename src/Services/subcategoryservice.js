@@ -42,10 +42,10 @@ export const create = async(req, res) => {
     subcategory001mb.subcatname = req.body.subcatname;
     subcategory001mb.subcatstatus = req.body.subcatstatus;
     subcategory001mb.status = req.body.status;
-    subcategory001mb.insertUser = req.body.insertUser;
-    subcategory001mb.insertDatetime = req.body.insertDatetime;
-    subcategory001mb.updatedUser = req.body.updatedUser;
-    subcategory001mb.updatedDatetime = req.body.updatedDatetime;
+    subcategory001mb.inserteduser = req.body.inserteduser;
+    subcategory001mb.inserteddatetime = req.body.inserteddatetime;
+    subcategory001mb.updateduser = req.body.updateduser;
+    subcategory001mb.updateddatetime = req.body.updateddatetime;
     subcategory001mb.save()
         .then((result) => {
                     return res.json({ message: 'subcategory001mb created!' });
@@ -77,10 +77,10 @@ export const update = async(req, res) => {
         subcategory001mb.subcatname = req.body.subcatname ? req.body.subcatname : subcategory001mb.subcatname;
         subcategory001mb.subcatstatus = req.body.subcatstatus ? req.body.subcatstatus : subcategory001mb.subcatstatus;
         subcategory001mb.status = req.body.status ? req.body.status : subcategory001mb.status;
-        subcategory001mb.insertUser = req.body.insertUser ? req.body.insertUser : subcategory001mb.insertUser;
-        subcategory001mb.insertDatetime = req.body.insertDatetime ? req.body.insertDatetime : subcategory001mb.insertDatetime;
-        subcategory001mb.updatedUser = req.body.updatedUser ? req.body.updatedUser : subcategory001mb.updatedUser;
-        subcategory001mb.updatedDatetime = req.body.updatedDatetime ? req.body.updatedDatetime : subcategory001mb.updatedDatetime;
+        subcategory001mb.inserteduser = req.body.inserteduser ? req.body.inserteduser : subcategory001mb.inserteduser;
+        subcategory001mb.inserteddatetime = req.body.inserteddatetime ? req.body.inserteddatetime : subcategory001mb.inserteddatetime;
+        subcategory001mb.updateduser = req.body.updateduser ? req.body.updateduser : subcategory001mb.updateduser;
+        subcategory001mb.updateddatetime = req.body.updateddatetime ? req.body.updateddatetime : subcategory001mb.updateddatetime;
         subcategory001mb.save(function(err, subcategory001mb) {
             if (err) {
                 return res.status(500).json({

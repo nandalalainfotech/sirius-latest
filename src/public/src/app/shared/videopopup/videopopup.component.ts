@@ -62,7 +62,7 @@ export class VideopopupComponent implements OnInit {
         }); 
       }
       else {
-        this.calloutService.showWarning('Image Already Updated');
+        this.calloutService.showWarning('Video Already Updated');
       }
     }
   }

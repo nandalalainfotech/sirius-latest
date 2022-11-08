@@ -76,7 +76,8 @@ export class SubscriptionmasterComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.loadData();
+    this.createDataGrid001();
+
 
     this.subMasterForm = this.formBuilder.group({
       subpname: ['', Validators.required],
@@ -122,9 +123,7 @@ export class SubscriptionmasterComponent implements OnInit {
     this.statusSettingManager.allstatus().subscribe(response => {
       this.statussets = deserialize<Status001mb[]>(Status001mb, response);
     });
-  
 
-    this.createDataGrid001();
     
   }
 
