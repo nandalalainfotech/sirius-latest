@@ -23,14 +23,14 @@ const subscriberdetails001wb = mongoose.model(
         },
         'horoscope': String,
         'subscdesc': String,
-
         'status': String,
-        'inserteddatetime': String,
-        'updateduser': String,
-        'updateddatetime': String,
         'subscapproval': String,
         'approvedby': String,
-        'approvedon': String
+        'approvedon': String,
+        'inserteduser': String,
+        'inserteddatetime': String,
+        'updateddatetime': String,
+        'updateduser': String,
     },
         { timestamps: false }));
 

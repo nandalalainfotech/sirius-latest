@@ -16,4 +16,8 @@ export class Subscriberdetails001wb extends BaseEntity {
   approvedby?: string;
   approvedon?: Date;
   monthlyregistration?: Date;
+  inserteduser?: String | any;
+  inserteddatetime?: String| any;
+	updateduser?: String| any;
+	updateddatetime?: String| any;
 }
