@@ -1629,10 +1629,10 @@ body::-webkit-validation-bubble-arrow:increment {
     border: none;
 }
 
-.reset {
-    right: 15px;
-    margin-top: 1px;
-    border: none;
+.resets {
+    right: 15px !important;
+    margin-top: 1px !important;
+    border: none !important;
 }
 
 .btn:active {
