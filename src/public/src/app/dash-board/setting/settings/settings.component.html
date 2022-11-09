@@ -10,15 +10,12 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 ">
                         <div class="form-group">
-                            <label for="roleUserName">User Name </label>
-                            <input path="id" type="hidden" />
-                            <input path="loginid" type="hidden" />
-                            <input path="rlid" type="hidden" />
-                            <select formControlName="rlid" class="form-control" name="usernamelist" id="usernamelist" [ngClass]="{ 'is-invalid': submitted && f.rlid.errors }">
+                            <label  path="rlid" for="rlid" cssClass="required">User Name </label>
+                            <select formControlName="rlid" class="form-control" name="rlid" id="rlid" [ngClass]="{ 'is-invalid': submitted && f.rlid.errors }">
                                 <option value="" hidden> - Select the User Name - </option>
                                 <option value="null"> - Select the User Name - </option>
-                                <option *ngFor="let userName of user001mbs" [value]="userName.personid">
-                                    {{userName.username}}
+                                <option *ngFor="let person of persons" [value]="person._id">
+                                    {{person.loginid.username}}
                                 </option>
                             </select>
                             <div *ngIf="submitted && f.rlid.errors" class="invalid-feedback">
@@ -43,18 +40,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-sm-6 ">
+                    <div class="col-xs-6 col-sm-6">
                         <div class="form-group">
-                            <label for="roleID">Status</label>
-                            <input path="status" type="hidden" />
-                            <select formControlName="status" class="form-control" name="rolenamelist" id="rolenamelist" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
-                                <option value="" hidden> - Select the status - </option>
-                                <option value="null"> - Select the status - </option>
-                                <option> Y </option>
-                                <option> N </option>
+                            <label path="status" for="status" cssClass="required">Status</label>
+                            <select class="form-control" name="status" formControlName="status" [ngClass]="{'is-invalid': submitted && f.status.errors}">
+                                <option value="" hidden> - Select Status - </option>
+                                <option value="null"> - Select Status - </option>
+                                <option *ngFor="let status of statussets" [value]="status._id">
+                                    {{status.name}}
+                                </option>
                             </select>
                             <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
-                                <div *ngIf="f.status.errors.required">Status is required</div>
+                                <div *ngIf="f.status.errors.required">
+                                    Status is Required
+                                </div>
                             </div>
                         </div>
                     </div>

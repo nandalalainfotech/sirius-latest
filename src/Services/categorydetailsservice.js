@@ -39,8 +39,6 @@ export const show = async(req, res) => {
 
 
 export const create = async(req, res) => {
-
-    console.log("req", req.body);
    
     const categorydetails001mb = new Categorydetails001mb()
     
@@ -57,7 +55,7 @@ export const create = async(req, res) => {
         })
         .catch((error) => {
             return res.status(500).json({ error });
-        });
+    });
 };
 
 

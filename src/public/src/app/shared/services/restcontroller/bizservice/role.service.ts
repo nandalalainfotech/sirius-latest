@@ -14,18 +14,17 @@ export class RoleManager extends BaseService {
         return this.getCallService(`${this.roleUrl}`+"/list");
       }
       
-      saverole(roles:Role001wb) {
-
-        return this.postCallService(`${this.roleUrl}`+"/save",{}, roles);
+      saverole(role001wb:Role001wb) {
+        return this.postCallService(`${this.roleUrl}`+"/create",{}, role001wb);
       }
 
-      updaterole(roles:Role001wb) {
-        return this.putCallService(`${this.roleUrl}`+"/update", {}, roles);
+      updaterole(role001wb:Role001wb) {
+        return this.putCallService(`${this.roleUrl}`+"/update", {}, role001wb);
       }
 
-      deleterole(id: any) {
+      deleterole(_id: any) {
         let data: any = {};
-        data['id'] = id;
+        data['_id'] = _id;
         return this.deleteCallService(`${this.roleUrl}`+"/delete", data);
       }
 }

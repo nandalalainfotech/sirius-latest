@@ -221,10 +221,7 @@ export class CategoryComponent implements OnInit {
       }
     });
   }
-  onOrderClick(event: any, CategoryForm: any) {   
-
-    console.log("CategoryForm", CategoryForm);
-    
+  onOrderClick(event: any, CategoryForm: any) {      
 
     this.markFormGroupTouched(this.CategoryForm);
 		this.submitted = true;

@@ -224,8 +224,8 @@ export class RegistrationComponent implements OnInit {
     }
     loaddata() {
         this.personManager.allperson().subscribe((response) => {
-            if (response.person001mb.length > 0) {
-                this.gridOptions?.api?.setRowData(response.person001mb);
+            if (response.length > 0) {
+                this.gridOptions?.api?.setRowData(response);
             } else {
                 this.gridOptions?.api?.setRowData([]);
             }
@@ -816,7 +816,7 @@ export class RegistrationComponent implements OnInit {
         this.registerManager.deleteuser(this.personid, this.loginid, this.userid).subscribe((response) => {
             const selectedRows = params.api.getSelectedRows();
             params.api.applyTransaction({ remove: selectedRows });
-            this.calloutService.showSuccess("Order Removed Successfully");
+            this.calloutService.showSuccess("Registration Removed Successfully");
         });
     }
 
@@ -842,6 +842,9 @@ export class RegistrationComponent implements OnInit {
     }
 
     onUserClick(event: any, registerForm: any) {
+
+        console.log("registerForm", registerForm);
+        
         this.markFormGroupTouched(this.registerForm);
         this.submitted = true;
         if (this.registerForm.invalid) {
@@ -918,7 +921,7 @@ export class RegistrationComponent implements OnInit {
             user001wb.updateddatetime = person001mb.updateddatetime;
 
             this.registerManager.updateuser(user001wb, person001mb, login001mb, this.personid, this.loginid, this.userid).subscribe((response) => {
-                this.calloutService.showSuccess("Order Updated Successfully");
+                this.calloutService.showSuccess("Registration Updated Successfully");
 
                 this.loaddata();
                 this.registerForm.reset();
@@ -937,7 +940,7 @@ export class RegistrationComponent implements OnInit {
             // person001mb.insertUser = this.authManager.getcurrentUser.username;
             // person001mb.insertDatetime = new Date();
             this.registerManager.saveuser(user001wb, login001mb, person001mb,).subscribe((response) => {
-                this.calloutService.showSuccess("Order Saved Successfully");
+                this.calloutService.showSuccess("Registration Saved Successfully");
                 this.loaddata();
                 // let person001mb = deserialize<Person001mb>(Person001mb, response);
                 //     this.apprTemp?.push(person001mb);

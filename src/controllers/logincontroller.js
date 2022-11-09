@@ -14,5 +14,7 @@ router.use(function (req, res, next) {
 router.get('/lister/:username/:password', loginservice.loginauth);
 router.get('/list', loginservice.list);
 router.get('/:id', loginservice.show);
+router.post('/updatePassword', loginservice.updatePassword);
+router.post('/updateUserName', loginservice.updateUserName);
 
 export default router;

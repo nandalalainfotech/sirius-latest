@@ -13,7 +13,7 @@ router.use(function(req, res, next) {
 router.get('/list', roleservice.list);
 router.get('/:id', roleservice.show);
 router.post('/create', roleservice.create);
-router.put('/:id', roleservice.update);
-router.delete('/:id', roleservice.remove);
+router.put('/update', roleservice.update);
+router.delete('/delete/:_id', roleservice.remove);
 
 export default router;

@@ -20,7 +20,8 @@ export const list = async (req, res) => {
     });
 };
 export const show = (req, res) => {
-    var id = req.params.id;
+
+    var id = req.params._id;
 
     Login001mb.findOne({ _id: id }, function (err, login001mb) {
         if (err) {
@@ -38,6 +39,39 @@ export const show = (req, res) => {
     });
 };
 
+export const updatePassword = async (req, res, err) => {
+    console.log("req", req.body.password);
+    const login001mb = await Login001mb.findOne({ username: req.body.username }).populate({ path: 'roleid', model: Role001mb });
+    if (login001mb) {
+        login001mb.password = req.body.password ? bcrypt.hashSync(req.body.password, 10) : login001mb.password;
+        console.log("login001mb", login001mb);
+        login001mb.save(function (err, login001mb) {
+            return res.json({ login001mb });
+        });
+    } else {
+        return res.status(500).json({
+            message: 'Error when updating users001wb.',
+            error: err
+        });
+    }
+}
+
+export const updateUserName = async (req, res, err) => {
+
+    const login001mb = await Login001mb.findOne({ username: req.body.oldUsername  }).populate({ path: 'roleid', model: Role001mb });
+    if (login001mb) {
+        login001mb.username = req.body.newUsername ? req.body.newUsername : login001mb.username;
+        login001mb.save(function (err, login001mb) {
+            return res.json({ login001mb });
+        });
+    } else {
+        return res.status(500).json({
+            message: 'Error when updating users001wb.',
+            error: err
+        });
+    }
+}
+
 // export const updatetheme = async (req, res) => {
 //     const login001mb = new Login001mb();;
 //     login001mb.theme = req.body.theme;
@@ -45,6 +79,7 @@ export const show = (req, res) => {
 //    return res.json({theme: login001mb.theme});
 // }
 export const loginauth = async (req, res) => {
+
     var username = req.params.username;
     var password = req.params.password;
     const loginperson = await Login001mb.findOne({ username: username }).populate({ path: 'roleid', model: Role001mb });

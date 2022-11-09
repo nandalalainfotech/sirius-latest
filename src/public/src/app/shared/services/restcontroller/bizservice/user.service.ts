@@ -14,7 +14,7 @@ export class UserManager extends BaseService {
 
 
   alluser() {
-    return this.getCallService(`${this.userUrl}` + "/findAll");
+    return this.getCallService(`${this.userUrl}` + "/list");
   }
 
   saveuser(user001: User001wb,login001mb: Login001mb,person001mb: Person001mb) {

@@ -5,7 +5,13 @@ mongoose.pluralize(null);
 const role001wb = mongoose.model(
     "role001mb",
     new mongoose.Schema({
-        'rolename': String
+        'rlid': String,
+        'rolename': String,
+        'status': String,
+		'inserteduser': String,
+		'inserteddatetime': String,
+		'updateduser': String,
+		'updateddatetime': String
     }, { timestamps: false })
 );
 

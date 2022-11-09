@@ -17,8 +17,8 @@ export class PasswordComponent implements OnInit {
 	user001mb: Login001mb = new Login001mb();
 	username: string = "";
 	password: string = "";
-	insertUser: string = "";
-	insertDatetime: Date | any;
+	inserteduser: string = "";
+	inserteddatetime: Date | any;
 
 	constructor(private userManager: UserManager, private authManager: AuthManager, private calloutService: CalloutService, private formBuilder: FormBuilder) { }
 
@@ -43,13 +43,16 @@ export class PasswordComponent implements OnInit {
 	}
 
 	onPwdFormClick(pwdForm: any) {
+		console.log("pwdForm", pwdForm);
 		this.markFormGroupTouched(this.pwdForm);
 		this.submitted = true;
 		if (!this.pwdForm.invalid) {
 			this.user001mb.password = this.f.password.value;
-			// this.user001mb.insertUser = "insertUser";
-			// this.user001mb.insertDatetime = new Date();
+			this.user001mb.inserteduser = "inserteduser";
+			this.user001mb.inserteddatetime = new Date();
 			this.userManager.updatePassword(this.user001mb).subscribe((response: any) => {
+				// console.log("response", response);
+				
 				if (response) {
 					this.calloutService.showSuccess("New Password Updated Successfully");
 					this.pwdForm.controls.password.reset();

@@ -195,6 +195,7 @@ export const verify = async (req, res) => {
     }
 };
 
+
 export const update = async (req, res, err) => {
     var personid = req.body.personid;
     var loginid = req.body.loginid;

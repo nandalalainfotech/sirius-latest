@@ -50,8 +50,10 @@ export class UsernameComponent implements OnInit {
 			updateUser.oldUsername = this.f.username.value;
 			updateUser.newUsername = this.f.newusername.value;
 			this.userManager.updateUserName(updateUser).subscribe((response: any) => {
+				if (response) {
 				this.calloutService.showSuccess("New User Name Updated Successfully");
 				this.userNameForm.controls.newusername.reset();
+				}
 			});
 		} else {
 			this.calloutService.showError("New User Name Should Not Be Empty");
