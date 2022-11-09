@@ -143,10 +143,11 @@ export class SalebarChartComponent implements OnInit {
 
     ngOnInit(): void {
         this.subscriberdetailsmanager.allsubdetails().subscribe((response) => {
+            
             for (let i = 0; i < response.length; i++) {
-                let regdetails = new Date(response[i].monthlyregistration);
+                let regdetails = new Date(response[i].approvedon);
                 const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
-                let monthName = response[i].monthlyregistration ? months[regdetails.getMonth()] : "";
+                let monthName = response[i].approvedon ? months[regdetails.getMonth()] : "";
                 this.switch_value = monthName;
                 switch (this.switch_value) {
 
