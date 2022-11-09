@@ -77,12 +77,14 @@ export class SalepieChartComponent implements OnInit {
     };
   
     this.personmanager.allperson().subscribe((response) => {
+      console.log("response", response);
+      
       
       for (let i = 0; i < response.length; i++) {
-        if (response[i].sex == 'male') {
+        if (response[i].sex == 'Male') {
           this.malecount++;
         }
-        else if (response[i].sex == 'female') {
+        else if (response[i].sex == 'Female') {
           this.femalecount++;
         }
       }
